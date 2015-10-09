@@ -1,0 +1,41 @@
+<div>
+<form name="form2">
+	<table>
+	<tr><td>Target date </td><td><input type="text" ng-model="target_date" name="input" 
+       placeholder="DDMMYYYY" required /></td></tr>
+
+<!--<tr><td><span class="error" ng-show="form2.input.$error.required">
+         Required!</span><td>
+     <span class="error" ng-show="form1.input.$error.date">
+         Not a valid date!</span></td></tr>-->
+
+	<tr><td>Target amount </td><td><input type="number" ng-model="target_amount"></td></tr>
+	<tr><td>Event name </td><td><input type="text" ng-model="event_name"></td></tr>
+	<tr><td>Description </td><td><textarea ng-model="event_description" rows="10" cols="40"></textarea></td></tr>
+	<tr><td><label>Public:
+    <input type="checkbox" ng-model="checkboxvalue"
+           ng-true-value="'true'" ng-false-value="'false'">
+   </label><br/></td></tr>
+	<tr><td><input type="submit" value="Create" ng-click="button()"></td></tr>
+		
+	</table>
+	</form>
+
+	<p ng-repeat="invitee in invitees">
+	<h4>SEND INVITES</h4> 
+	<!--<br>
+	First Name: <input type="text" ng-model="invitee.first_name">
+	<br>
+	Middle Name: <input type="text" ng-model="invitee.middle_name">
+	<br>
+	Last Name: <input type="text" ng-model="invitee.last_name">
+	<br>-->
+	Email id: <input type="text" ng-model="invitee.useremail">
+	<br>
+	<!--Amount to be paid: <input type="text" ng-model="invitee.amount">
+	<br>-->
+	<input type="submit" ng-click="addmember()" value="Add member">
+	</p>
+
+
+</div>

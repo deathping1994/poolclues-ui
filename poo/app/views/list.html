@@ -1,0 +1,31 @@
+<div>
+	<h3>LIST YOUR EVENT DETAILS</h3>
+	<input type="submit" value="Click to view" ng-click="list()">
+	<!--<div ng-repeat="x in eventlist">
+	<p>
+	<span>{{x.event_id}}</span>
+	<span>{{x.event_name}}</span>
+	<span>{{x.target_date}}</span>
+	<span>{{x.target_amount}}</span>
+	</p>-->
+	<div ng-model="eventlist" data-ng-repeat="x in eventlist" >
+	<table border="1" style="solid">
+	<tr><td ng-bind="x.event_name"></td>
+	<td ng-bind="x.event_id"></td>
+	<td ng-bind="x.target_amount"></td>
+	<td ng-bind="x.target_date"></td></tr>
+	</table>
+	
+</div>
+
+	<!--<div ng-repeat="data in eventlist">
+        <a ng-click=showdetail(data)><strong><ins><span ng-bind=data.event_name></span></ins></strong></button></a>
+        <p ng-bind=data.target_date>
+        </p>
+        <p ng-bind=data.target_amount>
+        </p>
+        </div>
+        <br />
+      </li>
+    </ul>
+</div>-->
