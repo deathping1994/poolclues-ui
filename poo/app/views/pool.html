@@ -12,30 +12,53 @@
 	<tr><td>Target amount </td><td><input type="number" ng-model="target_amount"></td></tr>
 	<tr><td>Event name </td><td><input type="text" ng-model="event_name"></td></tr>
 	<tr><td>Description </td><td><textarea ng-model="event_description" rows="10" cols="40"></textarea></td></tr>
+	<tr><td>Customised Message </td><td><textarea ng-model="msg" rows="5" cols="20"></textarea></td></tr>
 	<tr><td><label>Public:
     <input type="checkbox" ng-model="checkboxvalue"
            ng-true-value="'true'" ng-false-value="'false'">
    </label><br/></td></tr>
-	<tr><td><input type="submit" value="Create" ng-click="button()"></td></tr>
-		
+			
 	</table>
 	</form>
 
-	<p ng-repeat="invitee in invitees">
+
 	<h4>SEND INVITES</h4> 
-	<!--<br>
-	First Name: <input type="text" ng-model="invitee.first_name">
-	<br>
-	Middle Name: <input type="text" ng-model="invitee.middle_name">
-	<br>
-	Last Name: <input type="text" ng-model="invitee.last_name">
-	<br>-->
-	Email id: <input type="text" ng-model="invitee.useremail">
-	<br>
-	<!--Amount to be paid: <input type="text" ng-model="invitee.amount">
-	<br>-->
-	<input type="submit" ng-click="addmember()" value="Add member">
+	<form role="form" ng-submit="addmember()">
+	<div class="row">
+		<div class="input-group">
+			<input type="text" ng-model="invitee" class="form-control">
+			<span class="input-group-btn">
+			<input type="submit" class="btn btn-primary" value="Add member">				
+			</span>			
+		</div>
+	</div>
+	</form>
+
+	<p class="form-group" ng-repeat="invitee in invites">
+	<input type="text" ng-model="invitee.email_id" class="form-control">
 	</p>
 
+	<p class="form-group">
+	<input type="submit" ng-click="send()" value="Send" class="form-control">
+	</p>
+	</div>
+	
+<!--<form role="form" ng-submit="addTodo()">
+<div class="row">
+<div class="input-group">
 
+<input type="text" ng-model="todo" placeholder="add new" class="form-control">
+<span class="input-group-btn">
+<input type="submit" class="btn btn-primary" value="Add">
+</span>
 </div>
+ </div>
+</form>
+
+<div ui-sortable ng-model="todos">
+<p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+<input type="text" ng-model="todo" class="form-control">
+<span class="input-group-btn">
+<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+ </span>
+</p>-->
