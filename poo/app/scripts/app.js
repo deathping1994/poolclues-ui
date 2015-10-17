@@ -90,6 +90,14 @@ angular
         templateUrl: 'views/contact.html',
         //controller: 'listCtrl'
       })
+      .when('/verify', {
+        templateUrl: 'views/verify.html',
+        controller: 'verifyCtrl'
+      })
+      .when('/forgot', {
+        templateUrl: 'views/forgot.html',
+        controller: 'forgotCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

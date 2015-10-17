@@ -11,9 +11,12 @@
 	<div ng-model="eventlist" data-ng-repeat="x in eventlist" >
 	<table border="1" style="solid">
 	<tr><td ng-bind="x.event_name"></td>
+	<td ng-bind="x.date_created"></td>
+	<td ng-bind="x.event_description"></td>
 	<td ng-bind="x.event_id"></td>
 	<td ng-bind="x.target_amount"></td>
-	<td ng-bind="x.target_date"></td></tr>
+	<td ng-bind="x.target_date"></td>
+	<td ng-bind="x.public"></td></tr>
 	</table>
 	
 </div>

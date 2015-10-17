@@ -34,14 +34,14 @@
 	</div>
 	</form>
 
-	<p class="form-group" ng-repeat="invitee in invites">
+	<div ui-sortable ng-model="invites">
+	<p class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
 	<input type="text" ng-model="invitee.email_id" class="form-control">
-	</p>
-
-	<p class="form-group">
-	<input type="submit" ng-click="send()" value="Send" class="form-control">
-	</p>
-	</div>
+	<span class="input-group-btn">
+	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+ </span>	
+ </p>
+ 	</div>
 	
 <!--<form role="form" ng-submit="addTodo()">
 <div class="row">

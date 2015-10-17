@@ -9,6 +9,9 @@ $scope.invites=[];
 		$scope.invitee='';
 		
 	};
+	$scope.remove=function(index){
+	$scope.invites.splice(index,1);
+};
 		//$scope.invitees.push({email_id:''});
 		$scope.send=function(){
 
