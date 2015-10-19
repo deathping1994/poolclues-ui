@@ -32,7 +32,7 @@ function errorCallback(response){
 			console.log(window.localStorage['authtoken']);
 			console.log(response.data.authtoken);
 			alert("You are successfully logged in!")
-			$location.path('/profile');
+			$location.path('/list');
 			//alert("You are successfully logged off");
 		},
 		function errorCallback(response){

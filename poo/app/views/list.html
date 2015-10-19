@@ -1,5 +1,5 @@
 <div>
-	<h3>LIST YOUR EVENT DETAILS</h3>
+	<h3>LIST OF EVENTS</h3>
 	<input type="submit" value="Click to view" ng-click="list()">
 	<!--<div ng-repeat="x in eventlist">
 	<p>
@@ -8,19 +8,33 @@
 	<span>{{x.target_date}}</span>
 	<span>{{x.target_amount}}</span>
 	</p>-->
+	
+	<table border="1" style="solid">
+	<tr><th width="50" height="50">S.No.</th><th width="100" height="50">Event Name</th><th width="100" height="50">Date created</th><th width="150" height="50">Description</th><th width="50" height="50">Event Id</th><th width="100" height="50">Target Amount</th><th width="100" height="50">Target Date</th><th width="50" height="50">Public</th></tr></table>
 	<div ng-model="eventlist" data-ng-repeat="x in eventlist" >
 	<table border="1" style="solid">
-	<tr><td ng-bind="x.event_name"></td>
-	<td ng-bind="x.date_created"></td>
-	<td ng-bind="x.event_description"></td>
-	<td ng-bind="x.event_id"></td>
-	<td ng-bind="x.target_amount"></td>
-	<td ng-bind="x.target_date"></td>
-	<td ng-bind="x.public"></td></tr>
+	<tr><td width="50" height="100" ng-bind="$index+1"></td><td ng-bind="x.event_name" width="100" height="100"></td>
+	<td ng-bind="x.date_created" width="100" height="100"></td>
+	<td ng-bind="x.event_description" width="150" height="100"></td>
+	<td ng-bind="x.event_id"width="50" height="100"></td>
+	<td ng-bind="x.target_amount" width="100" height="100"></td>
+	<td ng-bind="x.target_date" width="100" height="100"></td>
+	<td ng-bind="x.public" width="50" height="100"></td></tr>
 	</table>
-	
+
 </div>
 
+<p>
+	<form role="form" ng-submit="create()">
+	<div class="row">
+		<div>
+			<span class="input-group-btn">
+			<input type="submit" class="btn btn-primary" value="Create a new event">				
+			</span>			
+		</div>
+	</div>
+	</form>
+</p>
 	<!--<div ng-repeat="data in eventlist">
         <a ng-click=showdetail(data)><strong><ins><span ng-bind=data.event_name></span></ins></strong></button></a>
         <p ng-bind=data.target_date>
