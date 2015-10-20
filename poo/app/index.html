@@ -46,7 +46,17 @@
               <!--<li><a ng-href="#/login">Admin Login</a></li>-->
               <li><a ng-href="#/userlogin">Login</a></li>
               <li><a ng-href="#/usersignup">Signup</a></li>
-              <li><a ng-href="#/settings"><select><option><img src="images/loading_gear.gif" width="10" height="10"></option><option>Manage Profile</option><option>Add Phone No.</option><option>Logout</option></select></a></li>
+
+              <li><div class="dropdown">
+<img src="../images/gear.png" width="40" height="40" data-toggle="dropdown">
+  <!--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  </button>-->
+  <ul class="dropdown-menu">
+    <li><a href="#/logout">Logout</a></li>
+    <li><a href="#/addphone">Add Phone No.</a></li>
+    <li><a href="#/verify">Verify your email</a></li>
+  </ul>
+</div></li>
             </ul>
           </div>
         </div>

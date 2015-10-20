@@ -1,6 +1,6 @@
-<div>
+
 	<h3>LIST OF EVENTS</h3>
-	<input type="submit" value="Click to view" ng-click="list()">
+	<!--<input type="submit" value="Click to view" ng-init="list()">-->
 	<!--<div ng-repeat="x in eventlist">
 	<p>
 	<span>{{x.event_id}}</span>
@@ -8,7 +8,8 @@
 	<span>{{x.target_date}}</span>
 	<span>{{x.target_amount}}</span>
 	</p>-->
-	
+	<div ng-init="list()">
+	<span ng-bind="show"></span>
 	<table border="1" style="solid">
 	<tr><th width="50" height="50">S.No.</th><th width="100" height="50">Event Name</th><th width="100" height="50">Date created</th><th width="150" height="50">Description</th><th width="50" height="50">Event Id</th><th width="100" height="50">Target Amount</th><th width="100" height="50">Target Date</th><th width="50" height="50">Public</th></tr></table>
 	<div ng-model="eventlist" data-ng-repeat="x in eventlist" >

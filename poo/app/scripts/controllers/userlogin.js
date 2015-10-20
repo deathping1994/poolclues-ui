@@ -36,7 +36,7 @@ function errorCallback(response){
 			//alert("You are successfully logged off");
 		},
 		function errorCallback(response){
-			console.log(response.status);
+			console.log(response);
 			$scope.status=response.status;
 			//alert("Wrong password");
 });

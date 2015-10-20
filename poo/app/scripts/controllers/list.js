@@ -11,9 +11,9 @@ $scope.list=function(){
 
 	$http.post($scope.url, $scope.data1).then(function successCallback(response){
 			console.log(response);
-			if(response.data.event_list=="")
+			if(response.data.event_list==="")
 			{
-				alert("You have no events. Create a new one.")
+				$scope.show="You have no events. Create a new one.";
 			}
 			else
 			{$scope.eventlist=response.data.event_list;}
@@ -30,7 +30,7 @@ $scope.list=function(){
 };
 $scope.create=function(){
 	$location.path('/create');
-}
+};
 /*$scope.showdetail = function(data)
       { 
         $scope.description=data.description;
