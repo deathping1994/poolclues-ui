@@ -29,7 +29,7 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/welcome.html',
-        //controller: 'welcomCtrl'
+        controller: 'welcomeCtrl'
       })
       /*.service('dataService', function($http) {
     delete $http.defaults.headers.common['X-Requested-With'];
