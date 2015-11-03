@@ -19,6 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
+    'ui.bootstrap',
     //'angular-loading-bar',
     'LocalStorageModule'
   ])
