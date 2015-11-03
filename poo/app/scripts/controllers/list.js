@@ -1,13 +1,18 @@
 'use strict';
 
+angular.module('pooApp').controller('ModalInstanceCtrl', function($scope, $modalInstance, x){
+	$scope.x=x;
+})
+
 angular.module('pooApp').controller('listCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 	
 $scope.list=function(){
 		//$scope.data=window.localStorage['authtoken'];
-		var $index=0;
+		//var $count=0;
 		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list";
 		$scope.eventlist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
+
 
 	$http.post($scope.url, $scope.data1).then(function successCallback(response){
 			console.log(response);
@@ -16,7 +21,11 @@ $scope.list=function(){
 				$scope.show="You have no events. Create a new one.";
 			}
 			else
-			{$scope.eventlist=response.data.event_list;}
+			{$scope.eventlist=response.data.event_list;
+				//$scope.event_id=response.data.event_list.event_id;
+			}
+
+		//window.localStorage['event_id'] = response.data.event_list.event_id;
 
 			//alert("You've successfully been logged out");
 			//$location.path('/');
@@ -28,8 +37,44 @@ $scope.list=function(){
 });
 	//$location.path='/';
 };
+
 $scope.create=function(){
 	$location.path('/create');
+};
+
+$scope.pay=function(){
+	$scope.data2=window.localStorage['authtoken'];
+
+	$scope.url="http://188.166.249.229:8080/"+response.data.event_list.event_id+"/pay/"+window.localStorage['event_id'];
+
+	$http.post($scope.url, $scope.data2).then(function successCallback(response){
+			console.log(response);
+			alert(response);
+		//window.localStorage['event_id'] = response.data.event_list.event_id;
+
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//alert($scope.status);
+});
+};
+
+$scope.click = function() {
+	var modalInstance=$modal.open({
+		templateUrl: '/list',
+		controller: "ModalInstanceCtrl",
+
+		resolve: {
+			x: function()
+			{
+				return $scope.x;
+			}
+		}
+	})
+  //$scope.showModal = true;
 };
 /*$scope.showdetail = function(data)
       { 
