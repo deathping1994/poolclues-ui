@@ -1,4 +1,10 @@
 
+	<head>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	</head>
 	<h3>LIST OF EVENTS</h3>
 	<!--<input type="submit" value="Click to view" ng-init="list()">-->
 	<!--<div ng-repeat="x in eventlist">
@@ -11,16 +17,53 @@
 	<div ng-init="list()">
 	<span ng-bind="show"></span>
 	<table border="1" style="solid">
-	<tr><th width="50" height="50">S.No.</th><th width="100" height="50">Event Name</th><th width="100" height="50">Date created</th><th width="150" height="50">Description</th><th width="50" height="50">Event Id</th><th width="100" height="50">Target Amount</th><th width="100" height="50">Target Date</th><th width="50" height="50">Public</th></tr></table>
+	<tr><th width="50" height="50">S.No.</th><th width="100" height="50">Event Name</th><th width="100" height="50">Date created</th><th width="100" height="50">Details of Event</th><th width="100" height="50">Add new member</th><th width="100" height="50">Pay</th></tr></table>
 	<div ng-model="eventlist" data-ng-repeat="x in eventlist" >
 	<table border="1" style="solid">
 	<tr><td width="50" height="100" ng-bind="$index+1"></td><td ng-bind="x.event_name" width="100" height="100"></td>
 	<td ng-bind="x.date_created" width="100" height="100"></td>
-	<td ng-bind="x.event_description" width="150" height="100"></td>
+	<td width="100" height="100"><!--<a ng-href="" data-toggle="modal" data-target="#myModal">Details</a>--> <button ng-click="click()" data-toggle="modal" data-target="#myModal">Details</button></td>
+	<!-- <div modal="showModal"> -->
+	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Details of event</h4>
+        </div>
+        <div class="modal-body">
+        Name: <span ng-bind="x.event_name"></span><br>
+		ID: <span ng-bind="x.event_id"></span><br>
+		Description: <span ng-bind="x.event_description"></span><br>
+		Target amount: <span ng-bind="x.target_amount"></span><br>
+		Target date: <span ng-bind="x.target_date"></span><br>
+		Public: <span ng-bind="x.public"></span>
+          <!--<table>
+	<tr><td>Name: </td><td><span ng-bind="event_name"></span></td></tr>
+	<tr><td>ID: </td><td><span ng-bind="event_id"></span></td></tr>
+	<tr><td>Description: </td><td><span ng-bind="event_description"></span></td></tr>
+	<tr><td>Target amount: </td><td><span ng-bind="target_amount"></span></td></tr>
+	<tr><td>Target date: </td><td><span ng-bind="target_date"></span></td></tr>
+	</table>-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+	<td  width="100" height="100"><a ng-href="#/addmember">Add member</a></td>
+	<td  width="100" height="100"><a ng-href="pay()">Pay Now</a></td>
+	<!--<td ng-bind="x.event_description" width="150" height="100"></td>
 	<td ng-bind="x.event_id"width="50" height="100"></td>
 	<td ng-bind="x.target_amount" width="100" height="100"></td>
 	<td ng-bind="x.target_date" width="100" height="100"></td>
-	<td ng-bind="x.public" width="50" height="100"></td></tr>
+	<td ng-bind="x.public" width="50" height="100"></td></tr>-->
 	</table>
 
 </div>

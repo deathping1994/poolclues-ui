@@ -16,7 +16,7 @@ $scope.invites=[];
 		$scope.send=function(){
 
 			$scope.checkboxvalue="false";
-
+			//window.localStorage['event_id'] = "";
 				//alert("hi");
 		//$scope.target_date=new Date();
 		$scope.url='http://188.166.249.229:8080/event/create';
@@ -33,10 +33,43 @@ $scope.invites=[];
 				"public": $scope.checkboxvalue,
 				"invites": $scope.invites
 			};
-			console.log($scope.data);
+$scope.data1={
+				"authtoken": window.localStorage['authtoken'],
+				"email_id": window.localStorage['email_id'], 
+				"target_date": $scope.target_date,
+				"event_name": $scope.event_name,
+				"target_amount": $scope.target_amount,
+				"description": $scope.event_description,
+				"msg": $scope.msg,
+				"public": $scope.checkboxvalue
+				
+			};
+			// console.log($scope.data);
+/*if($scope.invites.length==0)
+{
+		$http.post($scope.url,$scope.data1).then(function successCallback(response){
+			console.log($scope.data1);
+			console.log(response);
+			$scope.status=response.status;
+			//window.localStorage['event_id'] = response.data.event_id;
 
+			//$scope.data=response.data;
+			alert("You have successfully created an event!");
+
+			$location.path('/profile');
+		},
+
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//$scope.data=response.data;
+}
+);
+	}*/
+	//else {
 		$http.post($scope.url,$scope.data).then(function successCallback(response){
-			console.log(response.status);
+			console.log($scope.data);
+			console.log(response);
 			$scope.status=response.status;
 			//$scope.data=response.data;
 			alert("You have successfully created an event!");
@@ -45,10 +78,16 @@ $scope.invites=[];
 		},
 
 		function errorCallback(response){
-			console.log(response.status);
+			console.log(response);
 			$scope.status=response.status;
 			//$scope.data=response.data;
-});
+}
+);
+
+	//}
+
+	 };
+	 });
 
 			//$scope.url1='http://188.166.249.229:8080/event/create';
 			/*$scope.data1={
@@ -123,7 +162,7 @@ $http.post($scope.url1,$scope.invitees).then(function successCallback(response){
 			
 
 
-	};
+
 
 	       /* $scope.checkDateValidity = function(){
         var date,
@@ -146,4 +185,3 @@ $http.post($scope.url1,$scope.invitees).then(function successCallback(response){
 
 	
 
-});

@@ -98,6 +98,10 @@ angular
         templateUrl: 'views/forgot.html',
         controller: 'forgotCtrl'
       })
+      .when('/addmember', {
+        templateUrl: 'views/addmember.html',
+        controller: 'addmemberCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

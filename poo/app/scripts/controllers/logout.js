@@ -11,6 +11,8 @@ $scope.logout=function(){
 			console.log(response.status);
 			$scope.status=response.status;
 			window.localStorage['authtoken']="";
+			window.localStorage['event_id']="";
+			window.localStorage['email_id']="";
 			alert("You have been logged off")
 			//$scope.print("You've been successfully logged off");
 			//alert("You've successfully been logged out");
