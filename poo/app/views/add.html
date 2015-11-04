@@ -1,0 +1,39 @@
+<h4>SEND INVITES</h4> 
+	<form role="form" ng-submit="add()">
+	<div class="row">
+		<div class="input-group">
+		<!--class="form-control"
+		<span class="input-group-btn">-->
+			Email id: <input type="text" ng-model="invitee">
+			<tab></tab>
+			Amount: <input type="text" ng-model="amt">
+
+			<tab></tab>
+			<input type="submit" class="btn btn-primary" value="Add">				
+					
+		</div>
+	</div>
+	
+
+	<div ui-sortable ng-model="invites">
+	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
+	<tab></tab>
+	<input type="text" ng-model="invitee.email_id">
+	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+	
+ </div>
+ 	</div>
+ 	<tab></tab>
+
+ 	<div ui-sortable ng-model="amount">
+ 	<div class="input-group" ng-repeat="amt in amount" style="padding:5px 10px; cursor: move;">
+	<tab></tab>
+	<input type="text" ng-model="amount">
+	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+	</div>
+	</div>
+	</form>
+ 	<br>
+ 	<div>
+ 		<input type="submit" class="btn btn-success" ng-click="send()" value="Send">				
+ 	</div>
