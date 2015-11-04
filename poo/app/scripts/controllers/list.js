@@ -9,7 +9,9 @@ angular.module('pooApp').controller('listCtrl', function($scope, $location, $htt
 $scope.list=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $count=0;
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list";
+		$scope.visibility=true;
+		$scope.visibility1=true;
+		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/created";
 		$scope.eventlist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
 
@@ -67,6 +69,75 @@ $scope.addmember1=function(x){
 	
 };
 
+$scope.listevents=function(){
+		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/all";
+		$scope.eventlist=[];
+		$scope.data1={"authtoken":window.localStorage['authtoken']};
+		$scope.visibility=false;
+		$scope.hideornot="ng-hide";
+		$scope.visibility1=false;
+		$scope.hideornot1="ng-hide";
+
+	$http.post($scope.url, $scope.data1).then(function successCallback(response){
+			console.log($scope.visibility);
+			console.log($scope.hideornot);
+			console.log(response);
+			if(response.data.event_list==="")
+			{
+				$scope.show="You have no events. Create a new one.";
+			}
+			else
+			{
+				$scope.eventlist=response.data.event_list;
+			}
+
+		//window.localStorage['event_id'] = response.data.event_list.event_id;
+
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//alert($scope.status);
+});
+	//$location.path='/';
+};
+
+$scope.listeventsinvited=function(){
+		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/invited";
+		$scope.eventlist=[];
+		$scope.data1={"authtoken":window.localStorage['authtoken']};
+		$scope.visibility=false;
+		$scope.hideornot="ng-hide";
+		$scope.visibility1=true;
+		$scope.hideornot1="";
+
+		$http.post($scope.url, $scope.data1).then(function successCallback(response){
+			console.log($scope.visibility);
+			console.log($scope.hideornot);
+			console.log(response);
+			if(response.data.event_list==="")
+			{
+				$scope.show="You have no events. Create a new one.";
+			}
+			else
+			{
+				$scope.eventlist=response.data.event_list;
+			}
+
+		//window.localStorage['event_id'] = response.data.event_list.event_id;
+
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//alert($scope.status);
+});
+	//$location.path='/';
+};
 // $scope.open=function(){
 // 	$scope.modalInstance=$modal.open({
 // 		resolve: {

@@ -43,10 +43,18 @@
 	</p>-->
 	<div ng-init="list()">
 	<span ng-bind="show"></span>
-	<table border="1" style="solid">
-	<tr><th width="50" height="50">S.No.</th><th width="100" height="50">Event Name</th><th width="100" height="50">Date created</th><th width="100" height="50">Details of Event</th><th width="100" height="50">Add new member</th><th width="100" height="50">Pay</th></tr></table>
+	<table border="0">
+	<tr>
+		<th width="50" height="50">S.No.</th>
+		<th width="100" height="50">Event Name</th>
+		<th width="100" height="50">Date created</th>
+		<th width="100" height="50">Details of Event</th>
+		<th width="100" height="50" ng-show="visibility" class="hideornot">Add new member</th>
+		<th width="100" height="50" ng-show="visibility1" class="hideornot1">Pay</th>
+	</tr>
+	</table>
 	<div ng-model="eventlist" data-ng-repeat="x in eventlist" >
-	<table border="1" style="solid">
+	<table border="0">
 	<tr><td width="50" height="100" ng-bind="$index+1"></td><td ng-bind="x.event_name" width="100" height="100"></td>
 	<td ng-bind="x.date_created" width="100" height="100"></td>
 	<td width="100" height="100"><a ng-href="#/details" ng-click="addmember1(x)">Details</a></td>
@@ -55,8 +63,8 @@
 	<!--<a ng-href="" data-toggle="modal" data-target="#myModal">Details</a>--> 
   
 
-	<td  width="100" height="100"><a ng-href="#/add" ng-click="addmember1(x)">Add member</a></td>
-	<td  width="100" height="100"><a ng-href="" ng-click="pay(x)">Pay Now</a></td>
+	<td  width="100" height="100"><a ng-href="#/add" ng-click="addmember1(x)" ng-show="visibility" class="hideornot">Add member</a></td>
+	<td  width="100" height="100"><a ng-href="" ng-click="pay(x)" ng-show="visibility1" class="hideornot1">Pay Now</a></td>
 	<!--<td ng-bind="x.event_description" width="150" height="100"></td>
 	<td ng-bind="x.event_id"width="50" height="100"></td>
 	<td ng-bind="x.target_amount" width="100" height="100"></td>
@@ -64,13 +72,22 @@
 	<td ng-bind="x.public" width="50" height="100"></td></tr>-->
 	</table>
 
-</div>
+	</div>
+
+	<div>
+		<button ng-click="listevents()">View all events</button>
+		&#160;
+		&#160;
+		&#160;
+		<button ng-click="listeventsinvited()">List all events in which you are invited</button>
+	</div>
 
 <p>
 	<form role="form" ng-submit="create()">
 	<div class="row">
 		<div>
 			<span class="input-group-btn">
+			&nbsp;&nbsp;
 			<input type="submit" class="btn btn-primary" value="Create a new event">				
 			</span>			
 		</div>
@@ -87,7 +104,7 @@
         </p>
         <p ng-bind=data.target_amount>
         </p>
-        </div>
+        </div>fks
         <br />
       </li>
     </ul>

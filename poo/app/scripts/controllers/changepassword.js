@@ -3,14 +3,14 @@
 angular.module('pooApp').controller('changepasswordCtrl', function($scope, $location, $http, localStorageService){
 $scope.changepassword=function(){
 
-	$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/change/password";
+	$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/change/password/2";
 	$scope.data= {
-			"request_code":"password change request code sent in email",
+			"authtoken": window.localStorage['authtoken'],
         	"new_password":$scope.new_password
 		};
-	
+	console.log($scope.data);
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
-			console.log($scope.data);
+			
 		    console.log(response);
 			$scope.status=response.status;
 			alert(response.data.success);
@@ -24,7 +24,7 @@ $scope.changepassword=function(){
 			//alert("You are successfully logged off");
 		},
 		function errorCallback(response){
-			console.log(response.status);
+			console.log(response);
 			$scope.status=response.status;
 			//alert("Wrong password");
 });
