@@ -111,6 +111,10 @@ angular
         templateUrl: 'views/changepassword.html',
         controller: 'changepasswordCtrl'
       })
+      .when('/wallet', {
+        templateUrl: 'views/wallet.html',
+        controller: 'walletCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
