@@ -33,6 +33,7 @@ $scope.wallethistory=function(){
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//alert($scope.status);
 });
 
@@ -53,6 +54,7 @@ $scope.walletadd=function(){
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//alert($scope.status);
 });
 

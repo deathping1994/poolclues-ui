@@ -74,12 +74,13 @@ $scope.data1={
 			//$scope.data=response.data;
 			alert("You have successfully created an event!");
 
-			$location.path('/profile');
+			$location.path('/list');
 		},
 
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//$scope.data=response.data;
 }
 );

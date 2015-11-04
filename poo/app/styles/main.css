@@ -240,3 +240,45 @@ body {
       -27px 54px 1px #e2e0df, 
       -28px 56px 1px #e4e3e2;
   }
+
+  .form-signup-wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-pool {
+  max-width: 330px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.form-pool .form-pool-heading,
+.form-pool .checkbox {
+  margin-bottom: 10px;
+}
+.form-pool .checkbox {
+  font-weight: normal;
+}
+.form-pool .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-pool .form-control:focus {
+  z-index: 2;
+}
+.form-pool input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-pool input[type="munber"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

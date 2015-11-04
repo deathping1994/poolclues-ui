@@ -13,7 +13,6 @@ $scope.logout=function(){
 			window.localStorage['authtoken']="";
 			//window.localStorage['event_id']="";
 			window.localStorage['email_id']="";
-			alert("You have been logged off")
 			//$scope.print("You've been successfully logged off");
 			//alert("You've successfully been logged out");
 			$location.path('/');
@@ -26,6 +25,7 @@ $scope.logout=function(){
 		function errorCallback(response){
 			console.log(response.status);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//alert($scope.status);
 });
 };	//$location.path='/';

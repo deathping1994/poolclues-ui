@@ -35,6 +35,7 @@ $scope.list=function(){
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//alert($scope.status);
 });
 	//$location.path='/';
@@ -51,7 +52,6 @@ $scope.pay=function(x){
 
 	$http.post($scope.url1, $scope.data2).then(function successCallback(response){
 			console.log(response);
-			alert(response.success);
 		//window.localStorage['event_id'] = response.data.event_list.event_id;
 
 			//alert("You've successfully been logged out");
@@ -60,7 +60,7 @@ $scope.pay=function(x){
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
-			//alert($scope.status);
+			$scope.response=response.data.error;
 });
 };
 
@@ -99,7 +99,7 @@ $scope.listevents=function(){
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
-			//alert($scope.status);
+			$scope.response=response.data.error;
 });
 	//$location.path='/';
 };
@@ -134,6 +134,7 @@ $scope.listeventsinvited=function(){
 		function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//alert($scope.status);
 });
 	//$location.path='/';

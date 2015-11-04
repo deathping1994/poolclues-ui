@@ -19,14 +19,14 @@ angular.module('pooApp').controller('addphoneCtrl', function($scope, $location, 
 			$scope.status=response.status;
 			//alert("You've successfully been logged out");
 			
-			alert("Number added successfully")
-			$location.path('/profile');
+			$location.path('/list');
 			console.log("No. added successfully");
 			
 		},
 		function errorCallback(response){
 			console.log(response.status);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 			//alert($scope.status);
 });
 };

@@ -1,27 +1,31 @@
-<div>
-<form name="form2">
-	<table>
-	<tr><td>Target date </td><td><input type="text" ng-model="target_date" name="input" 
-       placeholder="DDMMYYYY" required /></td></tr>
+<div class="col-md-6">
+<div class="well">
+<div class="form-pool-wrapper">
+	<form class="form-pool" name="form2">
+        <h4 class="form-pool-heading">Please fill the following details</h4>
+        <label for="targetdate" class="sr-only">Target Date</label>
+        <input type="text" class="form-control" ng-model="target_date" placeholder="Target Date" required autofocus>
+        <label for="targetamount" class="sr-only">Target Amount</label>
+        <input type="number" class="form-control" ng-model="target_amount" placeholder="Target Amount" required autofocus>
+        <label for="eventname" class="sr-only">Event Name</label>
+        <input type="text" class="form-control" ng-model="event_name" placeholder="Event Name" required autofocus>
+        <label for="eventdescription" class="sr-only">Event Description</label>
+        <textarea class="form-control" ng-model="event_description" placeholder="Event Description" required autofocus>
+        </textarea>
+        <label for="customizedmessage" class="sr-only">Customized Message</label>
+        <textarea class="form-control" ng-model="msg" placeholder="Customized Message" required autofocus>
+        </textarea>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="checkboxvalue" ng-true-value="'true'" ng-false-value="'false"> Public
+          </label>
+        </div>
+     </form>
+</div>
+</div>
+</div>
 
-<!--<tr><td><span class="error" ng-show="form2.input.$error.required">
-         Required!</span><td>
-     <span class="error" ng-show="form1.input.$error.date">
-         Not a valid date!</span></td></tr>-->
-
-	<tr><td>Target amount </td><td><input type="number" ng-model="target_amount"></td></tr>
-	<tr><td>Event name </td><td><input type="text" ng-model="event_name"></td></tr>
-	<tr><td>Description </td><td><textarea ng-model="event_description" rows="10" cols="40"></textarea></td></tr>
-	<tr><td>Customised Message </td><td><textarea ng-model="msg" rows="5" cols="20"></textarea></td></tr>
-	<tr><td><label>Public:
-    <input type="checkbox" ng-model="checkboxvalue"
-           ng-true-value="'true'" ng-false-value="'false'">
-   </label><br/></td></tr>
-			
-	</table>
-	</form>
-
-
+<div class="col-md-6 text-center">
 	<h4>SEND INVITES</h4> 
 	<form role="form" ng-submit="addmember()">
 	<div class="row">
@@ -43,9 +47,11 @@
  </p>
  	</div>
  	<br>
+    <p ng-bind="response" class="text-danger"></p>
  	<div>
  		<input type="submit" class="btn btn-success" ng-click="send()" value="Create">				
  	</div>
+ </div>
 	
 <!--<form role="form" ng-submit="addTodo()">
 <div class="row">

@@ -20,23 +20,29 @@
       
     </div>
   </div>
-<div class="text-right text-info"><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add amount to wallet</button>
-<button type="button" ng-click="wallethistory()">Refresh</button>
-</div>
+
 <div class="container-centered col-md-9 text-center">
 
 <div ng-init="wallethistory()">
 	<span ng-bind="show"></span>
 		<div ng-model="transcationlist" ng-repeat="x in transactionlist" >
-			<div class="well-lg text-success" ng-if="x.pool_id == ''">
+			<div class="well well-lg text-success" ng-if="x.pool_id == ''">
+        <span class="glyphicon glyphicon-ok"></span>
 				Rs.{{x.amount}} was added to your wallet on {{x.date}}
 			</div>
-			<div class="well text-info" ng-if="x.pool_id != ''">
+			<div class="panel panel-success" ng-if="x.pool_id != ''">
+        <span class="glyphicon glyphicon-ok"></span>
 				Rs.{{x.amount}} was transferred from your wallet on {{x.date}} for event
 				{{x.pool_id}}
 			</div>
 		</div>
 	</div>
 </div>
+<p ng-bind="response" class="text-danger"></p>
+</div>
 
+<div class="col-md-3 text-center">
+<button type="button" ng-click="wallethistory()"><span class="glyphicon glyphicon-refresh"></span></button>
+<br>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add amount to wallet</button>
 </div>

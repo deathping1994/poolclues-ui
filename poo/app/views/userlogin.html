@@ -12,6 +12,7 @@ Status: {{status}} <br> Data: {{data}}
 </p>
 </div>
  -->
+
 <div class="well">
 <div class="form-login-wrapper">
 	<form class="form-login">
@@ -29,6 +30,7 @@ Status: {{status}} <br> Data: {{data}}
         <a ng-href="#/forgot">Forgot password?
         </a>
          <br>
+         <p ng-bind="response" class="text-danger"></p>
         <button class="btn btn-lg btn-primary btn-block"  ng-click="click1()" type="submit">Log in</button>
      </form>
 </div>

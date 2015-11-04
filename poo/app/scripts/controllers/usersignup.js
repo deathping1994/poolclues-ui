@@ -52,18 +52,18 @@ $scope.submit=function(){
 		};
 	console.log($scope.data);
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
-			console.log(response.status);
+			console.log(response);
 			$scope.status=response.status;
 			//window.localStorage['first_name'] = $scope.first_name;
 			//<a href='#/profile'></a>
 			//$scope.print="You have successfully registered!"
-			alert("You have successfully registered!")
 			$location.path('/userlogin');
 			
 		},
 		function errorCallback(response){
-			console.log(response.status);
+			console.log(response);
 			$scope.status=response.status;
+			$scope.response=response.data.error;
 
 			//alert($scope.status);
 });

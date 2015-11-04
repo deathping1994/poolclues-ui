@@ -1,6 +1,13 @@
-<div>
-	
-Add phone no. <input type="number" name="phone" ng-model="phone">
-<br>
-<input type="submit" value="Submit" ng-click="addphone()">
+<div class="well-wrapper">
+ <div class="panel panel-default">
+ 	<div class="text-center">
+		<div class="well well-lg text-center">
+				
+		Add phone no. <input type="number" name="phone" ng-model="phone">
+		<br>
+		<input type="submit" value="Submit" ng-click="addphone()">
+		<p ng-bind="response" class="text-danger"></p>
+		</div>
+	</div>
+ </div>
 </div>
