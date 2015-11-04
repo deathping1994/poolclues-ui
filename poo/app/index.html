@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,7 +25,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
@@ -38,7 +40,7 @@
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
-          <img src="../images/poolclues.png" width="500">  <img src="../images/shopclues.jpg">
+          <!-- <img src="../images/poolclues.png" width="500">  <img src="../images/shopclues.jpg"> -->
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
@@ -47,23 +49,72 @@
               <li><a ng-href="#/userlogin">Login</a></li>
               <li><a ng-href="#/usersignup">Signup</a></li>
 
-              <li><div class="dropdown">
-<img src="../images/gear.png" width="40" height="40" data-toggle="dropdown">
-  <!--<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-  </button>-->
-  <ul class="dropdown-menu">
-    <li><a href="#/logout">Logout</a></li>
-    <li><a href="#/addphone">Add Phone No.</a></li>
-    <li><a href="#/verify">Verify your email</a></li>
-  </ul>
-</div></li>
-            </ul>
-          </div>
+              <li>
+                <div>
+                  <div class="btn-group" uib-dropdown is-open="status.isopen">
+                      <a href="#" uib-dropdown-toggle ng-disabled="disabled">
+                        <span class="glyphicon glyphicon-cog inverse">
+                        </span>
+                      </a> 
+                      <!-- <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                        Button dropdown <span class="caret"></span>
+                      </button> -->
+                    <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+                      <li role="menuitem" ><a href="#/addphone">Add Phone No.</a></li>
+                      <li role="menuitem"><a href="#/verify">Verify your email</a></li>
+                      <li class="divider"></li>
+                      <li role="menuitem"><a href="#/logout">Logout</a></li>
+                    </ul>
+                  </div>
+
+                  <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" ng-click="dropdownlist()">
+                    <span class="glyphicon glyphicon-cog inverse">
+                    </span>
+                  </a> -->
+  <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  </button> -->
+                  <!-- <ul ng-show="visible" class="dropdown-menu">
+                      <li><a href="#/addphone">Add Phone No.</a></li>
+                      <li><a href="#/verify">Verify your email</a></li>
+                      <li class="divider"></li>
+                        <li><a href="#/logout">Logout</a></li>
+                  </ul> -->
+                </div>
+              </li>
+              </ul>
+            </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
+     <!--<ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Iasmani Pinazo <span class="glyphicon glyphicon-user pull-right"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+          </ul>
+        </li>
+      </ul>-->
+    <!-- <span class="glyphicon glyphicon-cog"></span> -->
+
+    <div class="container-fluid">
+
+  <br>
+  
+
+      <!-- <div class="carousel-inner" role="listbox">sssssssss
+      <div class="item active">
+        <img src="/images/gift2.jpg" alt="some error" width="460" height="545">
+      </div>-->
+
     <ng-view></ng-view>
     <!--<div ng-view=""></div>-->
     </div>
@@ -104,6 +155,8 @@
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="scripts/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
@@ -129,5 +182,5 @@
         <!--<script src="scripts/controllers/signup.js"></script>-->
 
         <!-- endbuild -->
-</body>
+  </body>
 </html>

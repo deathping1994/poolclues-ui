@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
 <h1>USER LOGIN PAGE</h1>
 <p>
 <img src="../images/images.jpg" align="left">
@@ -8,6 +8,28 @@ Password <input type="password" ng-model="text4" required>
 <br>     <a ng-href="#/forgot">Forgot password?</a> <br>
 <input type="button" value="Login" ng-click="click1()">
 <br>
-<!--Status: {{status}} <br> Data: {{data}}-->
+Status: {{status}} <br> Data: {{data}}
 </p>
+</div>
+ -->
+<div class="well">
+<div class="form-login-wrapper">
+	<form class="form-login">
+        <h2 class="form-login-heading">Please log in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" ng-model="text3" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" ng-model="text4" placeholder="Password" required>
+        <!-- <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+        <br>
+        <a ng-href="#/forgot">Forgot password?
+        </a>
+         <br>
+        <button class="btn btn-lg btn-primary btn-block"  ng-click="click1()" type="submit">Log in</button>
+     </form>
+</div>
 </div>

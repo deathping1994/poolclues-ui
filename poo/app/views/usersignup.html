@@ -1,5 +1,5 @@
-<div>
-<h2>USERS SIGN UP</h2>
+<!-- <div>
+<h2>USERS SIGN UP</h2> -->
 
 <!--<form role="form" ng-submit="submit()" name="form1">
   <div class="row">
@@ -29,7 +29,7 @@
   </div>
   </form>-->
 
-<img src="../images/occasion.jpg" align="left" width="400" height="300">
+<!-- <img src="../images/occasion.jpg" align="left" width="400" height="300">
 <span ng-bind="print"></span>
 <form name="form1" >
 <table border="0"; align="center"; style="text-align:center; background-color: #66C">
@@ -50,7 +50,7 @@
 <tr><td><span ng-show="form1.password.$error.required && form1.password.$dirty">required</span></td><td>
    <span ng-show="!form1.password.$error.required && (form1.password.$error.minlength || form1.password.$error.maxlength) && form1.password.$dirty">Passwords must be between 8 and 20 characters.</span></td></tr>
 
-   <tr><td><span ng-show="!form1.password.$error.required && !form1.password.$error.minlength && !form1.password.$error.maxlength && form1.password.$error.pattern && form1.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span></td><td></td></tr>
+   <tr><td><span ng-show="!form1.password.$error.required && !form1.password.$error.minlength && !form1.password.$error.maxlength && form1.password.$error.pattern && form1.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span></td><td></td></tr> -->
 
    <!--<tr><td>Confirm Password</td><td><input type="password" id="password_c" name="password_c" ng-model="confirmpassword" valid-password-c required  /></td></tr>
 
@@ -61,7 +61,7 @@
         <tr><td><div data-ng-show = "showmsg"> Password matched </div></td><td><div data-ng-show = "hidemsg"> Password not matched </div></td></tr>-->
 
 
-<tr><td>House no</td><td><input type="text" ng-model="house"></td></tr>
+<!-- <tr><td>House no</td><td><input type="text" ng-model="house"></td></tr>
 <tr><td>Street</td><td><input type="text" ng-model="street"></td></tr>
 <tr><td>City</td><td><input type="text" ng-model="city"></td></tr>
 <tr><td>State</td><td><input type="text" ng-model="state"></td></tr>
@@ -70,7 +70,7 @@
 
 <tr><td><input type="submit" ng-click="submit()" value="Register" class="btn" ng-disabled="!form1.$valid"></td><td></td></tr>
 </table>
-</form>
+</form> -->
 
 <!--<div role="alert">
     <span class="error" ng-show="form1.input.$error.required">
@@ -90,4 +90,35 @@
 	}
 
 </script>-->
+<!-- </div>
+ -->
+<div class="well">
+<div class="wrapper">
+    <form class="form-signup" name="form1">       
+      <h2 class="form-signup-heading">Please sign up</h2>
+      <input type="text" class="form-control" name="first_name" ng-model="first_name" placeholder="First Name" required="" autofocus="" />
+      <input type="text" class="form-control" name="middle_name" ng-model="middle_name" placeholder="Middle Name" autofocus="" />
+      <input type="text" class="form-control" name="last_name" ng-model="last_name" placeholder="Last Name" autofocus="" />
+      <input type="email" id="email" class="form-control" name="email" ng-model="email" placeholder="Email id" required="" autofocus="" />
+      <span ng-show="form1.email.$error.required && form1.email.$dirty">required</span>
+      <span ng-show="!form1.email.$error.required && form1.email.$error.email && form1.email.$dirty">invalid email</span>
+
+      <input type="password" id="password" class="form-control" name="password" placeholder="Password" ng-model="password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required=""/>
+      <span ng-show="form1.password.$error.required && form1.password.$dirty">required</span>
+      <span ng-show="!form1.password.$error.required && (form1.password.$error.minlength || form1.password.$error.maxlength) && form1.password.$dirty">Passwords must be between 8 and 20 characters.</span>
+      <span ng-show="!form1.password.$error.required && !form1.password.$error.minlength && !form1.password.$error.maxlength && form1.password.$error.pattern && form1.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+
+      <input type="text" class="form-control" name="house" ng-model="house" placeholder="House" autofocus="" />
+      <input type="text" class="form-control" name="street" ng-model="street" placeholder="Street" autofocus="" />
+      <input type="text" class="form-control" name="city" ng-model="city" placeholder="City" autofocus="" />
+      <input type="text" class="form-control" name="state" ng-model="state" placeholder="State" autofocus="" />
+      <input type="text" class="form-control" name="country" ng-model="country" placeholder="Country" autofocus="" />
+      <input type="number" id="d" class="form-control" name="phone" ng-model="phone" placeholder="Contact No." ng-minlength="10" ng-maxlength="10" autofocus="" />
+            
+      <!-- <label class="checkbox">
+        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+      </label> -->
+      <button class="btn btn-lg btn-primary btn-block" ng-click="submit()" type="submit" ng-disabled="!form1.$valid">Sign up</button>   
+    </form>
+  </div>
 </div>

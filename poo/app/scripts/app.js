@@ -19,6 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.sortable',
+    'ui.bootstrap',
     //'angular-loading-bar',
     'LocalStorageModule'
   ])
@@ -29,7 +30,7 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/welcome.html',
-        //controller: 'welcomCtrl'
+        controller: 'welcomeCtrl'
       })
       /*.service('dataService', function($http) {
     delete $http.defaults.headers.common['X-Requested-With'];

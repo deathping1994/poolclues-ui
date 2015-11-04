@@ -7,41 +7,42 @@
  * # MainCtrl
  * Controller of the pooApp
  */
-angular.module('pooApp').controller('welcomCtrl');
+// angular.module('pooApp').controller('welcomeCtrl', function($scope, $location){ //put $http & alert
+    
+// $scope.dropdownlist=function(){
+//        $scope.visible="true";
+//   $http.post($scope.url).success(function(response) {
+//         //$scope.stuff=data;
+//         //console.log($scope.stuff);
+//     }).error(function () {
+        
+//         //console.log(response.status);
+//             //$scope.status=response.status;
+//         });
+            
+//             //alert($scope.status);
+// };
+//     //$location.path='/';
+// });
 
-/*{
-	background-image: url("../../images/welcome(1).gif");
-}
+angular.module('pooApp').controller('welcomeCtrl', function ($scope, $log) {
+  /*$scope.items = [
+    'The first choice!',
+    'And another choice for you.',
+    'but wait! A third!'
+  ];*/
 
-<style>
-background-image: url("../../images/welcome(1).gif");
-</style>
+  $scope.status = {
+    isopen: false
+  };
 
-var howOften=2;
-var current =0;
-var ns6=document.getElementById&&!document.all;
+  $scope.toggled = function(open) {
+    $log.log('Dropdown is now: ', open);
+  };
 
-var items=new Array();
-items[0]="<img src='../../images/welcome.gif' width='500' height='400'>";
-items[1]="<img src='../../images/welcome(1).gif' width='500' height='400'>";
-
-function rotater() {
-    document.getElementById("placeholder").innerHTML = items[current];
-    current = (current==items.length-1) ? 0 : current + 1;
-    setTimeout("rotater()",howOften*1000);
-}
-
-function rotater() {
-    if(document.layers) {
-        document.placeholderlayer.document.write(items[current]);
-        document.placeholderlayer.document.close();
-    }
-    if(ns6)document.getElementById("placeholderdiv").innerHTML=items[current]
-        if(document.all)
-            placeholderdiv.innerHTML=items[current];
-
-    current = (current==items.length-1) ? 0 : current + 1; //increment or reset
-    setTimeout("rotater()",howOften*1000);
-}
-window.onload=rotater;
-});*/
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
+});
