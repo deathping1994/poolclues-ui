@@ -5,7 +5,7 @@ angular.module('pooApp').controller('detailsCtrl', function($scope, $location, $
 $scope.details=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list";
+		$scope.url="http://188.166.249.229:8080/event/"+window.localStorage['event_id'];
 		//$scope.eventlist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
 

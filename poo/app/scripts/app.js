@@ -99,9 +99,13 @@ angular
         templateUrl: 'views/forgot.html',
         controller: 'forgotCtrl'
       })
-      .when('/addmember', {
-        templateUrl: 'views/addmember.html',
-        controller: 'addmemberCtrl'
+      .when('/add', {
+        templateUrl: 'views/add.html',
+        controller: 'addCtrl'
+      })
+      .when('/details', {
+        templateUrl: 'views/details.html',
+        controller: 'detailsCtrl'
       })
       .when('/changepassword', {
         templateUrl: 'views/changepassword.html',

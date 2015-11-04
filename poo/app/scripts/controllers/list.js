@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('pooApp').controller('ModalInstanceCtrl', function($scope, $modalInstance, x){
-	$scope.x=x;
-})
+// angular.module('pooApp').controller('ModalInstanceCtrl', function($scope, $modalInstance, x){
+// 	$scope.x=x;
+// })
 
 angular.module('pooApp').controller('listCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 	
@@ -42,14 +42,14 @@ $scope.create=function(){
 	$location.path('/create');
 };
 
-$scope.pay=function(){
-	$scope.data2=window.localStorage['authtoken'];
+$scope.pay=function(x){
+	$scope.data2={"authtoken":window.localStorage['authtoken']};
 
-	$scope.url="http://188.166.249.229:8080/"+response.data.event_list.event_id+"/pay/"+window.localStorage['event_id'];
+	$scope.url1="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/pay/"+x.event_id;
 
-	$http.post($scope.url, $scope.data2).then(function successCallback(response){
+	$http.post($scope.url1, $scope.data2).then(function successCallback(response){
 			console.log(response);
-			alert(response);
+			alert(response.success);
 		//window.localStorage['event_id'] = response.data.event_list.event_id;
 
 			//alert("You've successfully been logged out");
@@ -62,20 +62,44 @@ $scope.pay=function(){
 });
 };
 
-$scope.click = function() {
-	var modalInstance=$modal.open({
-		templateUrl: '/list',
-		controller: "ModalInstanceCtrl",
-
-		resolve: {
-			x: function()
-			{
-				return $scope.x;
-			}
-		}
-	})
-  //$scope.showModal = true;
+$scope.addmember1=function(x){
+	window.localStorage['event_id'] = x.event_id;
+	
 };
+
+// $scope.open=function(){
+// 	$scope.modalInstance=$modal.open({
+// 		resolve: {
+// 			xIndex: function(){
+// 				return $scope.eventlist.indexOf(x)
+// 			},
+// 			eventlist: function(){
+// 				return $scope.eventlist
+// 			}
+// 		}
+// 	})
+
+// var ModalInstanceCtrl=function($scope, $scope.modalInstance, x, xIndex){
+// 	$scope.eventlist=eventlist;
+// 	$scope.selected={
+// 		x: $scope.eventlist[xIndex]
+// 	};
+// }	
+// };
+// $scope.click = function() {
+// 	var modalInstance=$modal.open({
+// 		templateUrl: '/list',
+// 		controller: "ModalInstanceCtrl",
+
+// 		resolve: {
+// 			x: function()
+// 			{
+// 				return $scope.x;
+// 			}
+// 		}
+// 	})
+//   //$scope.showModal = true;
+// };
 /*$scope.showdetail = function(data)
       { 
         $scope.description=data.description;
