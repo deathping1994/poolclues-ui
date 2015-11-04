@@ -103,6 +103,10 @@ angular
         templateUrl: 'views/addmember.html',
         controller: 'addmemberCtrl'
       })
+      .when('/changepassword', {
+        templateUrl: 'views/changepassword.html',
+        controller: 'changepasswordCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

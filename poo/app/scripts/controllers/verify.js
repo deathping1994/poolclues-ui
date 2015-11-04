@@ -24,9 +24,10 @@ function errorCallback(response){
 		};
 	
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
-		    console.log(response.status);
+			console.log($scope.data);
+		    console.log(response);
 			$scope.status=response.status;
-			alert($scope.success);
+			alert(response.data.success);
 			/*window.localStorage['authtoken'] = response.data.authtoken;
 			window.localStorage['email_id'] = $scope.text3;
 			console.log(window.localStorage['email_id']);
