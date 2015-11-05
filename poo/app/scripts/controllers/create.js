@@ -5,7 +5,7 @@ $scope.click=function(){
 	if($scope.choose==='p')
 {$location.path('/pool');}
 else if($scope.choose==='r')
-{$location.path('/');}
+{$location.path('/registry');}
 
 };
 });

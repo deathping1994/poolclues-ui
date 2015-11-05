@@ -1,4 +1,5 @@
 <div>
+<h1>CREATE A POOL</h1>
 <form name="form2">
 	<table>
 	<tr><td>Target date </td><td><input type="text" ng-model="target_date" name="input" 
@@ -13,6 +14,10 @@
 	<tr><td>Event name </td><td><input type="text" ng-model="event_name"></td></tr>
 	<tr><td>Description </td><td><textarea ng-model="event_description" rows="10" cols="40"></textarea></td></tr>
 	<tr><td>Customised Message </td><td><textarea ng-model="msg" rows="5" cols="20"></textarea></td></tr>
+
+	<tr><td>Gift Voucher  <input type="radio" ng-model="choose" value="v"></td><td>Gifts <input type="radio" ng-model="choose" value="g"></td><td>  <input type="submit" class="btn btn-primary" value="Go" ng-click="check()"></td></tr>
+	<tr><td><span ng-bind="print"></span></td></tr>
+
 	<tr><td><label>Public:
     <input type="checkbox" ng-model="checkboxvalue"
            ng-true-value="'true'" ng-false-value="'false'">
@@ -20,6 +25,14 @@
 			
 	</table>
 	</form>
+
+	<p ng-model="products" data-ng-repeat="x in products">
+	<span ng-bind="x.name"></span>
+	<br>
+	<span ng-bind="x.image"></span>
+	<br>
+	Price: <span ng-bind="x.price"></span> INR 	ID: <span ng-bind="x.id"></span> <input type="checkbox" ng-model="mark" ng-true-value="'true'" ng-false-value="'false'" ng-click="tick(x)">
+	</p>
 
 
 	<h4>SEND INVITES</h4> 

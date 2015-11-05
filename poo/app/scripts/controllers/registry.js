@@ -1,32 +1,41 @@
 'use strict';
 
-angular.module('pooApp').controller('poolCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
+angular.module('pooApp').controller('registryCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 
 $scope.invites=[];
 $scope.products=[];
-$scope.pid=[];
+$scope.prod=[];
+$scope.done=[];
 
 	$scope.addmember=function(){
-		$scope.invites.push({"email_id":$scope.invitee});
+		$scope.invites.push({"email_id":$scope.invitee,"amount":$scope.amt});
+		$scope.amounts.push({"amount":$scope.amt});
 		$scope.invitee='';
+		$scope.amt='';
 		
 	};
+
+	$scope.addpid=function(){
+		$scope.prod.push($scope.pid);
+
+		$scope.pid='';
+		
+	};
+
 	$scope.remove=function(index){
 	$scope.invites.splice(index,1);
+	$scope.amounts.splice(index,1);
 };
+
+$scope.rem=function(index){
+	$scope.products.splice(index,1);
+	};
 		//$scope.invitees.push({email_id:''});
-	$scope.check=function(){
+	$scope.show1=function(){
 		$scope.data2={"authtoken": window.localStorage['authtoken']};
+		$scope.url1='http://188.166.249.229:8080/products/list';
 
-		if($scope.choose ==='v')
-			{$scope.print="You will get a voucher worth the target amount."}
-
-		else if ($scope.choose ==='g') 
-			{
-				$scope.print='';
-				$scope.url1='http://188.166.249.229:8080/products/list';
-
-				$http.post($scope.url1,$scope.data2).then(function successCallback(response){
+		$http.post($scope.url1,$scope.data2).then(function successCallback(response){
 					$scope.products=response.data.products;
 			//console.log($scope.data);
 			console.log(response);
@@ -43,78 +52,38 @@ $scope.pid=[];
 			//$scope.data=response.data;
 		}
 		);
-			}
 	};
-
-	$scope.tick=function(x){
+		/*$scope.tick=function(x){
 		if($scope.mark ==='true')
-			{$scope.pid.push({"products":$scope.x.id});
-			}
-	};
+			{$scope.pid.push({"products":x.id});
+			}*/
+ 
 
 
-		$scope.send=function(){
+		$scope.send2=function(){
 			
 			$scope.checkboxvalue="false";
 			//window.localStorage['event_id'] = "";
 				//alert("hi");
 		//$scope.target_date=new Date();
-		$scope.url='http://188.166.249.229:8080/event/create';		
+		$scope.url='http://188.166.249.229:8080/registry/create';		
 		
-		$scope.data={
+$scope.data={
 				"authtoken": window.localStorage['authtoken'],
 				"email_id": window.localStorage['email_id'], 
 				"target_date": $scope.target_date,
-				"event_name": $scope.event_name,
-				"target_amount": $scope.target_amount,
-				"description": $scope.event_description,
+				"registry_name": $scope.registry_name,
+				//"target_amount": $scope.target_amount,
+				"description": $scope.description,
 				"msg": $scope.msg,
 				"public": $scope.checkboxvalue,
-				"invites": $scope.invites
-			};
-$scope.data1={
-				"authtoken": window.localStorage['authtoken'],
-				"email_id": window.localStorage['email_id'], 
-				"target_date": $scope.target_date,
-				"event_name": $scope.event_name,
-				"target_amount": $scope.target_amount,
-				"description": $scope.event_description,
-				"msg": $scope.msg,
-				"public": $scope.checkboxvalue
-				
-			};
-$scope.data2={
-				"authtoken": window.localStorage['authtoken'],
-				"email_id": window.localStorage['email_id'], 
-				"target_date": $scope.target_date,
-				"event_name": $scope.event_name,
-				"target_amount": $scope.target_amount,
-				"description": $scope.event_description,
-				"msg": $scope.msg,
-				"public": $scope.checkboxvalue,
-				"products": $scope.pid
-				
-			};
-$scope.data3={
-				"authtoken": window.localStorage['authtoken'],
-				"email_id": window.localStorage['email_id'], 
-				"target_date": $scope.target_date,
-				"event_name": $scope.event_name,
-				"target_amount": $scope.target_amount,
-				"description": $scope.event_description,
-				"msg": $scope.msg,
-				"public": $scope.checkboxvalue,
-				"products": $scope.pid,
+				"products": $scope.prod,
 				"invites": $scope.invites				
 			};			
 
 			// console.log($scope.data);
-if($scope.invites.length==0)
-{
-	if($scope.pid.length==0)
-	{
-		$http.post($scope.url,$scope.data1).then(function successCallback(response){
-			console.log($scope.data1);
+$http.post($scope.url,$scope.data).then(function successCallback(response){
+			console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;
 			//window.localStorage['event_id'] = response.data.event_id;
@@ -126,77 +95,14 @@ if($scope.invites.length==0)
 		},
 
 		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-}
-);
-	}
-	else
-	{
-		$http.post($scope.url,$scope.data2).then(function successCallback(response){
-			console.log($scope.data2);
-			console.log(response);
-			$scope.status=response.status;
-			//window.localStorage['event_id'] = response.data.event_id;
-
-			//$scope.data=response.data;
-			alert("You have successfully created an event!");
-
-			$location.path('/profile');
-		},
-
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-}
-);
-	}
-}
-	else {
-		if($scope.pid.length==0)
-	{
-		$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;
 			//$scope.data=response.data;
-			alert("You have successfully created an event!");
-
-			$location.path('/profile');
-		},
-
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//$scope.data=response.data;
 }
 );
-	}
-	else{
-		$http.post($scope.url,$scope.data3).then(function successCallback(response){
-			console.log($scope.data3);
-			console.log(response);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-			alert("You have successfully created an event!");
-
-			$location.path('/profile');
-		},
-
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-}
-);
-	}
-
-	//}
-
-	 };
-	 };
+	};
+	
 	});
 
 			//$scope.url1='http://188.166.249.229:8080/event/create';

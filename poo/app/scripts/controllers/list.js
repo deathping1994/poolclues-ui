@@ -9,7 +9,7 @@ angular.module('pooApp').controller('listCtrl', function($scope, $location, $htt
 $scope.list=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $count=0;
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list";
+		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/all";
 		$scope.eventlist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
 
