@@ -42,7 +42,7 @@ angular
       /*.when('/login', {
         templateUrl: 'views/login.html',
         controller: 'loginCtrl'*/
-      
+
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
@@ -114,6 +114,10 @@ angular
       .when('/wallet', {
         templateUrl: 'views/wallet.html',
         controller: 'walletCtrl'
+        })
+      .when('/registry', {
+        templateUrl: 'views/registry.html',
+        controller: 'registryCtrl'
       })
       .otherwise({
         redirectTo: '/'

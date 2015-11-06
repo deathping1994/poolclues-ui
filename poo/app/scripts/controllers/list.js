@@ -5,7 +5,7 @@
 // })
 
 angular.module('pooApp').controller('listCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
-	
+
 $scope.list=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $count=0;
@@ -66,7 +66,7 @@ $scope.pay=function(x){
 
 $scope.addmember1=function(x){
 	window.localStorage['event_id'] = x.event_id;
-	
+
 };
 
 $scope.listevents=function(){
@@ -156,7 +156,7 @@ $scope.listeventsinvited=function(){
 // 	$scope.selected={
 // 		x: $scope.eventlist[xIndex]
 // 	};
-// }	
+// }
 // };
 // $scope.click = function() {
 // 	var modalInstance=$modal.open({
@@ -173,7 +173,7 @@ $scope.listeventsinvited=function(){
 //   //$scope.showModal = true;
 // };
 /*$scope.showdetail = function(data)
-      { 
+      {
         $scope.description=data.description;
         $scope.event_id    =data.event_id;
         $scope.event_name   =data.event_name;

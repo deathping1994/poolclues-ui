@@ -1,0 +1,118 @@
+<div>
+<h1>CREATE A REGISTRY</h1>
+<form name="form3">
+	<table>
+	<tr><td>Target date </td><td><input type="text" ng-model="target_date" name="input" 
+       placeholder="DDMMYYYY" required /></td></tr>
+
+<!--<tr><td><span class="error" ng-show="form2.input.$error.required">
+         Required!</span><td>
+     <span class="error" ng-show="form1.input.$error.date">
+         Not a valid date!</span></td></tr>-->
+
+	<!-- <tr><td>Target amount </td><td><input type="number" ng-model="target_amount"></td></tr> -->
+	<tr><td>Registry name </td><td><input type="text" ng-model="registry_name"></td></tr>
+	<tr><td>Description </td><td><textarea ng-model="description" rows="10" cols="40"></textarea></td></tr>
+	<tr><td>Customised Message </td><td><textarea ng-model="msg" rows="5" cols="20"></textarea></td></tr>
+
+	<!-- <tr><td>Gift Voucher  <input type="radio" ng-model="choose" value="v"></td><td>Gifts <input type="radio" ng-model="choose" value="g"></td><td> --> 
+	
+	<!-- <tr><td><span ng-bind="print"></span></td></tr> -->
+
+	<tr><td><label>Public:
+    <input type="checkbox" ng-model="checkboxvalue"
+           ng-true-value="'true'" ng-false-value="'false'">
+   </label><br/></td></tr>
+
+   <tr><td><input type="submit" class="btn btn-primary" value="Show Products" ng-click="show1()"></td></tr>
+			
+	</table>
+	</form>
+
+	<p ng-model="products" data-ng-repeat="x in products">
+	<span ng-bind="x.name"></span>
+	<br>
+	<span ng-bind="x.image"></span>
+	<br>
+	Price: <span ng-bind="x.price"></span> INR 	ID: <span ng-bind="x.id"></span> 
+	<!--<input type="checkbox" ng-model="mark" ng-true-value="'true'" ng-false-value="'false'" ng-click="tick(x)">-->
+	</p>
+	<form ng-submit="addpid()">
+	<div class="row">
+		<!--<div class="input-group">-->
+		<div>
+			Enter the IDs of the product you want to choose: <input type="text" ng-model="pid">
+
+			<!--<span class="input-group-btn">-->
+			<input type="submit" class="btn btn-primary" value="Add ID">				
+			<!--</span>-->			
+		</div>
+	</div>
+	</form>
+	<div ui-sortable ng-model="prod">
+	<p class="input-group" ng-repeat="pid in prod" style="padding:5px 10px; cursor: move;">
+	<input type="text" ng-model="pid" class="form-control">
+
+	<button class="btn btn-danger" ng-click="rem($index)" aria-label="Remove">X</button>
+	
+ </p>
+ 	</div>
+	
+	<h4>SEND INVITES</h4> 
+	<form role="form" ng-submit="addmember()">
+	<div class="row">
+		<!--<div class="input-group">-->
+		<div>
+			Email: <input type="text" ng-model="invitee">
+			Amount: <input type="text" ng-model="amt">
+
+			<!--<span class="input-group-btn">-->
+			<input type="submit" class="btn btn-primary" value="Add member">				
+			<!--</span>-->			
+		</div>
+	</div>
+	</form>
+
+	<div ui-sortable ng-model="invites">
+	<p class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
+	<input type="text" ng-model="invitee.email_id" class="form-control">
+
+	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+	
+ </p>
+ 	</div>
+ 	<div ui-sortable ng-model="amounts">
+	<div class="input-group" ng-repeat="amt in amounts" style="padding:5px 10px; cursor: move;">
+	
+	<input type="text" ng-model="amt.amount">
+	
+	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+	
+ </div>
+ 	</div>
+ 	<br>
+ 	<div>
+ 		<input type="submit" class="btn btn-success" ng-click="send2()" value="Create">				
+ 	</div>
+
+ 	
+	
+<!--<form role="form" ng-submit="addTodo()">
+<div class="row">
+<div class="input-group">
+
+<input type="text" ng-model="todo" placeholder="add new" class="form-control">
+<span class="input-group-btn">
+<input type="submit" class="btn btn-primary" value="Add">
+</span>
+</div>
+ </div>
+</form>
+
+<div ui-sortable ng-model="todos">
+<p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+<input type="text" ng-model="todo" class="form-control">
+<span class="input-group-btn">
+<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+ </span>
+</p>-->
