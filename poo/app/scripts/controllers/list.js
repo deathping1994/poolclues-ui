@@ -66,7 +66,7 @@ $scope.pay=function(x){
 
 $scope.addmember1=function(x){
 	window.localStorage['event_id'] = x.event_id;
-
+	console.log(window.localStorage['event_id']);
 };
 
 $scope.listevents=function(){

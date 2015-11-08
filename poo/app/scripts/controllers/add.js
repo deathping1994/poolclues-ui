@@ -4,17 +4,17 @@ angular.module('pooApp').controller('addCtrl', function($scope, $location, $http
 
 $scope.invites=[];
 $scope.amounts=[];
-$scope.done=[];
+//$scope.done=[];
 //$scope.amount=2000;
 //$scope.amount=0;
 
 	$scope.add=function(){
-		$scope.invites.push({"email_id":$scope.invitee});
+		$scope.invites.push({"email_id":$scope.invitee, "amount":$scope.amt});
 		$scope.amounts.push({"amount":$scope.amt});
 		
 			//, "amount": $scope.amount});
 		
-		$scope.done.push({"email_id":$scope.invitee,"amount":$scope.amt});
+		//$scope.invites.push({"email_id":$scope.invitee,"amount":$scope.amt});
 		//$scope.amount.push({"amount":$scope.amt});
 		//$scope.done.push({"email_id":$scope.invitee,"amount":$scope.amt})
 		$scope.invitee='';
@@ -23,13 +23,14 @@ $scope.done=[];
 	};
 	$scope.remove=function(index){
 	$scope.invites.splice(index,1);
+	$scope.amounts.splice(index,1);
 };
 
 $scope.send1=function(){
 	$scope.url='http://188.166.249.229:8080/event/'+window.localStorage['event_id']+'/invite';
 
 	$scope.data={
-				"invites": $scope.done,
+				"invites": $scope.invites,
 				"authtoken": window.localStorage['authtoken']
 				
 			};

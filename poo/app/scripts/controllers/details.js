@@ -1,11 +1,33 @@
 'use strict';
 
 angular.module('pooApp').controller('detailsCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
-	
+
+$scope.messages=[];
+$scope.comments=[];	
+
+$scope.post=function(){
+		$scope.messages.push($scope.msg);
+		$scope.msg='';
+		
+	};
+
+$scope.comment=function(){
+		$scope.comments.push($scope.cmnt);
+		$scope.cmnt='';
+		
+	};
+
+$scope.rem1=function(index){
+	$scope.messages.splice(index,1);
+};
+$scope.rem2=function(index){
+	$scope.comments.splice(index,1);
+};
+		
 $scope.details=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
-		$scope.url="http://188.166.249.229:8080/event/"+window.localStorage['event_id'];
+		$scope.url="http://api.poolclues.anip.xyz:8080/event/"+window.localStorage['event_id'];
 		//$scope.eventlist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
 

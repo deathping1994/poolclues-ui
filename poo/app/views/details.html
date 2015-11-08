@@ -1,12 +1,100 @@
-<h3>DETAILS</h3>
 
-<div ng-init="details()">
-	<table>
-	<tr><td>Name: </td><td><span ng-bind="event_name"></span></td></tr>
-	<tr><td>ID: </td><td><span ng-bind="event_id"></span></td></tr>
-	<tr><td>Description: </td><td><span ng-bind="event_description"></span></td></tr>
-	<tr><td>Target amount: </td><td><span ng-bind="target_amount"></span></td></tr>
-	<tr><td>Target date: </td><td><span ng-bind="target_date"></span></td></tr>
-	</table>
+<!--<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+</head>-->
 
+<h4><u><b>DETAILS</b></u></h4>
+
+<div class="col-sm-3" ng-init="details()">
+	<b>Name:</b> <span ng-bind="event_name"></span><hr>
+	<b>ID:</b> <span ng-bind="event_id"></span><hr>
+	<b>Description:</b> <span ng-bind="event_description"></span><hr>
+	<b>Target Amount:</b> <span ng-bind="target_amount"></span><hr>
+	<b>Target Date:</b> <span ng-bind="target_date"></span><hr>
+
+	<!--<b>NAME:</b> <span ng-bind="event_name"></span><hr>
+	<b>ID:</b> <span ng-bind="event_id"></span><hr>
+	<b>DESCRIPTION:</b> <span ng-bind="event_description"></span><hr>
+	<b>TARGET AMOUNT:</b> <span ng-bind="target_amount"></span><hr>
+	<b>TARGET DATE:</b> <span ng-bind="target_date"></span><hr>-->
+
+	<!--<ul>
+	<li>Name: <span ng-bind="event_name"></span></li><hr>
+	<li>ID: <span ng-bind="event_id"></span></li><hr>
+	<li>Description: <span ng-bind="event_description"></span></li><hr>
+	<li>Target amount: <span ng-bind="target_amount"></span></li><hr>
+	<li>Target date: <span ng-bind="target_date"></span></li><hr>
+	</ul>-->
+
+</div>
+
+<div class="col-sm-6">
+<form role="form" ng-submit="post()">
+	<!--<div class="row">
+		<div class="input-group">-->
+		<div class="jumbotron">
+		<h3>POST SOMETHING ABOUT THE EVENT</h3>
+		</div>
+			<textarea rows="10" cols="70" ng-model="msg"></textarea>
+			<br>
+
+			<p>
+<input type="submit" class="btn btn-primary" ng-click="post()" value="POST">		
+ 			</p>
+			<!--<span class="input-group-btn">
+			<input type="submit" class="btn btn-primary" value="POST">				
+			</span>	-->		
+		<!--</div>
+	</div>-->
+	</form>
+
+<div ui-sortable ng-model="messages">
+ <p class="input-group" ng-repeat="msg in messages" style="padding:5px 10px; cursor: move;">
+	<span ng-bind="msg"></span>	
+	<span class="input-group-btn">
+	<button class="btn btn-danger" ng-click="rem1($index)" aria-label="Remove">X</button>
+ </span>
+</p>
+
+</div>
+
+ 	<div ui-sortable ng-model="comments">
+	<p class="input-group" ng-repeat="cmnt in comments" style="padding:5px 10px; cursor: move;">
+	<span ng-bind="cmnt"></span>
+	<span class="input-group-btn">
+	<button class="btn btn-danger" ng-click="rem2($index)" aria-label="Remove">X</button>
+ </span>	
+ </p>
+ 	</div>
+
+ 	<p>
+	<h3>Post a Comment</h3>
+	<form role="form" ng-submit="comment()">
+	<div class="row">
+		<div class="input-group">
+			<input type="text" ng-model="cmnt" class="form-control">
+			<span class="input-group-btn">
+			<input type="submit" class="btn btn-primary" value="Comment">				
+			</span>			
+		</div>
+	</div>
+	</form>
+
+	<!--<form role="form" ng-submit="comment()">
+	<div class="row">
+		<div class="input-group">
+		<input type="text" ng-model="cmnt" class="form-control">
+			<textarea ng-model="cmnt" rows="2" cols="70" class="form-control"></textarea>
+			<input type="submit" class="btn btn-primary" value="Comment">				
+					
+		</div>
+	</div>
+	</form>-->
+</p>
+</div>
+
+
+	
+<div class="col-sm-3">
+	Right
 </div>

@@ -4,7 +4,8 @@ angular.module('pooApp').controller('poolCtrl', function($scope, $location, $htt
 
 $scope.invites=[];
 $scope.products=[];
-$scope.pid=[];
+$scope.pids=[];
+$scope.prid=[];
 
 	$scope.addmember=function(){
 		$scope.invites.push({"email_id":$scope.invitee});
@@ -46,11 +47,25 @@ $scope.pid=[];
 			}
 	};
 
-	$scope.tick=function(x){
-		if($scope.mark ==='true')
-			{$scope.pid.push({"products":$scope.x.id});
-			}
+	/*$scope.getval=function(){
+		return $scope.x.id;
+	};*/
+
+	$scope.push=function(x){
+		$scope.m="BASKET";
+		$scope.pids.push(x.id);
+		$scope.prid.push("id"+x.id);
+		$scope.pid='';
 	};
+
+	$scope.rem3=function(index){
+	$scope.pids.splice(index,1);
+};
+
+	$scope.test=function(){
+		console.log("pids="+$scope.pids);
+		console.log("prid="+$scope.prid);
+	}
 
 
 		$scope.send=function(){
@@ -92,7 +107,7 @@ $scope.data2={
 				"description": $scope.event_description,
 				"msg": $scope.msg,
 				"public": $scope.checkboxvalue,
-				"products": $scope.pid
+				"products": $scope.prid
 				
 			};
 $scope.data3={
@@ -104,14 +119,14 @@ $scope.data3={
 				"description": $scope.event_description,
 				"msg": $scope.msg,
 				"public": $scope.checkboxvalue,
-				"products": $scope.pid,
+				"products": $scope.prid,
 				"invites": $scope.invites				
 			};			
 
 			// console.log($scope.data);
 if($scope.invites.length==0)
 {
-	if($scope.pid.length==0)
+	if($scope.pids.length==0)
 	{
 		$http.post($scope.url,$scope.data1).then(function successCallback(response){
 			console.log($scope.data1);
@@ -155,7 +170,7 @@ if($scope.invites.length==0)
 	}
 }
 	else {
-		if($scope.pid.length==0)
+		if($scope.pids.length==0)
 	{
 		$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log($scope.data);

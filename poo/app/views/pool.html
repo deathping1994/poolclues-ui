@@ -24,20 +24,36 @@
         </div>
          <p ng-bind="response" class="text-danger"></p>
      </form>
-
      <p ng-model="products" data-ng-repeat="x in products">
 	<span ng-bind="x.name"></span>
 	<br>
 	<span ng-bind="x.image"></span>
 	<br>
-	Price: <span ng-bind="x.price"></span> INR 	ID: <span ng-bind="x.id"></span> <input type="checkbox" ng-model="mark" ng-true-value="'true'" ng-false-value="'false'" ng-click="tick(x)">
+	Price: <span ng-bind="x.price"></span> INR 	ID: <span ng-bind="x.id"></span> <input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket">
 	</p>
 </div>
 </div>
 </div>
 
+
+	<h4 ng-bind="m"></h4><br>
+	<div ui-sortable ng-model="pids">
+		<div class="input-group" ng-repeat="pid in pids" style="padding:5px 10px; cursor: move;">
+		<input type="text" ng-model="pid">
+		<!--<textarea rows="10" cols="20" ng-model="pid" class="form-control"></textarea>-->
+	<button ng-click="rem3($index)" aria-label="Remove">X</button>
+
+		<!--<span class="input-group-btn">
+	<button class="btn btn-danger" ng-click="rem3($index)" aria-label="Remove">X</button>
+ </span>-->
+		</div>
+	</div>
+	
+
+	<input type="submit" value="test" ng-click="test()">
+
 <div class="col-md-6 text-center">
-	<h4>SEND INVITES</h4>
+	<h4>SEND INVITES</h4> 
 	<form role="form" ng-submit="addmember()">
 	<div class="row">
 		<div class="input-group">
@@ -58,7 +74,9 @@
  </p>
  	</div>
  	<br>
+
     <p ng-bind="response" class="text-danger"></p>
+
  	<div>
  		<input type="submit" class="btn btn-success" ng-click="send()" value="Create">
  	</div>

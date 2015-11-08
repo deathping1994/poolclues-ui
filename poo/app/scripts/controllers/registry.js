@@ -4,6 +4,7 @@ angular.module('pooApp').controller('registryCtrl', function($scope, $location, 
 
 $scope.invites=[];
 $scope.products=[];
+$scope.amounts=[];
 $scope.prod=[];
 $scope.done=[];
 

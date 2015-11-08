@@ -50,12 +50,12 @@
 	</div>
 	</form>
 	<div ui-sortable ng-model="prod">
-	<p class="input-group" ng-repeat="pid in prod" style="padding:5px 10px; cursor: move;">
-	<input type="text" ng-model="pid" class="form-control">
+	<div class="input-group" ng-repeat="pid in prod" style="padding:5px 10px; cursor: move;">
+	<input type="text" ng-model="pid">
 
 	<button class="btn btn-danger" ng-click="rem($index)" aria-label="Remove">X</button>
 	
- </p>
+ </div>
  	</div>
 
 <div class="col-md-6">	
@@ -75,12 +75,12 @@
 	</form>
 
 	<div ui-sortable ng-model="invites">
-	<p class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
-	<input type="text" ng-model="invitee.email_id" class="form-control">
+	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
+	<input type="text" ng-model="invitee.email_id">
 
 	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
 	
- </p>
+ </div>
  	</div>
  	<div ui-sortable ng-model="amounts">
 	<div class="input-group" ng-repeat="amt in amounts" style="padding:5px 10px; cursor: move;">

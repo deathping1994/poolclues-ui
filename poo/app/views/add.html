@@ -19,6 +19,7 @@
 	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
 	
 	<input type="text" ng-model="invitee.email_id">
+	<!--<input type="text" ng-model="invitee.amount">-->
 	
 	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
 	
@@ -33,7 +34,7 @@
 	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
 	
  </div>
- 	</div>
+ 	</div> 
  	<!--<tab></tab>
 
  	<div ui-sortable ng-model="amount">
