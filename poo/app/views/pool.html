@@ -1,39 +1,40 @@
+<div class="col-md-6 text-center">
+<div class="well">
+<div class="form-pool-wrapper">
+	<form class="form-pool" name="form2">
+        <h2 class="form-pool-heading">Create a Pool</h2>
+        <label for="target_date" class="sr-only">Target Date</label>
+        <input type="text" id="target_date" class="form-control" ng-model="target_date" placeholder="Target Date" required autofocus>
+        <label for="target_amount" class="sr-only">Target Amount</label>
+        <input type="number" id="target_amount" class="form-control" ng-model="target_amount" placeholder="Target Amount" required autofocus>
+        <label for="event_name" class="sr-only">Event Name</label>
+        <input type="text" id="event_name" class="form-control" ng-model="event_name" placeholder="Event Name" required autofocus>
+        <label for="event_description" class="sr-only">Event Description</label>
+        <textarea type="text" id="event_description" class="form-control" ng-model="event_description" placeholder="Event Description" required autofocus></textarea>
+        <label for="customized_message" class="sr-only">Customized Message</label>
+        <textarea type="text" id="customized_message" class="form-control" ng-model="msg" placeholder="Customized Message" required autofocus></textarea>
+        <input type="radio" ng-model="choose" value="v">Gift Voucher
+        <input type="radio" ng-model="choose" value="g">Gifts 
+        <input type="submit" class="btn btn-primary" value="Go" ng-click="check()">
+        <span ng-bind="print"></span>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="checkboxvalue" ng-true-value="'true'" ng-false-value="'false'"> Public
+          </label>
+        </div>
+         <p ng-bind="response" class="text-danger"></p>
+     </form>
 
-<div>
-<h1>CREATE A POOL</h1>
-<form name="form2">
-	<table>
-	<tr><td>Target date </td><td><input type="text" ng-model="target_date" name="input"
-       placeholder="DDMMYYYY" required /></td></tr>
-
-<!--<tr><td><span class="error" ng-show="form2.input.$error.required">
-         Required!</span><td>
-     <span class="error" ng-show="form1.input.$error.date">
-         Not a valid date!</span></td></tr>-->
-
-	<tr><td>Target amount </td><td><input type="number" ng-model="target_amount"></td></tr>
-	<tr><td>Event name </td><td><input type="text" ng-model="event_name"></td></tr>
-	<tr><td>Description </td><td><textarea ng-model="event_description" rows="10" cols="40"></textarea></td></tr>
-	<tr><td>Customised Message </td><td><textarea ng-model="msg" rows="5" cols="20"></textarea></td></tr>
-
-	<tr><td>Gift Voucher  <input type="radio" ng-model="choose" value="v"></td><td>Gifts <input type="radio" ng-model="choose" value="g"></td><td>  <input type="submit" class="btn btn-primary" value="Go" ng-click="check()"></td></tr>
-	<tr><td><span ng-bind="print"></span></td></tr>
-
-	<tr><td><label>Public:
-    <input type="checkbox" ng-model="checkboxvalue"
-           ng-true-value="'true'" ng-false-value="'false'">
-   </label><br/></td></tr>
-
-	</table>
-	</form>
-
-	<p ng-model="products" data-ng-repeat="x in products">
+     <p ng-model="products" data-ng-repeat="x in products">
 	<span ng-bind="x.name"></span>
 	<br>
 	<span ng-bind="x.image"></span>
 	<br>
 	Price: <span ng-bind="x.price"></span> INR 	ID: <span ng-bind="x.id"></span> <input type="checkbox" ng-model="mark" ng-true-value="'true'" ng-false-value="'false'" ng-click="tick(x)">
 	</p>
+</div>
+</div>
+</div>
 
 <div class="col-md-6 text-center">
 	<h4>SEND INVITES</h4>
