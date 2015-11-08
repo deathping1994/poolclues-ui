@@ -4,15 +4,16 @@ angular.module('pooApp').controller('registryCtrl', function($scope, $location, 
 
 $scope.invites=[];
 $scope.products=[];
-$scope.amounts=[];
+//$scope.amounts=[];
 $scope.prod=[];
-$scope.done=[];
+//$scope.done=[];
 
 	$scope.addmember=function(){
-		$scope.invites.push({"email_id":$scope.invitee,"amount":$scope.amt});
-		$scope.amounts.push({"amount":$scope.amt});
+		$scope.invites.push({"email_id":$scope.invitee});
+		//$scope.invites.push({"email_id":$scope.invitee,"amount":$scope.amt});
+		//$scope.amounts.push({"amount":$scope.amt});
 		$scope.invitee='';
-		$scope.amt='';
+		//$scope.amt='';
 		
 	};
 
@@ -25,11 +26,11 @@ $scope.done=[];
 
 	$scope.remove=function(index){
 	$scope.invites.splice(index,1);
-	$scope.amounts.splice(index,1);
+	//$scope.amounts.splice(index,1);
 };
 
 $scope.rem=function(index){
-	$scope.products.splice(index,1);
+	$scope.prod.splice(index,1);
 	};
 		//$scope.invitees.push({email_id:''});
 	$scope.show1=function(){

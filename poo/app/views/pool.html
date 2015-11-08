@@ -29,7 +29,8 @@
 	<br>
 	<span ng-bind="x.image"></span>
 	<br>
-	Price: <span ng-bind="x.price"></span> INR 	ID: <span ng-bind="x.id"></span> <input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket">
+	Price: <span ng-bind="x.price"></span>INR<br>
+	ID: <span ng-bind="x.id"></span> <input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket">
 	</p>
 </div>
 </div>
@@ -50,30 +51,48 @@
 	</div>
 	
 
-	<input type="submit" value="test" ng-click="test()">
+	<!--<input type="submit" value="test" ng-click="test()">-->
 
 <div class="col-md-6 text-center">
 	<h4>SEND INVITES</h4> 
 	<form role="form" ng-submit="addmember()">
 	<div class="row">
-		<div class="input-group">
-			<input type="text" ng-model="invitee" class="form-control">
-			<span class="input-group-btn">
+		<div>
+			Email id: <input type="text" ng-model="invitee">
+			Amount: <input type="text" ng-model="amt">
+			
 			<input type="submit" class="btn btn-primary" value="Add member">
-			</span>
+			
 		</div>
 	</div>
 	</form>
 
+	<span ng-bind="n"></span>
+	
+	<div class="row">
+	<div class="col-md-6">
 	<div ui-sortable ng-model="invites">
-	<p class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
-	<input type="text" ng-model="invitee.email_id" class="form-control">
-	<span class="input-group-btn">
-	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
- </span>
- </p>
+	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
+	<input type="text" ng-model="invitee.email_id">
+	
+	<!--<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>-->
+
+ </div>
  	</div>
- 	<br>
+ 	</div>
+
+ 	<div class="col-md-6">
+ 	<div ui-sortable ng-model="amounts">
+	<div class="input-group" ng-repeat="amt in amounts" style="padding:5px 10px; cursor: move;">
+	
+	<input type="text" ng-model="amt.amount">
+	
+	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
+	
+ </div>
+ 	</div>
+ 	</div>
+ </div>
 
     <p ng-bind="response" class="text-danger"></p>
 

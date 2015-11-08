@@ -139,47 +139,4 @@ $scope.listeventsinvited=function(){
 });
 	//$location.path='/';
 };
-// $scope.open=function(){
-// 	$scope.modalInstance=$modal.open({
-// 		resolve: {
-// 			xIndex: function(){
-// 				return $scope.eventlist.indexOf(x)
-// 			},
-// 			eventlist: function(){
-// 				return $scope.eventlist
-// 			}
-// 		}
-// 	})
-
-// var ModalInstanceCtrl=function($scope, $scope.modalInstance, x, xIndex){
-// 	$scope.eventlist=eventlist;
-// 	$scope.selected={
-// 		x: $scope.eventlist[xIndex]
-// 	};
-// }
-// };
-// $scope.click = function() {
-// 	var modalInstance=$modal.open({
-// 		templateUrl: '/list',
-// 		controller: "ModalInstanceCtrl",
-
-// 		resolve: {
-// 			x: function()
-// 			{
-// 				return $scope.x;
-// 			}
-// 		}
-// 	})
-//   //$scope.showModal = true;
-// };
-/*$scope.showdetail = function(data)
-      {
-        $scope.description=data.description;
-        $scope.event_id    =data.event_id;
-        $scope.event_name   =data.event_name;
-        $scope.target_amount  =data.target_amount;
-        $scope.target_date   =data.target_date;
-
-      };*/
-
 });

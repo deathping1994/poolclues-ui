@@ -4,16 +4,20 @@ angular.module('pooApp').controller('poolCtrl', function($scope, $location, $htt
 
 $scope.invites=[];
 $scope.products=[];
+$scope.amounts=[];
 $scope.pids=[];
 $scope.prid=[];
 
 	$scope.addmember=function(){
-		$scope.invites.push({"email_id":$scope.invitee});
+		$scope.invites.push({"email_id":$scope.invitee,"amount":$scope.amt});
+		$scope.amounts.push({"amount":$scope.amt});
 		$scope.invitee='';
-		
+		$scope.amt='';
 	};
 	$scope.remove=function(index){
 	$scope.invites.splice(index,1);
+	$scope.amounts.splice(index,1);
+
 };
 		//$scope.invitees.push({email_id:''});
 	$scope.check=function(){
@@ -62,10 +66,10 @@ $scope.prid=[];
 	$scope.pids.splice(index,1);
 };
 
-	$scope.test=function(){
+	/*$scope.test=function(){
 		console.log("pids="+$scope.pids);
 		console.log("prid="+$scope.prid);
-	}
+	}*/
 
 
 		$scope.send=function(){
@@ -87,7 +91,7 @@ $scope.prid=[];
 				"public": $scope.checkboxvalue,
 				"invites": $scope.invites
 			};
-$scope.data1={
+/*$scope.data1={
 				"authtoken": window.localStorage['authtoken'],
 				"email_id": window.localStorage['email_id'], 
 				"target_date": $scope.target_date,
@@ -109,7 +113,7 @@ $scope.data2={
 				"public": $scope.checkboxvalue,
 				"products": $scope.prid
 				
-			};
+			};*/
 $scope.data3={
 				"authtoken": window.localStorage['authtoken'],
 				"email_id": window.localStorage['email_id'], 
@@ -124,11 +128,12 @@ $scope.data3={
 			};			
 
 			// console.log($scope.data);
-if($scope.invites.length==0)
-{
+
 	if($scope.pids.length==0)
 	{
-		$http.post($scope.url,$scope.data1).then(function successCallback(response){
+		if($scope.invites.length==0)
+		{ $scope.n="You must have atleast one invite.";
+		/*$http.post($scope.url,$scope.data1).then(function successCallback(response){
 			console.log($scope.data1);
 			console.log(response);
 			$scope.status=response.status;
@@ -137,20 +142,19 @@ if($scope.invites.length==0)
 			//$scope.data=response.data;
 			alert("You have successfully created an event!");
 
-			$location.path('/profile');
-		},
+			$location.path('/profile');*/
+		}
 
-		function errorCallback(response){
+		/*function errorCallback(response){
 			console.log(response);
 			$scope.status=response.status;
 			//$scope.data=response.data;
 }
-);
-	}
-	else
-	{
-		$http.post($scope.url,$scope.data2).then(function successCallback(response){
-			console.log($scope.data2);
+);*/
+		else
+		{
+		$http.post($scope.url,$scope.data).then(function successCallback(response){
+			console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;
 			//window.localStorage['event_id'] = response.data.event_id;
@@ -170,9 +174,10 @@ if($scope.invites.length==0)
 	}
 }
 	else {
-		if($scope.pids.length==0)
+		if($scope.invites.length==0)
 	{
-		$http.post($scope.url,$scope.data).then(function successCallback(response){
+		$scope.n="You must have atleast one invite.";
+		/*$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;
@@ -188,7 +193,7 @@ if($scope.invites.length==0)
 			$scope.response=response.data.error;
 			//$scope.data=response.data;
 }
-);
+);*/
 	}
 	else{
 		$http.post($scope.url,$scope.data3).then(function successCallback(response){
