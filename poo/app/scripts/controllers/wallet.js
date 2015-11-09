@@ -8,7 +8,7 @@ angular.module('pooApp').controller('walletCtrl', function($scope, $location, $h
 	
 $scope.wallethistory=function(){
 		
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/wallet/history";
+		$scope.url=baseurl+window.localStorage['email_id']+"/wallet/history";
 		$scope.transactionlist=[];
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 
@@ -41,7 +41,7 @@ $scope.wallethistory=function(){
 
 $scope.walletadd=function(){
 		
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/wallet/add";
+		$scope.url=baseurl+window.localStorage['email_id']+"/wallet/add";
 		$scope.data={"authtoken":window.localStorage['authtoken'],
 			"amount":$scope.amount
 			};

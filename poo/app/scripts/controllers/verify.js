@@ -17,7 +17,7 @@ function errorCallback(response){
 };
 });*/
 
-	$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/verify";
+	$scope.url=baseurl+window.localStorage['email_id']+"/verify";
 	$scope.data= {
 			"authtoken": window.localStorage['authtoken'],
 			"verification_code": $scope.verification_code

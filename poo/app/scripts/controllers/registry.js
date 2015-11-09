@@ -35,10 +35,10 @@ $scope.rem=function(index){
 		//$scope.invitees.push({email_id:''});
 	$scope.show1=function(){
 		$scope.data2={"authtoken": window.localStorage['authtoken']};
-		$scope.url1='http://188.166.249.229:8080/products/list';
+		$scope.url1=baseurl+'products/list';
 
 		$http.post($scope.url1,$scope.data2).then(function successCallback(response){
-					$scope.products=response.data.products;
+			$scope.products=response.data.products;
 			//console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;
@@ -68,7 +68,7 @@ $scope.rem=function(index){
 			//window.localStorage['event_id'] = "";
 				//alert("hi");
 		//$scope.target_date=new Date();
-		$scope.url='http://188.166.249.229:8080/registry/create';		
+		$scope.url=baseurl+'registry/create';		
 		
 $scope.data={
 				"authtoken": window.localStorage['authtoken'],

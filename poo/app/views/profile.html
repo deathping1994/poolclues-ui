@@ -1,19 +1,16 @@
-<div>
+<div class="col-md-4">
+	<div ng-init="list()">
+		<div>
+			<h3>Events</h3>
+		</div>
+		<div ng-model="eventlist" data-ng-repeat="x in eventlist|orderBy: sortevent">
+			<ul class="list-inline">
+					<li ng-bind="x.event_name" class="oneline"></li>
+					<li ng-bind="x.date_created" class ="oneline"></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-<!--<img src="../images/party1.gif" align="right">
-<div>Welcome {{window.localStorage['first_name']}}</div>-->
-<div align="right"><a ng-href="#/logout">LOGOUT</a></div>
-<br>
-<div align="right"><a ng-href="#/addphone">Add phone no.</a></div>
-<br>
-<div align="right"><a ng-href="#/verify">Verify your email</a></div>
-
-
-<p align="center">
-<h4><a href="#/create">Create an event</a></h4>
-<br>
-<!--<h4><a href="#/check">Check past event details</a></h4>
-<br>-->
-<h4><a href="#/list">List your events</a></h4>
-</p>
+<div class="col-md-8">
 </div>

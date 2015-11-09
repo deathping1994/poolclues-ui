@@ -7,10 +7,10 @@
         <input type="text" id="target_date" class="form-control" ng-model="target_date" placeholder="Target Date" required autofocus>
         <label for="target_amount" class="sr-only">Target Amount</label>
         <input type="number" id="target_amount" class="form-control" ng-model="target_amount" placeholder="Target Amount" required autofocus>
-        <label for="event_name" class="sr-only">Event Name</label>
-        <input type="text" id="event_name" class="form-control" ng-model="event_name" placeholder="Event Name" required autofocus>
-        <label for="event_description" class="sr-only">Event Description</label>
-        <textarea type="text" id="event_description" class="form-control" ng-model="event_description" placeholder="Event Description" required autofocus></textarea>
+        <label for="pool_name" class="sr-only">pool Name</label>
+        <input type="text" id="pool_name" class="form-control" ng-model="pool_name" placeholder="pool Name" required autofocus>
+        <label for="pool_description" class="sr-only">pool Description</label>
+        <textarea type="text" id="pool_description" class="form-control" ng-model="pool_description" placeholder="pool Description" required autofocus></textarea>
         <label for="customized_message" class="sr-only">Customized Message</label>
         <textarea type="text" id="customized_message" class="form-control" ng-model="msg" placeholder="Customized Message" required autofocus></textarea>
         <input type="radio" ng-model="choose" value="v">Gift Voucher
@@ -54,7 +54,7 @@
 	<!--<input type="submit" value="test" ng-click="test()">-->
 
 <div class="col-md-6 text-center">
-	<h4>SEND INVITES</h4> 
+	<h4>SEND contributors</h4> 
 	<form role="form" ng-submit="addmember()">
 	<div class="row">
 		<div>
@@ -71,8 +71,8 @@
 	
 	<div class="row">
 	<div class="col-md-6">
-	<div ui-sortable ng-model="invites">
-	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
+	<div ui-sortable ng-model="contributors">
+	<div class="input-group" ng-repeat="invitee in contributors" style="padding:5px 10px; cursor: move;">
 	<input type="text" ng-model="invitee.email_id">
 	
 	<!--<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>-->

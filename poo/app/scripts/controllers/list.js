@@ -6,28 +6,34 @@
 
 angular.module('pooApp').controller('listCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 
+$scope.sortpool = function(pool) {
+var date = new Date(pool.updated_at);
+return -date;
+};
+
+
 $scope.list=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $count=0;
 		$scope.visibility=true;
 		$scope.visibility1=true;
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/created";
-		$scope.eventlist=[];
+		$scope.url=baseurl+window.localStorage['email_id']+"/pool/list/created";
+		$scope.poollist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
 
 
 	$http.post($scope.url, $scope.data1).then(function successCallback(response){
 			console.log(response);
-			if(response.data.event_list==="")
+			if(response.data.pool_list==="")
 			{
-				$scope.show="You have no events. Create a new one.";
+				$scope.show="You have no pools. Create a new one.";
 			}
 			else
-			{$scope.eventlist=response.data.event_list;
-				//$scope.event_id=response.data.event_list.event_id;
+			{$scope.poollist=response.data.pool_list;
+				//$scope.pool_id=response.data.pool_list.pool_id;
 			}
 
-		//window.localStorage['event_id'] = response.data.event_list.event_id;
+		//window.localStorage['pool_id'] = response.data.pool_list.pool_id;
 
 			//alert("You've successfully been logged out");
 			//$location.path('/');
@@ -48,11 +54,11 @@ $scope.create=function(){
 $scope.pay=function(x){
 	$scope.data2={"authtoken":window.localStorage['authtoken']};
 
-	$scope.url1="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/pay/"+x.event_id;
+	$scope.url1=baseurl+window.localStorage['email_id']+"/pay/"+x.pool_id;
 
 	$http.post($scope.url1, $scope.data2).then(function successCallback(response){
 			console.log(response);
-		//window.localStorage['event_id'] = response.data.event_list.event_id;
+		//window.localStorage['pool_id'] = response.data.pool_list.pool_id;
 
 			//alert("You've successfully been logged out");
 			//$location.path('/');
@@ -65,13 +71,13 @@ $scope.pay=function(x){
 };
 
 $scope.addmember1=function(x){
-	window.localStorage['event_id'] = x.event_id;
-	console.log(window.localStorage['event_id']);
+	window.localStorage['pool_id'] = x.pool_id;
+	console.log(window.localStorage['pool_id']);
 };
 
-$scope.listevents=function(){
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/all";
-		$scope.eventlist=[];
+$scope.listpools=function(){
+		$scope.url=baseurl+window.localStorage['email_id']+"/pool/list/all";
+		$scope.poollist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
 		$scope.visibility=false;
 		$scope.hideornot="ng-hide";
@@ -82,16 +88,16 @@ $scope.listevents=function(){
 			console.log($scope.visibility);
 			console.log($scope.hideornot);
 			console.log(response);
-			if(response.data.event_list==="")
+			if(response.data.pool_list==="")
 			{
-				$scope.show="You have no events. Create a new one.";
+				$scope.show="You have no pools. Create a new one.";
 			}
 			else
 			{
-				$scope.eventlist=response.data.event_list;
+				$scope.poollist=response.data.pool_list;
 			}
 
-		//window.localStorage['event_id'] = response.data.event_list.event_id;
+		//window.localStorage['pool_id'] = response.data.pool_list.pool_id;
 
 			//alert("You've successfully been logged out");
 			//$location.path('/');
@@ -104,9 +110,9 @@ $scope.listevents=function(){
 	//$location.path='/';
 };
 
-$scope.listeventsinvited=function(){
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/event/list/invited";
-		$scope.eventlist=[];
+$scope.listpoolscontributed=function(){
+		$scope.url=baseurl+window.localStorage['email_id']+"/pool/list/contributed";
+		$scope.poollist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
 		$scope.visibility=false;
 		$scope.hideornot="ng-hide";
@@ -117,16 +123,16 @@ $scope.listeventsinvited=function(){
 			console.log($scope.visibility);
 			console.log($scope.hideornot);
 			console.log(response);
-			if(response.data.event_list==="")
+			if(response.data.pool_list==="")
 			{
-				$scope.show="You have no events. Create a new one.";
+				$scope.show="You have no pools. Create a new one.";
 			}
 			else
 			{
-				$scope.eventlist=response.data.event_list;
+				$scope.poollist=response.data.pool_list;
 			}
 
-		//window.localStorage['event_id'] = response.data.event_list.event_id;
+		//window.localStorage['pool_id'] = response.data.pool_list.pool_id;
 
 			//alert("You've successfully been logged out");
 			//$location.path('/');

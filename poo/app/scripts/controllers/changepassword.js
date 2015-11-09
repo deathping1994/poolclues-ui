@@ -3,7 +3,7 @@
 angular.module('pooApp').controller('changepasswordCtrl', function($scope, $location, $http, localStorageService){
 $scope.changepassword=function(){
 
-	$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/change/password/2";
+	$scope.url=baseurl+window.localStorage['email_id']+"/change/password/2";
 	$scope.data= {
 			"authtoken": window.localStorage['authtoken'],
         	"new_password":$scope.new_password

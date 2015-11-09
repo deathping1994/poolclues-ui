@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+ var baseurl="http://api.poolclues.anip.xyz:8080/";
 angular
   .module('pooApp', [
     'ngAnimate',
@@ -61,7 +62,7 @@ angular
       })
       .when('/profile', {
         templateUrl: 'views/profile.html',
-        //controller: 'profCtrl'
+        controller: 'listCtrl'
       })
       .when('/create', {
         templateUrl: 'views/create.html',

@@ -17,7 +17,7 @@ function errorCallback(response){
 };
 });*/
 
-	$scope.url="http://188.166.249.229:8080/forgotpassword/"+$scope.mail;
+	$scope.url=baseurl+"forgotpassword/"+$scope.mail;
 	
 	
 	$http.post($scope.url).then(function successCallback(response){

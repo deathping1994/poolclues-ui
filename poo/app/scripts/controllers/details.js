@@ -27,16 +27,17 @@ $scope.rem2=function(index){
 $scope.details=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
-		$scope.url="http://api.poolclues.anip.xyz:8080/event/"+window.localStorage['event_id'];
-		//$scope.eventlist=[];
+		$scope.url=baseurl+"pool/"+window.localStorage['pool_id'];
+		$scope.data={"authtoken":window.localStorage['authtoken']};
+		//$scope.poollist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
-
-	$http.post($scope.url).then(function successCallback(response){
+		console.log($scope.data);
+	$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log(response);
 			
-			$scope.event_name=response.data.event_name;
-			$scope.event_id=response.data.event_id;
-			$scope.event_description=response.data.event_description;
+			$scope.pool_name=response.data.pool_name;
+			$scope.pool_id=response.data.pool_id;
+			$scope.pool_description=response.data.pool_description;
 			$scope.target_amount=response.data.target_amount;
 			$scope.target_date=response.data.target_date;
 

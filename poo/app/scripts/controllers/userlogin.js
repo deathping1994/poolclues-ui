@@ -2,22 +2,7 @@
 
 angular.module('pooApp').controller('userlCtrl', function($scope, $location, $http, localStorageService){
 $scope.click1=function(){
-/*$http({
-	method: 'POST',
-	url: "http://188.166.249.229:8080/authenticate"
-}).then(function successCallback(response) {
-	console.log(response.status);
-			$scope.status=response.status;
-			$location.path='/profile';
-},
-function errorCallback(response){
-			console.log(response.status);
-			$scope.status=response.status;
-});
-};
-});*/
-
-	$scope.url="http://188.166.249.229:8080/authenticate";
+	$scope.url=baseurl+"authenticate";
 	$scope.data= {
 			"email_id": $scope.text3,
 			"password": $scope.text4

@@ -1,4 +1,4 @@
-<h4>SEND INVITES</h4> 
+<h4>SEND contributors</h4> 
 	<form role="form" ng-submit="add()">
 	<div class="row">
 		<div class="input-group">
@@ -8,6 +8,7 @@
 			
 			Amount: <input type="text" ng-model="amt">
 
+			Message: <input type="text" ng=model="msg">
 			
 			<input type="submit" class="btn btn-primary" value="Add">				
 					
@@ -15,8 +16,8 @@
 	</div>
 	
 
-	<div ui-sortable ng-model="invites">
-	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
+	<div ui-sortable ng-model="contributors">
+	<div class="input-group" ng-repeat="invitee in contributors" style="padding:5px 10px; cursor: move;">
 	
 	<input type="text" ng-model="invitee.email_id">
 	<!--<input type="text" ng-model="invitee.amount">-->

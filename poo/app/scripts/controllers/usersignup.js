@@ -1,16 +1,4 @@
 'use strict';
-/*angular.module('pooApp').directive('validPasswordC', function () {
-    return{
-        require: 'ngModel',
-        link: function (scope, elm, attrs, ctrl) {
-            ctrl.$parsers.unshift(function (viewValue, $scope) {
-                var noMatch = viewValue !== scope.form1.password.$viewValue
-                ctrl.$setValidity('noMatch', !noMatch)
-            }
-            );
-        }
-    }
-});*/
 angular.module('pooApp').controller('usersCtrl', function($location, $scope, $http, localStorageService){ //put $http & alert
 //var a=$scope.password;
 	//var e=$scope.phone;
@@ -36,7 +24,8 @@ $scope.country="";
 $scope.phone="";
 
 $scope.submit=function(){
-	$scope.url="http://188.166.249.229:8080/register";
+	$scope.url=baseurl+"register";
+	console.log($scope.url);
 	$scope.data= {
 			"first_name": $scope.first_name,
 			"middle_name": $scope.middle_name,

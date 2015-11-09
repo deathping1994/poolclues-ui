@@ -9,7 +9,7 @@ angular.module('pooApp').controller('addphoneCtrl', function($scope, $location, 
 	
 	$scope.addphone=function(){
 
-		$scope.url="http://188.166.249.229:8080/"+window.localStorage['email_id']+"/addphone/"+$scope.phone;
+		$scope.url=baseurl+window.localStorage['email_id']+"/addphone/"+$scope.phone;
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 		console.log($scope.phone);
 		console.log(window.localStorage['authtoken']);

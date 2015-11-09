@@ -5,7 +5,7 @@ angular.module('pooApp').controller('logoutCtrl', function($scope, $location, $h
 $scope.logout=function(){
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 
-		$scope.url="http://188.166.249.229:8080/logout/"+window.localStorage['email_id'];
+		$scope.url=baseurl+"logout/"+window.localStorage['email_id'];
 		console.log($scope.data);
 		$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log(response.status);

@@ -282,3 +282,9 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.oneline{
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
