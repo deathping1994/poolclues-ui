@@ -55,6 +55,37 @@ $scope.rem=function(index){
 		}
 		);
 	};
+	$scope.check=function(){
+		$scope.data2={"authtoken": window.localStorage['authtoken']};
+
+		if($scope.choose ==='v')
+			{	$scope.products='';
+				$scope.print="You will get a voucher worth the target amount."}
+
+		else if ($scope.choose ==='g') 
+			{
+				$scope.print='';
+				$scope.url1=baseurl+'products/list';
+
+				$http.post($scope.url1,$scope.data2).then(function successCallback(response){
+					$scope.products=response.data.products;
+			//console.log($scope.data);
+			console.log(response);
+			$scope.status=response.status;
+			//$scope.data=response.data;
+			//alert("You have successfully created an pool!");
+
+			//$location.path('/profile');
+		},
+
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//$scope.data=response.data;
+		}
+		);
+			}
+	};
 		/*$scope.tick=function(x){
 		if($scope.mark ==='true')
 			{$scope.pid.push({"products":x.id});

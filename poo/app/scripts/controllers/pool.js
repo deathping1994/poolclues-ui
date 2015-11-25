@@ -3,28 +3,63 @@
 angular.module('pooApp').controller('poolCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 
 $scope.contributors=[];
+$scope.contributor=[];
 $scope.products=[];
 $scope.amounts=[];
 $scope.pids=[];
 $scope.prid=[];
+$scope.am=[];
+var count=0, i,j;
+
 
 	$scope.addmember=function(){
+		//var b=$scope.amt.length;
+		//console.log(b);
+		if ($scope.choose==='e') {
+			$scope.contributor.push($scope.invitee);
+			//$scope.contributors.push({"email_id":$scope.invitee,"amount":$scope.target_amount/(count+1)});
+		for(i=0;i<count+1;i++)
+		{
+			$scope.amounts[i]=$scope.target_amount/(count+2);
+		}
+		//$scope.amounts.push($scope.target_amount/(count+1));
+		
+		/*for(j=0;j<count+1;j++)
+		{
+			$scope.contributors.push({"email_id":$scope.contributor[j], "amount":$scope.amounts[j]});
+		}*/
+
+		count++;
+			//$scope.amounts.push({"amount":$scope.target_amount});
+			//$scope.contributors.push({"email_id":$scope.invitee,"amount":$scope.target_amount});
+		}
+		else if ($scope.choose==='u'){
 		$scope.contributors.push({"email_id":$scope.invitee,"amount":$scope.amt});
-		$scope.amounts.push({"amount":$scope.amt});
+		$scope.amounts.push($scope.amt);
+		$scope.contributor.push($scope.invitee);
+		}
+
 		$scope.invitee='';
 		$scope.amt='';
+
 	};
 	$scope.remove=function(index){
 	$scope.contributors.splice(index,1);
+	$scope.contributor.splice(index,1);
 	$scope.amounts.splice(index,1);
-
+	for(i=0;i<$scope.contributor.length;i++)
+		{
+			$scope.amounts[i]=$scope.target_amount/($scope.contributor.length+1);
+		}
+	count--;
 };
 		//$scope.invitees.push({email_id:''});
 	$scope.check=function(){
 		$scope.data2={"authtoken": window.localStorage['authtoken']};
 
 		if($scope.choose ==='v')
-			{$scope.print="You will get a voucher worth the target amount."}
+			{	$scope.products='';
+				$scope.print="You will get a voucher worth the target amount."}
 
 		else if ($scope.choose ==='g') 
 			{
@@ -70,7 +105,14 @@ $scope.prid=[];
 		console.log("pids="+$scope.pids);
 		console.log("prid="+$scope.prid);
 	}*/
+/*$scope.test1=function(){
+	for(j=0;j<$scope.contributor.length;j++)
+		{
+			$scope.contributors.push({"email_id":$scope.contributor[j], "amount":$scope.amounts[j]});
+		}
+		console.log($scope.contributors);
 
+}*/
 
 		$scope.send=function(){
 			
@@ -79,6 +121,10 @@ $scope.prid=[];
 				//alert("hi");
 		//$scope.target_date=new Date();
 		$scope.url=baseurl+'pool/create';		
+		for(j=0;j<$scope.contributor.length;j++)
+		{
+			$scope.contributors.push({"email_id":$scope.contributor[j], "amount":$scope.amounts[j]});
+		}
 		
 		$scope.data={
 				"authtoken": window.localStorage['authtoken'],
