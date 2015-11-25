@@ -1,11 +1,6 @@
 'use strict';
-angular.module('pooApp').controller('welcomeCtrl', function ($scope, $log) {
-  /*$scope.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];*/
-
+angular.module('pooApp').controller('welcomeCtrl', function ($scope, $log, $location, $http, localStorageService) {
+  
   $scope.status = {
     isopen: false
   };
@@ -19,4 +14,32 @@ angular.module('pooApp').controller('welcomeCtrl', function ($scope, $log) {
     $event.stopPropagation();
     $scope.status.isopen = !$scope.status.isopen;
   };
+
+  $scope.logout=function(){
+    $scope.data={"authtoken":window.localStorage['authtoken']};
+
+    $scope.url=baseurl+"logout/"+window.localStorage['email_id'];
+    console.log($scope.data);
+    $http.post($scope.url,$scope.data).then(function successCallback(response){
+      console.log(response.status);
+      $scope.status=response.status;
+      window.localStorage['authtoken']="";
+      //window.localStorage['event_id']="";
+      window.localStorage['email_id']="";
+      //$scope.print("You've been successfully logged off");
+      //alert("You've successfully been logged out");
+      $location.path('/');
+      console.log(response.data.success);
+      //console.log(window.localStorage['email_id']);
+      
+      //console.log(window.localStorage['authtoken']);
+
+    },
+    function errorCallback(response){
+      console.log(response.status);
+      $scope.status=response.status;
+      $scope.response=response.data.error;
+      //alert($scope.status);
+});
+};
 });

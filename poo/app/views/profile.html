@@ -1,16 +1,42 @@
-<div class="col-md-4">
+<div class="col-md-3">
 	<div ng-init="list()">
 		<div>
-			<h3>Events</h3>
+			<h3>Pools</h3>
 		</div>
-		<div ng-model="eventlist" data-ng-repeat="x in eventlist|orderBy: sortevent">
-			<ul class="list-inline">
-					<li ng-bind="x.event_name" class="oneline"></li>
+		<div ng-model="poollist" data-ng-repeat="x in poollist|orderBy: sortpool"class="row"class="list-inline list-group">
+				<div class="list-group-item">
+					<li ng-bind="x.pool_name" class="oneline"></li>
 					<li ng-bind="x.date_created" class ="oneline"></li>
+				</div>
 			</ul>
 		</div>
 	</div>
 </div>
 
-<div class="col-md-8">
+<div class="col-md-9">
+	<div class="container3">
+	<div class="container2">
+	<div class="container1">
+		<!-- <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12"> -->
+			<div class="col1 col-md-3 col-lg-4 col-sm-12 col-xs-12">
+		      <p >Create a pool and send invites to contributors.</p>
+		    </div>
+		<!-- </div> -->
+		
+		
+		<!-- <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12"> -->
+			<div class="col2 col-md-3 col-lg-4 col-sm-12 col-xs-12">
+		      <p>Contributors need to pay their share.</p>
+			</div>
+		<!-- </div> -->
+
+		
+		<!-- <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12"> -->
+			<div class="col3 col-md-3 col-lg-4 col-sm-12 col-xs-12">
+		      <p>Pool is completed and gift is purchased from shopclues.</p>
+			</div>
+		<!-- </div> -->
+	</div>
+	</div>
+	</div>
 </div>
