@@ -24,6 +24,10 @@ $scope.rem2=function(index){
 	$scope.comments.splice(index,1);
 };
 		
+$scope.share=function (){
+	cc();
+};
+
 $scope.details=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
@@ -51,4 +55,10 @@ $scope.details=function(){
 });
 	//$location.path='/';
 };
+
+// https://www.facebook.com/dialog/feed?
+//   app_id=145634995501895
+//   &display=popup&caption=An%20example%20caption 
+//   &link=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F
+//   &redirect_uri=https://developers.facebook.com/tools/explorer
 });
