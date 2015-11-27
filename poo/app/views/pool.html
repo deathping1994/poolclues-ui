@@ -13,15 +13,17 @@
         <textarea type="text" id="pool_description" class="form-control" ng-model="pool_description" placeholder="pool Description" required autofocus></textarea>
         <label for="customized_message" class="sr-only">Customized Message</label>
         <textarea type="text" id="customized_message" class="form-control" ng-model="msg" placeholder="Customized Message" required autofocus></textarea>
-        <input type="radio" ng-model="choose" value="v">Gift Voucher
-        <input type="radio" ng-model="choose" value="g">Gifts 
-        <input type="submit" class="btn btn-primary" value="Go" ng-click="check()">
-        <span ng-bind="print"></span>
         <div class="checkbox">
           <label>
             <input type="checkbox" ng-model="checkboxvalue" ng-true-value="'true'" ng-false-value="'false'"> Public
           </label>
         </div>
+        <input type="radio" ng-model="choose" value="v" ng-change="check()">Gift Voucher
+        <input type="radio" ng-model="choose" value="g" ng-change="check()">Gifts 
+        <!--<input type="submit" class="btn btn-primary" value="Go" ng-click="check()">-->
+        <br>
+        <span ng-bind="print"></span>
+        
          <p ng-bind="response" class="text-danger"></p>
      </form>
      <p ng-model="products" data-ng-repeat="x in products">
@@ -54,14 +56,17 @@
 	<!--<input type="submit" value="test" ng-click="test()">-->
 
 <div class="col-md-6 text-center">
-	<h4>SEND contributors</h4> 
+	<h3 style="font-family:Comic Sans"><i><u>Send Invitations</u></i></h3><br>
+	<b><strong>Please Specify Contribution:</strong></b> <input type="Radio" ng-model="choose" value="e"> Equal 
+	<input type="Radio" ng-model="choose" value="u"> Unequal<br><br>
+
 	<form role="form" ng-submit="addmember()">
 	<div class="row">
 		<div>
 			Email id: <input type="text" ng-model="invitee">
 			Amount: <input type="text" ng-model="amt">
 			
-			<input type="submit" class="btn btn-primary" value="Add member">
+			<input type="submit" class="btn btn-primary" value="Add member" ng-disabled="!(!!invitee) || !(!!choose)">
 			
 		</div>
 	</div>
@@ -71,9 +76,9 @@
 	
 	<div class="row">
 	<div class="col-md-6">
-	<div ui-sortable ng-model="contributors">
-	<div class="input-group" ng-repeat="invitee in contributors" style="padding:5px 10px; cursor: move;">
-	<input type="text" ng-model="invitee.email_id">
+	<div ui-sortable ng-model="contributor">
+	<div class="input-group" ng-repeat="invitee in contributor track by $index" style="padding:5px 10px; cursor: move;">
+	<input type="text" ng-model="invitee">
 	
 	<!--<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>-->
 
@@ -83,9 +88,9 @@
 
  	<div class="col-md-6">
  	<div ui-sortable ng-model="amounts">
-	<div class="input-group" ng-repeat="amt in amounts" style="padding:5px 10px; cursor: move;">
+	<div class="input-group" ng-repeat="amt in amounts track by $index" style="padding:5px 10px; cursor: move;">
 	
-	<input type="text" ng-model="amt.amount">
+	<input type="text" ng-model="amt">
 	
 	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
 	
@@ -99,6 +104,9 @@
  	<div>
  		<input type="submit" class="btn btn-success" ng-click="send()" value="Create">
  	</div>
+ 	<!--<div>
+ 		<input type="submit" value="test" ng-click="test1()">
+ 	</div>-->
  </div>
 
 <!--<form role="form" ng-submit="addTodo()">
