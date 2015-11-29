@@ -127,6 +127,9 @@ angular
       .when('/regdetails', {
         templateUrl: 'views/regdetails.html',
         controller: 'regdetailsCtrl'
+      .when('/loading', {
+        templateUrl: 'views/loading.html',
+        controller: 'loadingCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -145,8 +148,8 @@ angular
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
-      var authresponse=response.authResponse.accessToken;
-      
+      window.localStorage['authresponse']=response.authResponse.accessToken;
+
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -204,16 +207,58 @@ angular
   }(document, 'script', 'facebook-jssdk'));
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
+  var id,fbflag=0;
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+        id=response.id;
+        console.log(id);
+        permission();
+        fbflag=1;
+        console.log(fbflag);
+        window.location="http://local.host:9000/#/loading";
+        // angular.element(document.getElementById('userlCtrl')).scope().myfunction('fblogin(first_name,last_name,email,img)');
     });
+    
+    
   }
 
+//  var retreive_details=function(){
+//   FB.login(function(response) {
+//    console.log(response);
+//  }, {scope: 'first_name','last_name','link','email'});
+// };
 
+var permission=function(){
+  FB.api(
+    "/"+id+"?fields=first_name,last_name,email",
+    function (response) {
+      if (response && !response.error) {
+        /* handle the result */
+        console.log(response);
+        window.localStorage['first_name']=response.first_name;
+        window.localStorage['last_name']=response.last_name;
+        // console.log(response.email);
+        // console.log(response.first_name);
+        // console.log(response.last_name);
+        window.localStorage['email_id']=response.email;
+        // console.log(window.localStorage['email_id']);
+      }
+    }
+);
+
+  FB.api(
+    "/me/picture",
+    function(response){
+      if(response && !response.error){
+        window.localStorage['img']=response.data.url;
+        // console.log(response.data.url);
+      }
+    });
+}
 var cc=function(){
   FB.ui({
   method: 'share',
