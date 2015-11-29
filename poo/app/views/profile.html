@@ -4,6 +4,7 @@
 			<h3>Pools</h3>
 		</div>
 		<div ng-model="poollist" data-ng-repeat="x in poollist|orderBy: sortpool"class="row"class="list-inline list-group">
+			<ul>
 				<div class="list-group-item">
 					<li ng-bind="x.pool_name" class="oneline"></li>
 					<li ng-bind="x.date_created" class ="oneline"></li>
