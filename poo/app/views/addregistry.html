@@ -1,13 +1,10 @@
 <h4>SEND INVITES</h4> 
-	<form role="form" ng-submit="add()">
+	<form role="form" ng-submit="add()registry">
 	<div class="row">
 		<div class="input-group">
 		<!--class="form-control"
 		<span class="input-group-btn">-->
 			Email id: <input type="text" ng-model="invitee">
-			
-			Amount: <input type="text" ng-model="amt">
-
 			<!--Message: <input type="text" ng=model="msg">-->
 			
 			<input type="submit" class="btn btn-primary" value="Add">				
@@ -16,8 +13,8 @@
 	</div>
 	
 
-	<div ui-sortable ng-model="contributors">
-	<div class="input-group" ng-repeat="invitee in contributors" style="padding:5px 10px; cursor: move;">
+	<div ui-sortable ng-model="invites">
+	<div class="input-group" ng-repeat="invitee in invites" style="padding:5px 10px; cursor: move;">
 	
 	<input type="text" ng-model="invitee.email_id">
 	<!--<input type="text" ng-model="invitee.amount">-->
@@ -26,16 +23,6 @@
 	
  </div>
  	</div>
-
- 	<div ui-sortable ng-model="amounts">
-	<div class="input-group" ng-repeat="amt in amounts" style="padding:5px 10px; cursor: move;">
-	
-	<input type="text" ng-model="amt.amount">
-	
-	<button class="btn btn-danger" ng-click="remove($index)" aria-label="Remove">X</button>
-	
- </div>
- 	</div> 
  	<!--<tab></tab>
 
  	<div ui-sortable ng-model="amount">

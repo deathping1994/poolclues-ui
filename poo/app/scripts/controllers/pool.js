@@ -10,6 +10,7 @@ $scope.pids=[];
 $scope.prid=[];
 $scope.am=[];
 var count=0, i,j;
+//$scope.fill=true;
 
 
 	$scope.addmember=function(){
@@ -34,7 +35,8 @@ var count=0, i,j;
 			//$scope.contributors.push({"email_id":$scope.invitee,"amount":$scope.target_amount});
 		}
 		else if ($scope.choose==='u'){
-		$scope.contributors.push({"email_id":$scope.invitee,"amount":$scope.amt});
+			//$scope.fill=!$scope.fill;
+		//$scope.contributors.push({"email_id":$scope.invitee,"amount":$scope.amt});
 		$scope.amounts.push($scope.amt);
 		$scope.contributor.push($scope.invitee);
 		}
@@ -105,14 +107,22 @@ var count=0, i,j;
 		console.log("pids="+$scope.pids);
 		console.log("prid="+$scope.prid);
 	}*/
-/*$scope.test1=function(){
+$scope.test1=function(){
+	console.log($scope.contributor.length);
 	for(j=0;j<$scope.contributor.length;j++)
 		{
 			$scope.contributors.push({"email_id":$scope.contributor[j], "amount":$scope.amounts[j]});
 		}
+		if($scope.choose==='e')
+		{$scope.contributors.push({"email_id":window.localStorage['email_id'], "amount":$scope.target_amount/($scope.contributor.length+1)});
+		}
+		else if ($scope.choose==='u')
+			{
+				$scope.contributors.push({"email_id":window.localStorage['email_id'], "amount":$scope.mycontri});
+			}		
 		console.log($scope.contributors);
 
-}*/
+}
 
 		$scope.send=function(){
 			
@@ -125,7 +135,13 @@ var count=0, i,j;
 		{
 			$scope.contributors.push({"email_id":$scope.contributor[j], "amount":$scope.amounts[j]});
 		}
-		
+		if($scope.choose==='e')
+		{$scope.contributors.push({"email_id":window.localStorage['email_id'], "amount":$scope.target_amount/($scope.contributor.length+1)});
+		}
+		else if ($scope.choose==='u')
+			{
+				$scope.contributors.push({"email_id":window.localStorage['email_id'], "amount":$scope.mycontri});
+			}
 		$scope.data={
 				"authtoken": window.localStorage['authtoken'],
 				"email_id": window.localStorage['email_id'], 
@@ -134,8 +150,9 @@ var count=0, i,j;
 				"target_amount": $scope.target_amount,
 				"description": $scope.pool_description,
 				"msg": $scope.msg,
-				"public": $scope.checkboxvalue,
-				"contributors": $scope.contributors
+				"searchable": $scope.checkboxvalue,
+				"contributors": $scope.contributors,
+				"pool_img": $scope.pool_img
 			};
 /*$scope.data1={
 				"authtoken": window.localStorage['authtoken'],
@@ -170,7 +187,8 @@ $scope.data3={
 				"msg": $scope.msg,
 				"public": $scope.checkboxvalue,
 				"products": $scope.prid,
-				"contributors": $scope.contributors				
+				"contributors": $scope.contributors,
+				"pool_img": $scope.pool_img				
 			};			
 
 			// console.log($scope.data);
@@ -252,7 +270,7 @@ $scope.data3={
 			console.log(response);
 			$scope.status=response.status;
 			//$scope.data=response.data;
-			alert("You have successfully created an pool!");
+			alert("You have successfully created a pool!");
 
 			$location.path('/profile');
 		},

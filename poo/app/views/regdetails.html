@@ -3,12 +3,11 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>-->
 
-<div class="col-sm-3" ng-init="details()" style="background-color:#FAEBD7">
+<div class="col-sm-3" ng-init="details()">
 <h4><u><b>DETAILS</b></u></h4><hr>
-	<b>Name:</b> <span ng-bind="pool_name"></span><hr>
-	<b>ID:</b> <span ng-bind="pool_id"></span><hr>
-	<b>Description:</b> <span ng-bind="pool_description"></span><hr>
-	<b>Target Amount:</b> <span ng-bind="target_amount"></span><hr>
+	<b>Name:</b> <span ng-bind="registry_name"></span><hr>
+	<b>ID:</b> <span ng-bind="registry_id"></span><hr>
+	<b>Description:</b> <span ng-bind="registry_description"></span><hr>
 	<b>Target Date:</b> <span ng-bind="target_date"></span><hr>
 
 	<!--<b>NAME:</b> <span ng-bind="pool_name"></span><hr>
@@ -27,8 +26,8 @@
 	<button class="btn btn-info" onclick="cc()">Share on Facebook</button>
 	<br><br><!--<br><br><br><br><br><br>-->
 	
-	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Pool</button><br><br>
-	<button class="btn btn-danger" ng-click="delete()">Delete the Pool</button>
+	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Registry</button><br><br>
+	<button class="btn btn-danger" ng-click="delete()">Delete the Registry</button>
 
 	<div class="modal fade" id="modal" role="dialog">
     <div class="modal-dialog">
@@ -43,9 +42,8 @@
           <table border="0">
           <tr><td>Name</td><td><input type="submit" value="Edit" ng-click="edita()"></td><td><input type="text" ng-hide="edit1" ng-model="edname"></td></tr><br>
           <tr><td>Date</td><td><input type="submit" value="Edit" ng-click="editb()"></td><td><input type="text" ng-hide="edit2" ng-model="eddate"></td></tr><br>
-          <tr><td>Amount</td><td><input type="submit" value="Edit" ng-click="editc()"></td><td><input type="text" ng-hide="edit3" ng-model="edamt"></td></tr><br>
-          <tr><td>Description</td><td><input type="submit" value="Edit" ng-click="editd()"></td><td><textarea ng-hide="edit4" ng-model="eddes" rows="5" cols="10"></textarea></td></tr><br>
-          <tr><td>Private/Public</td><td><input type="submit" value="Edit" ng-click="edite()"></td><td><input type="checkbox" ng-model="edpb" ng-hide="edit5"></td></tr>
+          <tr><td>Description</td><td><input type="submit" value="Edit" ng-click="editc()"></td><td><textarea ng-hide="edit3" ng-model="eddes" rows="5" cols="10"></textarea></td></tr><br>
+          <tr><td>Private/Public</td><td><input type="submit" value="Edit" ng-click="editd()"></td><td><input type="checkbox" ng-model="edpb" ng-hide="edit4"></td></tr>
           </table>
           <br><button class="btn btn-success" ng-click="change()">Edit</button>
 
@@ -59,13 +57,13 @@
   </div>
 </div>
 
-<div class="col-sm-6" style="background-color:#F0F8FF">
+<div class="col-sm-6">
 
 <form role="form" ng-submit="post()">
 
 	<div class="row">
 	<div class="jumbotron">
-		<h3>POST SOMETHING ABOUT THE POOL</h3>
+		<h3>POST SOMETHING ABOUT THE REGISTRY</h3>
 		</div>
 		<!--<div class="input-group">-->
 		
@@ -81,12 +79,11 @@
 	</form>
 
 <div ui-sortable ng-model="messages">
- <p class="input-group" data-ng-repeat="msg in messages track by $index" style="padding:5px 10px; cursor: move;">
-	<span style="background-color:lightblue" ng-bind="msg"></span><br>
-	<!--<div style="color:#DCDCDC"></div>-->	
-	<!--<span class="input-group-btn">
+ <p class="input-group" ng-repeat="msg in messages" style="padding:5px 10px; cursor: move;">
+	<span style="background-color:lightblue" ng-bind="msg"></span>	
+	<span class="input-group-btn">
 	<button class="btn btn-danger" ng-click="rem1($index)" aria-label="Remove">X</button>
- </span>-->
+ </span>
 </p>
 
 </div>
@@ -94,9 +91,9 @@
  	<div ui-sortable ng-model="comments">
 	<p class="input-group" ng-repeat="cmnt in comments" style="padding:5px 10px; cursor: move;">
 	<span style="background-color:yellow" ng-bind="cmnt"></span>
-	<!--<span class="input-group-btn">
+	<span class="input-group-btn">
 	<button class="btn btn-danger" ng-click="rem2($index)" aria-label="Remove">X</button>
- </span>-->	
+ </span>	
  </p>
  	</div>
 
@@ -128,13 +125,11 @@
 
 
 	
-<div class="col-sm-3" ng-init="details()" style="background-color:#FFE4C4">
-<h4><u><b>Contributors to the Pool</b></u></h4><hr>
-<div ng-model="contri" data-ng-repeat="x in contri">
-<b>Email id:</b> <span ng-bind="x.email_id"></span><br>
-	<b>Amount to pay:</b> <span ng-bind="x.amount"></span><br>
-	<b>Amount paid:</b> <span ng-bind="x.amount_paid"></span><br>
-	<b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
+<div class="col-sm-3" ng-init="details()">
+<h4><u><b>Contributors to the Registry</b></u></h4><hr>
+<div ng-model="giftbucket" data-ng-repeat="x in giftbucket">
+<b>Id:</b> <span ng-bind="x.pid"></span><br>
+<b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
 </div>

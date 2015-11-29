@@ -3,6 +3,7 @@
 angular.module('pooApp').controller('registryCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 
 $scope.invites=[];
+$scope.inv=[];
 $scope.products=[];
 //$scope.amounts=[];
 $scope.prod=[];
@@ -10,6 +11,7 @@ $scope.prod=[];
 
 	$scope.addmember=function(){
 		$scope.invites.push({"email_id":$scope.invitee});
+		$scope.inv.push({"email_id":$scope.invitee});
 		//$scope.invites.push({"email_id":$scope.invitee,"amount":$scope.amt});
 		//$scope.amounts.push({"amount":$scope.amt});
 		$scope.invitee='';
@@ -26,7 +28,7 @@ $scope.prod=[];
 
 	$scope.remove=function(index){
 	$scope.invites.splice(index,1);
-	//$scope.amounts.splice(index,1);
+	$scope.inv.splice(index,1);
 };
 
 $scope.rem=function(index){
@@ -99,7 +101,8 @@ $scope.rem=function(index){
 			//window.localStorage['event_id'] = "";
 				//alert("hi");
 		//$scope.target_date=new Date();
-		$scope.url=baseurl+'registry/create';		
+		$scope.url=baseurl+'registry/create';
+		$scope.inv.push({"email_id":window.localStorage['email_id']});		
 		
 $scope.data={
 				"authtoken": window.localStorage['authtoken'],
@@ -111,11 +114,13 @@ $scope.data={
 				"msg": $scope.msg,
 				"public": $scope.checkboxvalue,
 				"products": $scope.prod,
-				"invites": $scope.invites				
+				"invites": $scope.inv				
 			};			
 
 			// console.log($scope.data);
 $http.post($scope.url,$scope.data).then(function successCallback(response){
+	window.localStorage['registry_id']=response.data.registry_id;
+	console.log(window.localStorage['registry_id']);
 			console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;

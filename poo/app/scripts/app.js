@@ -120,6 +120,14 @@ angular
         templateUrl: 'views/registry.html',
         controller: 'registryCtrl'
       })
+      .when('/addregistry', {
+        templateUrl: 'views/addregistry.html',
+        controller: 'addregistryCtrl'
+      })
+      .when('/regdetails', {
+        templateUrl: 'views/regdetails.html',
+        controller: 'regdetailsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

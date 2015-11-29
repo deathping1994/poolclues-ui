@@ -37,7 +37,8 @@ $scope.submit=function(){
 			"city": $scope.city,
 			"state": $scope.state,
 			"country": $scope.country,
-			"phone": $scope.phone
+			"phone": $scope.phone,
+			"user_img": $scope.user_img
 		};
 	console.log($scope.data);
 	$http.post($scope.url,$scope.data).then(function successCallback(response){

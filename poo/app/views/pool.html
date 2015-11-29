@@ -13,6 +13,7 @@
         <textarea type="text" id="pool_description" class="form-control" ng-model="pool_description" placeholder="pool Description" required autofocus></textarea>
         <label for="customized_message" class="sr-only">Customized Message</label>
         <textarea type="text" id="customized_message" class="form-control" ng-model="msg" placeholder="Customized Message" required autofocus></textarea>
+        <h4>Upload Image</h4> <input type="file" name="f" class="form-control" ng-model="pool_img" autofocus=""/>
         <div class="checkbox">
           <label>
             <input type="checkbox" ng-model="checkboxvalue" ng-true-value="'true'" ng-false-value="'false'"> Public
@@ -58,7 +59,11 @@
 <div class="col-md-6 text-center">
 	<h3 style="font-family:Comic Sans"><i><u>Send Invitations</u></i></h3><br>
 	<b><strong>Please Specify Contribution:</strong></b> <input type="Radio" ng-model="choose" value="e"> Equal 
-	<input type="Radio" ng-model="choose" value="u"> Unequal<br><br>
+	<input type="Radio" ng-model="choose" value="u"> Unequal<br>
+	<p ng-show="choose=='u'">
+	Please enter your contribution: <input type="textfield" ng-model="mycontri">
+	</p>
+	<br>
 
 	<form role="form" ng-submit="addmember()">
 	<div class="row">
@@ -104,9 +109,9 @@
  	<div>
  		<input type="submit" class="btn btn-success" ng-click="send()" value="Create">
  	</div>
- 	<!--<div>
+ 	<div>
  		<input type="submit" value="test" ng-click="test1()">
- 	</div>-->
+ 	</div>
  </div>
 
 <!--<form role="form" ng-submit="addTodo()">

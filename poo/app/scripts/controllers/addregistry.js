@@ -1,16 +1,16 @@
 'use strict';
 
-angular.module('pooApp').controller('addCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
+angular.module('pooApp').controller('addregistryCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 
-$scope.contributors=[];
-$scope.amounts=[];
+$scope.invites=[];
+//$scope.amounts=[];
 //$scope.done=[];
 //$scope.amount=2000;
 //$scope.amount=0;
 
-	$scope.add=function(){
-		$scope.contributors.push({"email_id":$scope.invitee, "amount":$scope.amt, "msg":$scope.msg});
-		$scope.amounts.push({"amount":$scope.amt});
+	$scope.addregistry=function(){
+		$scope.invites.push({"email_id":$scope.invitee});
+		//$scope.amounts.push({"amount":$scope.amt});
 		
 			//, "amount": $scope.amount});
 		
@@ -18,20 +18,17 @@ $scope.amounts=[];
 		//$scope.amount.push({"amount":$scope.amt});
 		//$scope.done.push({"email_id":$scope.invitee,"amount":$scope.amt})
 		$scope.invitee='';
-		$scope.amt='';
-		$scope.msg='';
 		
 	};
 	$scope.remove=function(index){
-	$scope.contributors.splice(index,1);
-	$scope.amounts.splice(index,1);
-};
+	$scope.invites.splice(index,1);
+	};
 
 $scope.send1=function(){
-	$scope.url=baseurl+'pool/'+window.localStorage['pool_id']+'/contributor/add';
+	$scope.url=baseurl+'registry/'+window.localStorage['registry_id']+'/invite';
 
 	$scope.data={
-				"contributors": $scope.contributors,
+				"invites": $scope.invites,
 				"authtoken": window.localStorage['authtoken'],
 				//"msg": $scope.msg
 			};

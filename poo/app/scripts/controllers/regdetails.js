@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pooApp').controller('detailsCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
+angular.module('pooApp').controller('regdetailsCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
 
 $scope.messages=[];
 $scope.comments=[];	
@@ -9,42 +9,10 @@ $scope.edit1=true;
 $scope.edit2=true;
 $scope.edit3=true;
 $scope.edit4=true;
-$scope.edit5=true;
 
 $scope.post=function(){
-		//$scope.messages.push($scope.msg);
-		//$scope.msg='';
-		$scope.urlpost=baseurl+window.localStorage['pool_id']+"/post";
-		$scope.datapost={
-			"authtoken":window.localStorage['authtoken'],
-			"content":$scope.msg
-		};
-		$http.post($scope.urlpost,$scope.datapost).then(function successCallback(response){
-			console.log(response);
-			
-			$scope.url1=baseurl+window.localStorage['pool_id']+"/post/list";
-			$scope.data1={"authtoken":window.localStorage['authtoken']};
-				$http.post($scope.url1,$scope.data1).then(function successCallback(response){
-
-			}
-			console.log(response);
-						
-			//alert("You've successfully been logged out");
-			//$location.path('/');
-		},
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//alert($scope.status);
-});		
-			//alert("You've successfully been logged out");
-			//$location.path('/');
-		},
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//alert($scope.status);
-});
+		$scope.messages.push($scope.msg);
+		$scope.msg='';
 		
 	};
 
@@ -68,7 +36,7 @@ $scope.share=function (){
 $scope.details=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
-		$scope.url=baseurl+"pool/"+window.localStorage['pool_id'];
+		$scope.url=baseurl+"registry_id/"+window.localStorage['registry_id'];
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 		//$scope.poollist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
@@ -76,12 +44,11 @@ $scope.details=function(){
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log(response);
 			
-			$scope.pool_name=response.data.pool_name;
-			$scope.pool_id=response.data.pool_id;
-			$scope.pool_description=response.data.pool_description;
-			$scope.target_amount=response.data.target_amount;
+			$scope.registry_name=response.data.registry_name;
+			$scope.registry_id=response.data.registry_id;
+			$scope.registry_description=response.data.registry_description;
 			$scope.target_date=response.data.target_date;
-			$scope.contri=response.data.contributors;
+			$scope.giftbucket=response.data.giftbucket;
 			//alert("You've successfully been logged out");
 			//$location.path('/');
 		},
@@ -94,7 +61,7 @@ $scope.details=function(){
 };
 
 $scope.delete=function(){
-	$scope.urldel=baseurl+window.localStorage['email_id']+"/pool/"+window.localStorage['pool_id']+"/delete";
+	$scope.urldel=baseurl+window.localStorage['email_id']+"/registry/"+window.localStorage['registry_id']+"/delete";
 	$scope.datadel={"authtoken":window.localStorage['authtoken']};
 	console.log($scope.datadel);
 	$http.post($scope.urldel,$scope.datadel).then(function successCallback(response){
@@ -123,17 +90,13 @@ $scope.editc=function(){
 $scope.editd=function(){
 	$scope.edit4=!$scope.edit4;
 };
-$scope.edite=function(){
-	$scope.edit5=!$scope.edit5;
-};
 
 $scope.change=function(){
-	$scope.urledit=baseurl+window.localStorage['email_id']+"/pool/"+window.localStorage['pool_id']+"/update";
+	$scope.urledit=baseurl+window.localStorage['email_id']+"/registry/"+window.localStorage['registry_id']+"/update";
 	$scope.dataed={
-		"pool_name":$scope.edname,
+		"registry_name":$scope.edname,
 		"target_date":$scope.eddate,
-		"target_amount":$scope.edamt,
-		"pool_description":$scope.eddes,
+		"registry_description":$scope.eddes,
 		"searchable":$scope.edpb,
 		"authtoken":window.localStorage['authtoken']
 	};
