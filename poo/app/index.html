@@ -16,6 +16,11 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- <meta name="google-signin-scope" content="profile email"> -->
+    <!-- <meta name="google-signin-client_id" content="738382529852-eueicrt0krevbk0tu83h1ki9o3huulu4.apps.googleusercontent.com"> -->
+    <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>-->
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
     <!-- endbuild -->
   </head>
   <body ng-app="pooApp">
@@ -42,9 +47,10 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
           <!-- <img src="../images/poolclues.png" width="500">  <img src="../images/shopclues.jpg"> -->
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/contact">Contact</a></li>
+              <li class="active"><a href="/startbootstrap-agency-1.0.4/index.html">Home</a></li>
+              <li><a href="/startbootstrap-agency-1.0.4/index.html#how_it_works">How It Works</a></li>
+              <li><a ng-href="/startbootstrap-agency-1.0.4/index.html#contact">Contact</a></li>
+              <li><a ng-href="/startbootstrap-agency-1.0.4/index.html#faq">FAQ</a></li>
               <!--<li><a ng-href="#/login">Admin Login</a></li>-->
               <li><a ng-href="#/userlogin">Login</a></li>
               <li><a ng-href="#/usersignup">Signup</a></li>
@@ -177,5 +183,6 @@
         <!--<script src="scripts/controllers/signup.js"></script>-->
 
         <!-- endbuild -->
+        
   </body>
 </html>

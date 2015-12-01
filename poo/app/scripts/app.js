@@ -9,7 +9,7 @@
  * Main module of the application.
  */
  var baseurl="http://api.poolclues.anip.xyz:8080/";
-angular
+var pooApp=angular
   .module('pooApp', [
     'ngAnimate',
     'ngAria',
@@ -29,10 +29,10 @@ angular
   }])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/welcome.html',
-        controller: 'welcomeCtrl'
-      })
+      // .when('/', {
+      //   templateUrl: 'views/welcome.html',
+      //   controller: 'welcomeCtrl'
+      // })
       /*.service('dataService', function($http) {
     delete $http.defaults.headers.common['X-Requested-With'];
  });
@@ -62,39 +62,63 @@ angular
       })
       .when('/profile', {
         templateUrl: 'views/profile.html',
-        controller: 'listCtrl'
+        controller: 'listCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/create', {
         templateUrl: 'views/create.html',
-        controller: 'createCtrl'
+        controller: 'createCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/pool', {
         templateUrl: 'views/pool.html',
-        controller: 'poolCtrl'
+        controller: 'poolCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/logout', {
         templateUrl: 'views/logout.html',
-        controller: 'logoutCtrl'
+        controller: 'logoutCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/addphone', {
         templateUrl: 'views/addphone.html',
-        controller: 'addphoneCtrl'
+        controller: 'addphoneCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/check', {
         templateUrl: 'views/check.html',
-        controller: 'checkCtrl'
+        controller: 'checkCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/list', {
         templateUrl: 'views/list.html',
-        controller: 'listCtrl'
+        controller: 'listCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/contact', {
-        templateUrl: 'views/contact.html',
+        templateUrl: 'views/contact.html'
         //controller: 'listCtrl'
       })
       .when('/verify', {
         templateUrl: 'views/verify.html',
-        controller: 'verifyCtrl'
+        controller: 'verifyCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/forgot', {
         templateUrl: 'views/forgot.html',
@@ -106,33 +130,52 @@ angular
       })
       .when('/details', {
         templateUrl: 'views/details.html',
-        controller: 'detailsCtrl'
+        controller: 'detailsCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/changepassword', {
         templateUrl: 'views/changepassword.html',
-        controller: 'changepasswordCtrl'
+        controller: 'changepasswordCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/wallet', {
         templateUrl: 'views/wallet.html',
-        controller: 'walletCtrl'
+        controller: 'walletCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
         })
       .when('/registry', {
         templateUrl: 'views/registry.html',
-        controller: 'registryCtrl'
+        controller: 'registryCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/addregistry', {
         templateUrl: 'views/addregistry.html',
-        controller: 'addregistryCtrl'
+        controller: 'addregistryCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
       })
       .when('/regdetails', {
         templateUrl: 'views/regdetails.html',
-        controller: 'regdetailsCtrl'
+        controller: 'regdetailsCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
+      })
       .when('/loading', {
         templateUrl: 'views/loading.html',
         controller: 'loadingCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: 'views/userlogin.html'
       });
   });
 
@@ -259,10 +302,83 @@ var permission=function(){
       }
     });
 }
+
+var fblogout=function(){
+  FB.logout(function(response) {
+        // Person is now logged out
+    });
+}
 var cc=function(){
   FB.ui({
   method: 'share',
   href: 'https://developers.facebook.com/docs/',
-  caption: 'An example caption',
+  caption: 'An example caption'
 }, function(response){});
 };
+var authtoken;
+var checkRouting= function ($q, localStorageService,$location) {
+if (window.localStorage['authtoken']!=="") {
+return true;
+} else {
+var deferred = $q.defer();
+deferred.reject();
+$location.path("/userlogin");
+return deferred.promise;
+}
+};
+
+function init() {
+  auth(/* immediate */ true);
+}
+
+function auth(immediate) {
+  // Visit https://code.google.com/apis/console?api=plus to generate your
+  // oauth2 client id and simple api key.
+  var config = {
+    client_id: '738382529852-eueicrt0krevbk0tu83h1ki9o3huulu4.apps.googleusercontent.com',
+    scope: 'https://www.googleapis.com/auth/plus.me',
+    immediate: immediate
+  };
+  gapi.client.setApiKey('AIzaSyDX-F8RL6nxmRBzrDi-TygUUDgOWNvbYjQ');
+  window.setTimeout(function() {  
+    gapi.auth.authorize(config, onAuthResponse);
+  }, 1);
+}
+
+function onAuthResponse(token) {
+  var login = document.getElementById('login');
+  if (token) {
+    login.style.display = 'none';
+    makeRequest();
+  } else {
+    login.style.display = '';
+  }
+}
+
+function makeRequest() {
+  gapi.client.load('plus', 'v1', function() {
+    var request = gapi.client.plus.activities.list({
+        'userId': 'me',
+        'maxResults': '20',
+        'collection': 'public'
+    });
+
+    request.execute(function(data) {
+      var div = document.getElementById('results');
+      for(var i=0; i<data.items.length; i++) {
+        var activity = data.items[i];
+        div.appendChild(document.createElement('P'));
+        div.appendChild(document.createTextNode(activity.object.content));
+      }
+    });
+
+    var personReq = gapi.client.plus.people.get({'userId': 'me'});
+    personReq.execute(function(data) {
+      var div = document.getElementById('me');
+      div.innerHTML = "<a href='" + data.url + "'>"
+            + data.displayName + "</a><div><img src='" + data.image.url + "'></div>";
+    });
+  });
+}
+
+
