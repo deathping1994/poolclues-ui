@@ -83,7 +83,7 @@ $scope.addmember1=function(x){
 };
 
 $scope.addmember2=function(y){
-	window.localStorage['registry_id'] = y.registry_id;
+	window.localStorage['registry_id'] = y.pool_id;
 	console.log(window.localStorage['registry_id']);
 };
 

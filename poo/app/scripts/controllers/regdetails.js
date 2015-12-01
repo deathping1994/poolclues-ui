@@ -10,37 +10,31 @@ $scope.edit2=true;
 $scope.edit3=true;
 $scope.edit4=true;
 
-$scope.post=function(){
+$scope.regpost=function(){
 		$scope.messages.push($scope.msg);
 		$scope.msg='';
 		
 	};
 
-$scope.comment=function(){
+$scope.regcomment=function(){
 		$scope.comments.push($scope.cmnt);
 		$scope.cmnt='';
 		
 	};
-
-$scope.rem1=function(index){
-	$scope.messages.splice(index,1);
-};
-$scope.rem2=function(index){
-	$scope.comments.splice(index,1);
-};
 		
-$scope.share=function (){
+$scope.regshare=function(){
 	cc();
 };
 
-$scope.details=function(){
+$scope.regdetails=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
-		$scope.url=baseurl+"registry_id/"+window.localStorage['registry_id'];
+		$scope.url=baseurl+"registry/"+window.localStorage['registry_id'];
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 		//$scope.poollist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
 		console.log($scope.data);
+		console.log("url="+$scope.url);
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log(response);
 			
@@ -60,7 +54,7 @@ $scope.details=function(){
 	//$location.path='/';
 };
 
-$scope.delete=function(){
+$scope.regdelete=function(){
 	$scope.urldel=baseurl+window.localStorage['email_id']+"/registry/"+window.localStorage['registry_id']+"/delete";
 	$scope.datadel={"authtoken":window.localStorage['authtoken']};
 	console.log($scope.datadel);
@@ -78,25 +72,26 @@ $scope.delete=function(){
 
 };
 
-$scope.edita=function(){
+$scope.regedita=function(){
 	$scope.edit1=!$scope.edit1;
 };
-$scope.editb=function(){
+$scope.regeditb=function(){
 	$scope.edit2=!$scope.edit2;
 };
-$scope.editc=function(){
+$scope.regeditc=function(){
 	$scope.edit3=!$scope.edit3;
 };
-$scope.editd=function(){
+$scope.regeditd=function(){
 	$scope.edit4=!$scope.edit4;
 };
 
-$scope.change=function(){
+$scope.regchange=function(){
 	$scope.urledit=baseurl+window.localStorage['email_id']+"/registry/"+window.localStorage['registry_id']+"/update";
+	console.log($scope.urledit);
 	$scope.dataed={
 		"registry_name":$scope.edname,
 		"target_date":$scope.eddate,
-		"registry_description":$scope.eddes,
+		"description":$scope.eddes,
 		"searchable":$scope.edpb,
 		"authtoken":window.localStorage['authtoken']
 	};
@@ -104,7 +99,7 @@ $scope.change=function(){
 			console.log(response);
 			
 			//alert("You've successfully been logged out");
-			$location.path('/profile');
+			//$location.path('/profile');
 		},
 		function errorCallback(response){
 			console.log(response);

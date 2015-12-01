@@ -6,7 +6,8 @@ $scope.invites=[];
 $scope.inv=[];
 $scope.products=[];
 //$scope.amounts=[];
-$scope.prod=[];
+$scope.pids=[];
+$scope.prid=[];
 //$scope.done=[];
 
 	$scope.addmember=function(){
@@ -19,23 +20,32 @@ $scope.prod=[];
 		
 	};
 
-	$scope.addpid=function(){
+	$scope.push=function(x){
+		$scope.m="BASKET";
+		$scope.pids.push(x._source.Brand);
+		$scope.prid.push("id"+x._id);
+		$scope.pid='';
+		//cnt=cnt+x._source.Price;
+	};
+
+	/*$scope.addpid=function(){
 		$scope.prod.push($scope.pid);
 
 		$scope.pid='';
 		
-	};
+	};*/
 
 	$scope.remove=function(index){
 	$scope.invites.splice(index,1);
 	$scope.inv.splice(index,1);
 };
 
-$scope.rem=function(index){
-	$scope.prod.splice(index,1);
+$scope.rem3=function(index){
+	$scope.pids.splice(index,1);
+	$scope.prid.splice(index,1);
 	};
 		//$scope.invitees.push({email_id:''});
-	$scope.show1=function(){
+	/*$scope.show1=function(){
 		$scope.data2={"authtoken": window.localStorage['authtoken']};
 		$scope.url1=baseurl+'products/list';
 
@@ -56,24 +66,21 @@ $scope.rem=function(index){
 			//$scope.data=response.data;
 		}
 		);
-	};
-	$scope.check=function(){
+	};*/
+$scope.go=function(){
 		$scope.data2={"authtoken": window.localStorage['authtoken']};
 
-		if($scope.choose ==='v')
-			{	$scope.products='';
-				$scope.print="You will get a voucher worth the target amount."}
-
-		else if ($scope.choose ==='g') 
-			{
 				$scope.print='';
-				$scope.url1=baseurl+'products/list';
-
+				$scope.pi=!$scope.pi;
+				$scope.url1=baseurl+'products/search?query="'+$scope.search+'"';
+				$scope.products='';
 				$http.post($scope.url1,$scope.data2).then(function successCallback(response){
-					$scope.products=response.data.products;
+					$scope.products=response.data.hits;
 			//console.log($scope.data);
 			console.log(response);
-			$scope.status=response.status;
+			console.log($scope.products);
+			//console.log(response.data.hits._source);
+			//$scope.status=response.status;
 			//$scope.data=response.data;
 			//alert("You have successfully created an pool!");
 
@@ -82,11 +89,20 @@ $scope.rem=function(index){
 
 		function errorCallback(response){
 			console.log(response);
-			$scope.status=response.status;
+			console.log($scope.products);
+			//$scope.status=response.status;
 			//$scope.data=response.data;
 		}
 		);
-			}
+			
+	};
+
+	$scope.check=function(){
+		//$scope.data2={"authtoken": window.localStorage['authtoken']};
+
+		if($scope.choose1 ==='v')
+			{	$scope.products='';
+				$scope.print="You will get a voucher worth the target amount."}
 	};
 		/*$scope.tick=function(x){
 		if($scope.mark ==='true')
@@ -113,7 +129,7 @@ $scope.data={
 				"description": $scope.description,
 				"msg": $scope.msg,
 				"public": $scope.checkboxvalue,
-				"products": $scope.prod,
+				"products": $scope.prid,
 				"invites": $scope.inv				
 			};			
 
