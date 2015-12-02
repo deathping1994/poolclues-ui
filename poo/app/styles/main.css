@@ -448,7 +448,28 @@ overflow: hidden;
         object-fit: cover;
   }
 
-ul.products li {
+/*ul.products li {
     width: 200px;
     display: inline-block;
+}*/
+
+/*ul.products {
+    margin: 0 auto;
+    text-align: center;
+}
+
+ul.products li {
+    display: inline-block;
+    vertical-align: top;
+}*/
+
+ul li {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+ul.pro{
+  line-height: 30px;
+  padding-bottom: 10px;
 }

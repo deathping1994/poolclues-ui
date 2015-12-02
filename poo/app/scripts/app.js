@@ -54,11 +54,17 @@ var pooApp=angular
       })*/
       .when('/userlogin', {
         templateUrl: 'views/userlogin.html',
-        controller: 'userlCtrl'
+        controller: 'userlCtrl',
+        resolve: {
+                  factory: checkRouting1
+                  }
       })
       .when('/usersignup', {
         templateUrl: 'views/usersignup.html',
-        controller: 'usersCtrl'
+        controller: 'usersCtrl',
+        resolve: {
+                  factory: checkRouting1
+                  }
       })
       .when('/profile', {
         templateUrl: 'views/profile.html',
@@ -307,17 +313,19 @@ var permission=function(){
 }
 
 var fblogout=function(){
+  if(fbflag==1){
   FB.logout(function(response) {
         // Person is now logged out
     });
 }
+};
 
 var poolpost;
 var registrypost;
 var cc=function(){
   FB.ui({
   method: 'share',
-  href: poolpost,
+  href: 'http://www.shopclues.com/',
   caption: 'Pool Created'
 }, function(response){});
 };
@@ -330,6 +338,17 @@ return true;
 var deferred = $q.defer();
 deferred.reject();
 $location.path("/userlogin");
+return deferred.promise;
+}
+};
+
+var checkRouting1= function ($q, localStorageService,$location) {
+if (window.localStorage['authtoken']=="") {
+return true;
+} else {
+var deferred = $q.defer();
+deferred.reject();
+$location.path("/profile");
 return deferred.promise;
 }
 };

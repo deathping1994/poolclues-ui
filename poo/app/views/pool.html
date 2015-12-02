@@ -113,14 +113,15 @@
 
  	<div ng-model="products" ng-repeat="x in products">
      
-     <ul class="products">
+     <ul class="pro">
      <div class="col-md-3">
-     <li><b>Brand:</b> <span ng-bind="x._source.Brand"></span>
+     <li>
+     	<b>Brand:</b> <span ng-bind="x._source.Brand"></span><br>
      <!-- <b>COD Available:</b> <span ng-bind="x._source.COD"></span><hr> -->
-     <span ng-bind="x._source.Discount"> <b>Discount!</b></span><hr>
+     	<!-- <b>Discount!</b><span ng-bind="x._source.Discount"></span><hr> -->
      <!-- <b>EMI Availabe:</b> <span ng-bind="x._source.EMI"></span><hr> -->
-     <b>MRP:</b> <span ng-bind="x._source.MRP"></span><hr>
-     <b>Offer Price:</b> <span ng-bind="x._source.Price"></span><hr>
+     <b>MRP:</b> <span ng-bind="x._source.MRP"></span><br>
+     <b>Offer Price:</b> <span ng-bind="x._source.Price"></span>
      <!-- <b>Shipping Cost:</b> <span ng-bind="x._source.Shipping"></span> -->
      <input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket">
  	</div>
