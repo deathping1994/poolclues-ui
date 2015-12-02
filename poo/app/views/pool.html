@@ -113,18 +113,21 @@
 
  	<div ng-model="products" ng-repeat="x in products">
      
-     <table style="border: 1px dashed gray;">
-     <tr>
-     <td><b>Brand:</b> <span ng-bind="x._source.Brand"></span><hr>
-     <b>COD Available:</b> <span ng-bind="x._source.COD"></span><hr>
+     <ul class="products">
+     <div class="col-md-3">
+     <li><b>Brand:</b> <span ng-bind="x._source.Brand"></span>
+     <!-- <b>COD Available:</b> <span ng-bind="x._source.COD"></span><hr> -->
      <span ng-bind="x._source.Discount"> <b>Discount!</b></span><hr>
-     <b>EMI Availabe:</b> <span ng-bind="x._source.EMI"></span><hr>
+     <!-- <b>EMI Availabe:</b> <span ng-bind="x._source.EMI"></span><hr> -->
      <b>MRP:</b> <span ng-bind="x._source.MRP"></span><hr>
      <b>Offer Price:</b> <span ng-bind="x._source.Price"></span><hr>
-     <b>Shipping Cost:</b> <span ng-bind="x._source.Shipping"></span></td></tr>
-     <tr><td><input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket"></td>
-     <td><div class="holder"><!--<span ng-bind="x._source.image_path"></span>--><img ng-src="{{x._source.image_path}}" class="img-responsive"/></div></td>
- 	</tr></table><br>
+     <!-- <b>Shipping Cost:</b> <span ng-bind="x._source.Shipping"></span> -->
+     <input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket">
+ 	</div>
+ 	<div class="col-md-3">
+     <div class="holder"><!--<span ng-bind="x._source.image_path"></span>--><img ng-src="{{x._source.image_path}}" class="img-responsive"/></div></li>
+     </div>
+ 	</ul><br>
 	
 	</div>
  </div>
