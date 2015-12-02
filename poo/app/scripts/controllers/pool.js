@@ -224,7 +224,7 @@ $scope.data3={
 			};			
 
 			// console.log($scope.data);
-
+console.log(window.localStorage['email_id']);
 	if($scope.pids.length==0)
 	{
 		if($scope.contributors.length==0)
@@ -251,15 +251,16 @@ $scope.data3={
 }
 );*/
 		else
-		{
+		{console.log($scope.data);
 		$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log($scope.data);
 			console.log(response);
 			$scope.status=response.status;
+			console.log(window.localStorage['email_id']);
 			//window.localStorage['pool_id'] = response.data.pool_id;
 
 			//$scope.data=response.data;
-			alert("You have successfully created an pool!");
+			// alert("You have successfully created an pool!");
 
 			$location.path('/profile');
 		},
@@ -268,6 +269,7 @@ $scope.data3={
 			console.log($scope.data2);
 			console.log(response);
 			$scope.status=response.status;
+			console.log($scope.email_id);
 			//$scope.data=response.data;
 }
 );
@@ -297,12 +299,14 @@ $scope.data3={
 );*/
 	}
 	else{
+		console.log($scope.data3);
 		$http.post($scope.url,$scope.data3).then(function successCallback(response){
 			console.log($scope.data3);
 			console.log(response);
 			$scope.status=response.status;
+			console.log($scope.email_id);
 			//$scope.data=response.data;
-			alert("You have successfully created a pool!");
+			// alert("You have successfully created a pool!");
 
 			$location.path('/profile');
 		},
@@ -311,6 +315,7 @@ $scope.data3={
 			console.log($scope.data3);
 			console.log(response);
 			$scope.status=response.status;
+			console.log($scope.email_id);
 			//$scope.data=response.data;
 }
 );

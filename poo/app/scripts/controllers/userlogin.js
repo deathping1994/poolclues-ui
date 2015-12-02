@@ -10,7 +10,7 @@ $scope.click1=function(){
 	
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
 		    console.log(response.status);
-		    checktoken=true;
+		    checktoken=false;
 
 			$scope.status=response.status;
 			window.localStorage['authtoken'] = response.data.authtoken;
@@ -19,7 +19,7 @@ $scope.click1=function(){
 			console.log(window.localStorage['email_id']);
 			console.log(window.localStorage['authtoken']);
 			console.log(response.data.authtoken);
-			$location.path('/list');
+			$location.path('/profile');
 			//alert("You are successfully logged off");
 		},
 		function errorCallback(response){

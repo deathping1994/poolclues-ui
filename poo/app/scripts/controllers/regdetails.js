@@ -31,6 +31,17 @@ $scope.regpost=function(){
 });
 		
 	};
+
+$scope.addmember=function(){
+	$location.path('/addregistry');
+};
+
+	$scope.authority=function(){
+		if($scope.is_creator === true)
+			return true;
+		else
+			return false;
+	};
 		
 $scope.regshare=function(){
 	cc();
@@ -38,6 +49,10 @@ $scope.regshare=function(){
 $scope.reloadRoute = function() {
    $route.reload();
 };
+$scope.purchase=function(){
+	window.location.href="http://www.shopclues.com/";
+};
+
 $scope.regdetails=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
@@ -55,6 +70,7 @@ $scope.regdetails=function(){
 			$scope.registry_description=response.data.registry_description;
 			$scope.target_date=response.data.target_date;
 			$scope.invitees=response.data.invitees;
+			$scope.is_creator=response.data.is_creator;
 			//alert("You've successfully been logged out");
 			//$location.path('/');
 		},
@@ -88,6 +104,7 @@ $scope.postc=function(){
 
 
 $scope.send=function(x){
+	window.localStorage['regpost_id'] = "";
 	window.localStorage['regpost_id'] = x.post_id;
 	console.log(window.localStorage['regpost_id']);
 };

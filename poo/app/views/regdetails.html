@@ -28,9 +28,11 @@
 	<button class="btn btn-info" onclick="cc()">Share on Facebook</button>
 	<br><br><!--<br><br><br><br><br><br>-->
 	
+	<div ng-show="authority()">
 	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Registry</button><br><br>
 	<button class="btn btn-danger" ng-click="regdelete()">Delete the Registry</button><br><br>
-	<a ng-href="#/addregistry">Add Member</a><br>
+	<button class="btn btn-primary" ng-click="addmember()">Add Member</button><br>
+	</div>
 
 
 	<div class="modal fade" id="modal" role="dialog">
@@ -71,7 +73,7 @@
 		</div>
 		<!--<div class="input-group">-->
 		
-			<textarea rows="10" cols="70" ng-model="msg"></textarea>
+			<textarea rows="5" cols="50" ng-model="msg"></textarea>
 			<br>
 <input type="submit" class="btn btn-primary" value="POST">		
  		
@@ -97,6 +99,9 @@
 <h4><u><b>Invitees</b></u></h4><hr>
 <div ng-model="invitees" data-ng-repeat="x in invitees">
 <span ng-bind="x"></span><br><hr>
+</div>
+<div ng-hide="authority()">
+<button class="btn btn-primary" ng-click="purchase()">Purchase</button><br>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
 </div>

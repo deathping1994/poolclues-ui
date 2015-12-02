@@ -24,6 +24,7 @@ $scope.cmnts=[];
 
 	$scope.reloadRoute = function() {
    $route.reload();
+   console.log("hello");
 };
 
 	$scope.postcomment=function(){

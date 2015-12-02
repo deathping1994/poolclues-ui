@@ -5,6 +5,7 @@ angular.module('pooApp').controller('addCtrl', function($scope, $location, $http
 $scope.contributors=[];
 $scope.amounts=[];
 $scope.invs=[];
+$scope.messages=[];
 var i;
 //$scope.done=[];
 //$scope.amount=2000;
@@ -13,6 +14,7 @@ var i;
 	$scope.add=function(){
 		$scope.amounts.push($scope.amt);
 		$scope.invs.push($scope.invitee);
+		$scope.messages.push($scope.msg);
 
 			//, "amount": $scope.amount});
 		
@@ -21,6 +23,7 @@ var i;
 		//$scope.done.push({"email_id":$scope.invitee,"amount":$scope.amt})
 		$scope.invitee='';
 		$scope.amt='';
+		$scope.msg='';
 		//$scope.msg='';
 		
 	};
@@ -28,12 +31,13 @@ var i;
 	$scope.contributors.splice(index,1);
 	$scope.amounts.splice(index,1);
 	$scope.invs.splice(index,1);
+	$scope.messages.splice(index,1);
 };
 
 $scope.send1=function(){
 	for(i=0;i<$scope.invs.length;i++)
 	{
-		$scope.contributors.push({"email_id":$scope.invs[i], "amount":$scope.amounts[i]});
+		$scope.contributors.push({"email_id":$scope.invs[i], "amount":$scope.amounts[i], "msg":$scope.msg[i]});
 	}
 
 	$scope.url=baseurl+'pool/'+window.localStorage['pool_id']+'/contributor/add';

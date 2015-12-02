@@ -10,6 +10,33 @@ $scope.edit2=true;
 $scope.edit3=true;
 $scope.edit4=true;
 $scope.edit5=true;
+var total=0;
+
+$scope.addup=function(x){
+	total=total+x.amount_paid;
+
+	console.log(x.amount_paid);
+	console.log(total);
+	/*for(i=0;i<$scope.contri.length;i++)
+	{
+		console.log(x);
+		//total=total+x.amount_paid;
+	}*/
+//total=total+x;
+//console.log(total);
+	/*if(total>$scope.target_amount || total === $scope.target_amount)
+		$scope.write="You will get the voucher worth the amount for the products chosen by you.
+          Thank-you for choosing us! Happy to serve you! :)";
+	else
+		$scope.write="Target amount not reached yet.";*/
+};
+
+$scope.redeem=function(){
+	if(total>$scope.target_amount || total ===$scope.target_amount)
+		$scope.write="You will get the voucher worth the amount for the products chosen by you.Thank-you for choosing us! Happy to serve you! :)";
+	else
+		$scope.write="Target amount not reached yet.";
+};
 
 $scope.postmsg=function(){
 		//$scope.messages.push($scope.msg);
@@ -33,7 +60,19 @@ $scope.postmsg=function(){
 		
 	};
 
+$scope.addmember=function(){
+	$location.path('/add');
+};
+
+	$scope.authority=function(){
+		if($scope.is_creator === true)
+			return true;
+		else
+			return false;
+	};
+
 	$scope.send=function(x){
+		window.localStorage['post_id'] = "";
 	window.localStorage['post_id'] = x.post_id;
 	console.log(window.localStorage['post_id']);
 };
@@ -96,19 +135,20 @@ $scope.details=function(){
 		$scope.url=baseurl+"pool/"+window.localStorage['pool_id'];
 		poolpost=$scope.url;
 		$scope.data={"authtoken":window.localStorage['authtoken']};
-		console.log("test");
+		//console.log("test");
 		//$scope.poollist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
 		console.log($scope.data);
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log(response);
-			console.log("test1");
+			//console.log("test1");
 			$scope.pool_name=response.data.pool_name;
 			$scope.pool_id=response.data.pool_id;
 			$scope.pool_description=response.data.pool_description;
 			$scope.target_amount=response.data.target_amount;
 			$scope.target_date=response.data.target_date;
 			$scope.contri=response.data.contributors;
+			$scope.is_creator=response.data.is_creator;
 			//alert("You've successfully been logged out");
 			//$location.path('/');
 		},

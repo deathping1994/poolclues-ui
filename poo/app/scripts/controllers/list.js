@@ -24,11 +24,11 @@ $scope.list=function(){
 		//var $count=0;
 		$scope.visibility=true;
 		$scope.visibility1=true;
-		$scope.url=baseurl+window.localStorage['email_id']+"/pool/list/created";
+		$scope.url=baseurl+window.localStorage['email_id']+"/pool/list/all";
 		$scope.poollist=[];
 		$scope.data1={"authtoken":window.localStorage['authtoken']};
-
-
+		console.log($scope.url);
+		console.log("poollist");
 	$http.post($scope.url, $scope.data1).then(function successCallback(response){
 			console.log(response);
 			if(response.data.pool_list==="")
@@ -78,11 +78,13 @@ $scope.pay=function(x){
 };
 
 $scope.addmember1=function(x){
+	window.localStorage['pool_id']="";
 	window.localStorage['pool_id'] = x.pool_id;
 	console.log(window.localStorage['pool_id']);
 };
 
 $scope.addmember2=function(y){
+	window.localStorage['registry_id'] = "";
 	window.localStorage['registry_id'] = y.pool_id;
 	console.log(window.localStorage['registry_id']);
 };

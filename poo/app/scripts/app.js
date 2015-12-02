@@ -67,6 +67,13 @@ var pooApp=angular
                   factory: checkRouting
                   }
       })
+      /*.when('/redeem', {
+        templateUrl: 'views/redeem.html',
+        controller: 'detailsCtrl',
+        resolve: {
+                  factory: checkRouting
+                  }
+      })*/
       .when('/create', {
         templateUrl: 'views/create.html',
         controller: 'createCtrl',
@@ -187,7 +194,7 @@ var pooApp=angular
       });
   });
 
-var checktoken=false;
+var checktoken=true;
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -321,7 +328,7 @@ var registrypost;
 var cc=function(){
   FB.ui({
   method: 'share',
-  href: poolpost,
+  href: 'http://www.shopclues.com/',
   caption: 'Pool Created'
 }, function(response){});
 };

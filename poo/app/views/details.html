@@ -29,10 +29,12 @@
 	</ul>-->
 	<button class="btn btn-info" onclick="cc()">Share on Facebook</button>
 	<br><br><!--<br><br><br><br><br><br>-->
-	
-	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Pool</button><br><br>
+
+	<div ng-show="authority()">
+	<button class="btn btn-warning" data-toggle="modal" data-target="#modal" >Edit the Pool</button><br><br>
 	<button class="btn btn-danger" ng-click="delete()">Delete the Pool</button><br><br>
-	<a ng-href="#/add">Add Member</a><br>
+	<button class="btn btn-primary" ng-click="addmember()">Add Member</button><br>
+	</div>
 
 	<div class="modal fade" id="modal" role="dialog">
     <div class="modal-dialog">
@@ -61,6 +63,7 @@
       
     </div>
   </div>
+
 </div>
 
 
@@ -130,8 +133,15 @@
 <b>Email id:</b> <span ng-bind="x.email_id"></span><br>
 	<b>Amount to pay:</b> <span ng-bind="x.amount"></span><br>
 	<b>Amount paid:</b> <span ng-bind="x.amount_paid"></span><br>
-	<b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
+	<b>Payment Status:</b> <span ng-bind="x.status"></span>
+	<button class="btn btn-info" ng-click="addup(x)">Add</button><hr>
+<!--<div data-ng-repeat="y in x">
+	<span ng-bind="redeem(y)"></span>
+</div>-->
+
 </div>
+<button class="btn btn-info" ng-click="redeem()" >Redeem</button><br>
+<h3><span ng-bind="write"></span></h3>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
 </div>
 </div>

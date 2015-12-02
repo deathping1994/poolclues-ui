@@ -15,12 +15,13 @@ $scope.logout=function(){
 			$scope.status=response.status;
 			window.localStorage['authtoken']="";
 			//window.localStorage['event_id']="";
+			window.localStorage['authresponse']="";
 			window.localStorage['email_id']="";
 			window.localStorage['pool_id']="";
 			window.localStorage['registry_id']="";
 			window.localStorage['post_id']="";
 			window.localStorage['regpost_id']="";
-			checktoken=false;
+			checktoken=true;
 			//$scope.print("You've been successfully logged off");
 			//alert("You've successfully been logged out");
 			$location.path('/userlogin');
