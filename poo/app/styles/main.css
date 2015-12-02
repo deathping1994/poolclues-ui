@@ -403,4 +403,47 @@ overflow: hidden;
 
 .item-active{
   background-image: url("/images/background1.jpg");
-}s
+}
+
+.divider{
+    width:90px;
+    height:auto;
+    display:inline-block;
+}
+
+.divider1{
+  margin-left: 750px;
+}
+
+.container6 {
+    float:left;
+    width:100%;
+    background:AntiqueWhite;
+    overflow:hidden;
+    position:relative;
+    margin-top: 60px;
+}
+.container5 {
+    float:left;
+    width:100%;
+    background:Beige;
+    position:relative;
+    right:30%;
+}
+.container4 {
+    float:left;
+    width:100%;
+    background:Bisque;
+    position:relative;
+    right:40%;
+}
+
+.holder {
+    display: inline;
+  }
+
+.holder img {
+        max-height: 200px;
+        max-width: 200px;
+        object-fit: cover;
+  }

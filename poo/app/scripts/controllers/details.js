@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pooApp').controller('detailsCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
+angular.module('pooApp').controller('detailsCtrl', function($scope, $location, $route, $http, localStorageService){ //put $http & alert
 
 $scope.messages=[];
 $scope.comments=[];	
@@ -11,7 +11,7 @@ $scope.edit3=true;
 $scope.edit4=true;
 $scope.edit5=true;
 
-$scope.post=function(){
+$scope.postmsg=function(){
 		//$scope.messages.push($scope.msg);
 		//$scope.msg='';
 		$scope.urlpost=baseurl+window.localStorage['pool_id']+"/post";
@@ -21,22 +21,7 @@ $scope.post=function(){
 		};
 		$http.post($scope.urlpost,$scope.datapost).then(function successCallback(response){
 			console.log(response);
-			
-			$scope.url1=baseurl+window.localStorage['pool_id']+"/post/list";
-			$scope.data1={"authtoken":window.localStorage['authtoken']};
-				$http.post($scope.url1,$scope.data1).then(function successCallback(response){
-
-			}
-			console.log(response);
-						
-			//alert("You've successfully been logged out");
-			//$location.path('/');
-		},
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//alert($scope.status);
-});		
+			$scope.msg='';
 			//alert("You've successfully been logged out");
 			//$location.path('/');
 		},
@@ -48,18 +33,58 @@ $scope.post=function(){
 		
 	};
 
-$scope.comment=function(){
+	$scope.send=function(x){
+	window.localStorage['post_id'] = x.post_id;
+	console.log(window.localStorage['post_id']);
+};
+
+$scope.postc=function(){
+	$scope.url1=baseurl+window.localStorage['pool_id']+"/post/list";
+			$scope.data1={"authtoken":window.localStorage['authtoken']};
+
+	$http.post($scope.url1,$scope.data1).then(function successCallback(response){
+				$scope.messages=response.data.posts;
+			
+			console.log(response);
+						
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//alert($scope.status);
+});		
+	
+};
+
+$scope.reloadRoute = function() {
+   $route.reload();
+};
+
+/*$scope.comment=function(x){
 		$scope.comments.push($scope.cmnt);
 		$scope.cmnt='';
-		
-	};
 
-$scope.rem1=function(index){
-	$scope.messages.splice(index,1);
-};
-$scope.rem2=function(index){
-	$scope.comments.splice(index,1);
-};
+		$scope.url2=baseurl+window.localStorage['pool_id']+"/post/"+x.post_id;
+		$scope.data1={"authtoken":window.localStorage['authtoken']};
+
+		$http.post($scope.url2,$scope.data1).then(function successCallback(response){
+				//$scope.messages=response.data.posts;
+			
+			console.log(response);
+						
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			//$scope.status=response.status;
+			//alert($scope.status);
+});		
+
+		
+	};*/
 		
 $scope.share=function (){
 	cc();
@@ -70,12 +95,13 @@ $scope.details=function(){
 		//var $index=0;
 		$scope.url=baseurl+"pool/"+window.localStorage['pool_id'];
 		$scope.data={"authtoken":window.localStorage['authtoken']};
+		console.log("test");
 		//$scope.poollist=[];
 		//$scope.data1={"authtoken":window.localStorage['authtoken']};
 		console.log($scope.data);
 	$http.post($scope.url,$scope.data).then(function successCallback(response){
 			console.log(response);
-			
+			console.log("test1");
 			$scope.pool_name=response.data.pool_name;
 			$scope.pool_id=response.data.pool_id;
 			$scope.pool_description=response.data.pool_description;
@@ -86,6 +112,7 @@ $scope.details=function(){
 			//$location.path('/');
 		},
 		function errorCallback(response){
+			console.log("test2");
 			console.log(response);
 			$scope.status=response.status;
 			//alert($scope.status);
@@ -150,10 +177,9 @@ $scope.change=function(){
 });
 
 };
-
+});
 // https://www.facebook.com/dialog/feed?
 //   app_id=145634995501895
 //   &display=popup&caption=An%20example%20caption 
 //   &link=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F
 //   &redirect_uri=https://developers.facebook.com/tools/explorer
-});

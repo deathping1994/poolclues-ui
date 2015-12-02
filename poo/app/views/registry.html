@@ -16,21 +16,40 @@
             <input type="checkbox" ng-model="checkboxvalue" ng-true-value="'true'" ng-false-value="'false'"> Public
           </label>
         </div>
-        <input type="radio" ng-model="choose" value="v" ng-change="check()">Gift Voucher
-        <input type="radio" ng-model="choose" value="g" ng-change="check()">Gifts<br> 
+        <input type="radio" ng-model="choose1" value="v" ng-change="check()">Gift Voucher
+        <input type="radio" ng-model="choose1" value="g" ng-change="check()">Gifts<br> 
         <!--<input type="submit" class="btn btn-primary" value="Go" ng-click="check()">-->
         <span ng-bind="print"></span>
+
+         <p ng-show="choose1=='g'">
+        <input type="text" ng-model="search"> <input type="submit" value="Search a product" ng-click="go()">
+        </p>
         
          <p ng-bind="response" class="text-danger"></p>
      </form>
-     <p ng-model="products" data-ng-repeat="x in products">
+     <br>
+     <div ng-model="products" ng-repeat="x in products">
+     
+     <table style="border: 1px dashed gray;">
+     <tr><td><!--<span ng-bind="x._source.image_path">--></span><img ng-src="x._source.image_path"></td>
+     <td><b>Brand:</b> <span ng-bind="x._source.Brand"></span><hr>
+     <b>COD Available:</b> <span ng-bind="x._source.COD"></span><hr>
+     <span ng-bind="x._source.Discount"> <b>Discount!</b></span><hr>
+     <b>EMI Availabe:</b> <span ng-bind="x._source.EMI"></span><hr>
+     <b>MRP:</b> <span ng-bind="x._source.MRP"></span><hr>
+     <b>Offer Price:</b> <span ng-bind="x._source.Price"></span><hr>
+     <b>Shipping Cost:</b> <span ng-bind="x._source.Shipping"></span></td></tr>
+     <tr><td><input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket"></td></tr></table><br>
+
+     <!--<p ng-model="products" data-ng-repeat="x in products">
 	<span ng-bind="x.name"></span>
 	<br>
 	<span ng-bind="x.image"></span>
 	<br>
 	Price: <span ng-bind="x.price"></span>INR<br>
 	ID: <span ng-bind="x.id"></span> <input type="submit" ng-model="pid" class="btn btn-primary" ng-click="push(x)" value="Add to Basket">
-	</p>
+	</p>-->
+	</div>
 </div>
 </div>
 </div>
@@ -38,7 +57,7 @@
 
 	<h4 ng-bind="m"></h4><br>
 	<div ui-sortable ng-model="pids">
-		<div class="input-group" ng-repeat="pid in pids" style="padding:5px 10px; cursor: move;">
+		<div class="input-group" ng-repeat="pid in pids track by $index" style="padding:5px 10px; cursor: move;">
 		<input type="text" ng-model="pid">
 		<!--<textarea rows="10" cols="20" ng-model="pid" class="form-control"></textarea>-->
 	<button ng-click="rem3($index)" aria-label="Remove">X</button>

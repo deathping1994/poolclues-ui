@@ -1,0 +1,19 @@
+<div ng-init="commentdisplay()">
+<div ui-sortable>
+<p>
+	<h4><span ng-bind="author"></span></h4> : <br><h3><span ng-bind="content"></span></h3><br>
+
+</p>
+ <p class="input-group" data-ng-repeat="x in comments" style="padding:5px 10px; cursor: move;">
+	<span style="background-color:yellow" ng-bind="x.comments.author"></span>:<span ng-bind=" x.comments.content"></span><br>
+	</p>
+</div>
+</div>
+		<div class="input-group">
+	<input type="text" ng-model="cmnt" class="form-control">
+			<span class="input-group-btn">
+			<input type="submit" class="btn btn-warning" value="Comment" ng-click="postcomment()">
+			</span>
+		</div>
+	
+

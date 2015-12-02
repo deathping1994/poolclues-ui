@@ -2,8 +2,10 @@
 <!--<head>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>-->
-
-<div class="col-sm-3" ng-init="details()" style="background-color:#FAEBD7">
+<div class="container6">
+<div class="container5">
+<div class="container4">
+<div class="col1 col-sm-3 col-md-3" ng-init="details()">
 <h4><u><b>DETAILS</b></u></h4><hr>
 	<b>Name:</b> <span ng-bind="pool_name"></span><hr>
 	<b>ID:</b> <span ng-bind="pool_id"></span><hr>
@@ -59,9 +61,10 @@
   </div>
 </div>
 
-<div class="col-sm-6" style="background-color:#F0F8FF">
 
-<form role="form" ng-submit="post()">
+<div class="col2 col-sm-6 col-md-6">
+
+<form role="form">
 
 	<div class="row">
 	<div class="jumbotron">
@@ -69,9 +72,9 @@
 		</div>
 		<!--<div class="input-group">-->
 		
-			<textarea rows="10" cols="70" ng-model="msg"></textarea>
+			<textarea cols="50" ng-model="msg"></textarea>
 			<br>
-<input type="submit" class="btn btn-primary" ng-click="post()" value="POST">		
+<input type="submit" class="btn btn-primary" ng-click="postmsg();reloadRoute()" value="POST">		
  		
 			<!--<span class="input-group-btn">
 			<input type="submit" class="btn btn-primary" value="POST">				
@@ -80,30 +83,20 @@
 	</div>
 	</form>
 
-<div ui-sortable ng-model="messages">
- <p class="input-group" data-ng-repeat="msg in messages track by $index" style="padding:5px 10px; cursor: move;">
-	<span style="background-color:lightblue" ng-bind="msg"></span><br>
-	<!--<div style="color:#DCDCDC"></div>-->	
-	<!--<span class="input-group-btn">
-	<button class="btn btn-danger" ng-click="rem1($index)" aria-label="Remove">X</button>
- </span>-->
-</p>
-
-</div>
-
- 	<div ui-sortable ng-model="comments">
-	<p class="input-group" ng-repeat="cmnt in comments" style="padding:5px 10px; cursor: move;">
-	<span style="background-color:yellow" ng-bind="cmnt"></span>
-	<!--<span class="input-group-btn">
-	<button class="btn btn-danger" ng-click="rem2($index)" aria-label="Remove">X</button>
- </span>-->	
- </p>
- 	</div>
-
- 	<p>
-	<h3>Post a Comment</h3>
-	<form role="form" ng-submit="comment()">
-	<div class="row">
+<div ui-sortable ng-model="messages" ng-init="postc()">
+ <p class="input-group" data-ng-repeat="x in messages track by $index" style="padding:5px 10px; cursor: move;">
+	<span style="background-color:lightblue" ng-bind="x.author"></span>:<span ng-bind=" x.content"></span><br>
+	<span style="background-color:yellow" ng-bind="x.comments.author">:</span><span ng-bind="x.comments.content"></span>
+	<a ng-href="#/comment" ng-click="send(x)">Comment</a><br>
+	<!--<h3>Post a Comment</h3>-->
+	<!--<div class="input-group" data-ng-repeat="cmnt in cmnts">
+	<input type="text" ng-model="cmnt" class="form-control">
+			<span class="input-group-btn">
+			<input type="submit" class="btn btn-warning" value="Comment" ng-click="comment(x.post_id)">	
+			</span>	
+	</div>	-->
+	<!--<form role="form" ng-submit="comment(x.post_id)">
+	<div class="row" ng-model="cmnts">
 		<div class="input-group">
 			<input type="text" ng-model="cmnt" class="form-control">
 			<span class="input-group-btn">
@@ -111,24 +104,22 @@
 			</span>			
 		</div>
 	</div>
-	</form>
-
-	<!--<form role="form" ng-submit="comment()">
-	<div class="row">
-		<div class="input-group">
-		<input type="text" ng-model="cmnt" class="form-control">
-			<textarea ng-model="cmnt" rows="2" cols="70" class="form-control"></textarea>
-			<input type="submit" class="btn btn-primary" value="Comment">				
-					
-		</div>
-	</div>
 	</form>-->
 </p>
+
+</div>
+
+ 	<!--<div ui-sortable ng-model="comments">
+	<p class="input-group" ng-repeat="cmnt in comments" style="padding:5px 10px; cursor: move;">
+	<span style="background-color:yellow" ng-bind="cmnt"></span>
+	<span class="input-group-btn">
+	<button class="btn btn-danger" ng-click="rem2($index)" aria-label="Remove">X</button>
+ </span>-->	
 </div>
 
 
 	
-<div class="col-sm-3" ng-init="details()" style="background-color:#FFE4C4">
+<div class="col3 col-sm-3 col-md-3" ng-init="details()">
 <h4><u><b>Contributors to the Pool</b></u></h4><hr>
 <div ng-model="contri" data-ng-repeat="x in contri">
 <b>Email id:</b> <span ng-bind="x.email_id"></span><br>
@@ -137,4 +128,7 @@
 	<b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
+</div>
+</div>
+</div>
 </div>

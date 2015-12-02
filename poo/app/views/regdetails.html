@@ -2,8 +2,10 @@
 <!--<head>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>-->
-
-<div class="col-sm-3" ng-init="details()">
+<div class="container6">
+<div class="container5">
+<div class="container4">
+<div class="col1 col-sm-3" ng-init="regdetails()">
 <h4><u><b>DETAILS</b></u></h4><hr>
 	<b>Name:</b> <span ng-bind="registry_name"></span><hr>
 	<b>ID:</b> <span ng-bind="registry_id"></span><hr>
@@ -27,7 +29,7 @@
 	<br><br><!--<br><br><br><br><br><br>-->
 	
 	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Registry</button><br><br>
-	<button class="btn btn-danger" ng-click="delete()">Delete the Registry</button>
+	<button class="btn btn-danger" ng-click="regdelete()">Delete the Registry</button>
 
 	<div class="modal fade" id="modal" role="dialog">
     <div class="modal-dialog">
@@ -40,12 +42,12 @@
         </div>
         <div class="modal-body">
           <table border="0">
-          <tr><td>Name</td><td><input type="submit" value="Edit" ng-click="edita()"></td><td><input type="text" ng-hide="edit1" ng-model="edname"></td></tr><br>
-          <tr><td>Date</td><td><input type="submit" value="Edit" ng-click="editb()"></td><td><input type="text" ng-hide="edit2" ng-model="eddate"></td></tr><br>
-          <tr><td>Description</td><td><input type="submit" value="Edit" ng-click="editc()"></td><td><textarea ng-hide="edit3" ng-model="eddes" rows="5" cols="10"></textarea></td></tr><br>
-          <tr><td>Private/Public</td><td><input type="submit" value="Edit" ng-click="editd()"></td><td><input type="checkbox" ng-model="edpb" ng-hide="edit4"></td></tr>
+          <tr><td>Name</td><td><input type="submit" value="Edit" ng-click="regedita()"></td><td><input type="text" ng-hide="edit1" ng-model="edname"></td></tr><br>
+          <tr><td>Date</td><td><input type="submit" value="Edit" ng-click="regeditb()"></td><td><input type="text" ng-hide="edit2" ng-model="eddate"></td></tr><br>
+          <tr><td>Description</td><td><input type="submit" value="Edit" ng-click="regeditc()"></td><td><textarea ng-hide="edit3" ng-model="eddes" rows="5" cols="10"></textarea></td></tr><br>
+          <tr><td>Private/Public</td><td><input type="submit" value="Edit" ng-click="regeditd()"></td><td><input type="checkbox" ng-model="edpb" ng-hide="edit4"></td></tr>
           </table>
-          <br><button class="btn btn-success" ng-click="change()">Edit</button>
+          <br><button class="btn btn-success" ng-click="regchange()">Edit</button>
 
         </div>
         <div class="modal-footer">
@@ -57,9 +59,9 @@
   </div>
 </div>
 
-<div class="col-sm-6">
+<div class="col2 col-sm-6">
 
-<form role="form" ng-submit="post()">
+<form role="form" ng-submit="regpost()">
 
 	<div class="row">
 	<div class="jumbotron">
@@ -69,7 +71,7 @@
 		
 			<textarea rows="10" cols="70" ng-model="msg"></textarea>
 			<br>
-<input type="submit" class="btn btn-primary" ng-click="post()" value="POST">		
+<input type="submit" class="btn btn-primary" value="POST">		
  		
 			<!--<span class="input-group-btn">
 			<input type="submit" class="btn btn-primary" value="POST">				
@@ -125,11 +127,15 @@
 
 
 	
-<div class="col-sm-3" ng-init="details()">
+<div class="col3 col-sm-3" ng-init="regdetails()">
 <h4><u><b>Contributors to the Registry</b></u></h4><hr>
 <div ng-model="giftbucket" data-ng-repeat="x in giftbucket">
 <b>Id:</b> <span ng-bind="x.pid"></span><br>
 <b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
+</div>
+
+</div>
+</div>
 </div>

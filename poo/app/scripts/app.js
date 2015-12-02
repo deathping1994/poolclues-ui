@@ -174,6 +174,10 @@ var pooApp=angular
         templateUrl: 'views/loading.html',
         controller: 'loadingCtrl'
       })
+      .when('/comment', {
+        templateUrl: 'views/comment.html',
+        controller: 'commentCtrl'
+      })
       .otherwise({
         redirectTo: 'views/userlogin.html'
       });
@@ -200,8 +204,7 @@ var pooApp=angular
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      document.getElementById('status').innerHTML ='Please log '+'into Facebook.';
     }
   }
 
@@ -315,6 +318,7 @@ var cc=function(){
   caption: 'An example caption'
 }, function(response){});
 };
+
 var authtoken;
 var checkRouting= function ($q, localStorageService,$location) {
 if (window.localStorage['authtoken']!=="") {

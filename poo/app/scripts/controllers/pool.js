@@ -9,7 +9,8 @@ $scope.amounts=[];
 $scope.pids=[];
 $scope.prid=[];
 $scope.am=[];
-var count=0, i,j;
+var count=0, cnt=0, i,j;
+
 //$scope.fill=true;
 
 
@@ -57,22 +58,27 @@ var count=0, i,j;
 };
 		//$scope.invitees.push({email_id:''});
 	$scope.check=function(){
-		$scope.data2={"authtoken": window.localStorage['authtoken']};
+		//$scope.data2={"authtoken": window.localStorage['authtoken']};
 
 		if($scope.choose ==='v')
 			{	$scope.products='';
 				$scope.print="You will get a voucher worth the target amount."}
+	};
 
-		else if ($scope.choose ==='g') 
-			{
+	$scope.go=function(){
+		$scope.data2={"authtoken": window.localStorage['authtoken']};
+
 				$scope.print='';
-				$scope.url1=baseurl+'products/list';
-
+				$scope.pi=!$scope.pi;
+				$scope.url1=baseurl+'products/search?query="'+$scope.search+'"';
+				$scope.products='';
 				$http.post($scope.url1,$scope.data2).then(function successCallback(response){
-					$scope.products=response.data.products;
+					$scope.products=response.data.hits;
 			//console.log($scope.data);
 			console.log(response);
-			$scope.status=response.status;
+			console.log($scope.products);
+			//console.log(response.data.hits._source);
+			//$scope.status=response.status;
 			//$scope.data=response.data;
 			//alert("You have successfully created an pool!");
 
@@ -81,11 +87,12 @@ var count=0, i,j;
 
 		function errorCallback(response){
 			console.log(response);
-			$scope.status=response.status;
+			console.log($scope.products);
+			//$scope.status=response.status;
 			//$scope.data=response.data;
 		}
 		);
-			}
+			
 	};
 
 	/*$scope.getval=function(){
@@ -94,13 +101,15 @@ var count=0, i,j;
 
 	$scope.push=function(x){
 		$scope.m="BASKET";
-		$scope.pids.push(x.id);
-		$scope.prid.push("id"+x.id);
+		$scope.pids.push(x._source.Brand);
+		$scope.prid.push("id"+x._id);
 		$scope.pid='';
+		//cnt=cnt+x._source.Price;
 	};
 
 	$scope.rem3=function(index){
 	$scope.pids.splice(index,1);
+	$scope.prid.splice(index,1);
 };
 
 	/*$scope.test=function(){
@@ -122,11 +131,34 @@ $scope.test1=function(){
 			}		
 		console.log($scope.contributors);
 
-}
+};
+
+/*$scope.checkamt=function(){
+	if(cnt>$scope.target_amount)
+		{
+			$scope.n="Price of products must not exceed the target amount";
+			return true;
+		}
+		else if (cnt<$scope.target_amount) {
+			$scope.n="NOTE: Target amount is not reached. You may still proceed.";
+			return false;
+		}
+};*/
 
 		$scope.send=function(){
 			
 			$scope.checkboxvalue="false";
+			if(cnt>$scope.target_amount)
+		{
+			$scope.n='';
+			$scope.n="Price of products must not exceed the target amount";
+			//return true;
+		}
+		else if (cnt<$scope.target_amount) {
+			$scope.n='';
+			$scope.n="NOTE: Target amount is not reached. You may still proceed.";
+			//return false;
+		}
 			//window.localStorage['pool_id'] = "";
 				//alert("hi");
 		//$scope.target_date=new Date();
@@ -290,82 +322,7 @@ $scope.data3={
 	 };
 	});
 
-			//$scope.url1='http://188.166.249.229:8080/pool/create';
-			/*$scope.data1={
-				"authtoken": window.localStorage['authtoken'],
-
-				"contributors": $scope.contributors
-			};
-			console.log($scope.data1);
-			$http.post($scope.url1,$scope.data1).then(function successCallback(response){
-			console.log(response.status);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-			//$scope.print=$scope.email;
-			alert("Email sent");
-
-			//$location.path('/profile');
-		},
-
-		function errorCallback(response){
-			console.log(response);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-});*/
-/*$scope.addTodo=function() {
-$scope.todos.push($scope.todo);
-$scope.todo=' ';
-};
-$scope.remove=function(index){
-	$scope.todos.splice(index,1);
-};
-});*/
-
-
-			/*$scope.invitee={
-								"first_name": $scope.first_name,
-								"middle_name": $scope.middle_name.
-								"last_name": $scope.last_name,
-								"email_id": $scope.email_id,
-								"amount": $scope.amount
-
-			}
-			$scope.invitees.push($scope.invitee);*/
-			//console.log($scope.invitees);
-
-			/*$http.post($scope.url1,$scope.invitees).then(function successCallback(response){
-			console.log(response.status);
-			$scope.status=response.status;
-			//$location.path('/create');
-			//$scope.data=response.data;
-		},
-
-		function errorCallback(response){
-			console.log(response.status);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-});*/
-
-
-/*var data={ 'invitees': $scope.invitees};
-
-$http.post($scope.url1,$scope.invitees).then(function successCallback(response){
-			console.log(response.status);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-		},
-
-		function errorCallback(response){
-			console.log(response.status);
-			$scope.status=response.status;
-			//$scope.data=response.data;
-});*/
-			
-
-
-
-
-	       /* $scope.checkDateValidity = function(){
+/* $scope.checkDateValidity = function(){
         var date,
             isValid,
             taskDate;
