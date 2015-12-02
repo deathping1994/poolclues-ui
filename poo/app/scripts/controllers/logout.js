@@ -8,6 +8,9 @@ $scope.logout=function(){
 		$scope.url=baseurl+"logout/"+window.localStorage['email_id'];
 		console.log($scope.data);
 		$http.post($scope.url,$scope.data).then(function successCallback(response){
+			if(fbflag==1){
+				fblogout();
+			}
 			console.log(response.status);
 			$scope.status=response.status;
 			window.localStorage['authtoken']="";
@@ -17,10 +20,10 @@ $scope.logout=function(){
 			window.localStorage['registry_id']="";
 			window.localStorage['post_id']="";
 			window.localStorage['regpost_id']="";
-
+			checktoken=false;
 			//$scope.print("You've been successfully logged off");
 			//alert("You've successfully been logged out");
-			$location.path('/');
+			$location.path('/userlogin');
 			console.log(response.data.success);
 			//console.log(window.localStorage['email_id']);
 			
@@ -34,4 +37,5 @@ $scope.logout=function(){
 			//alert($scope.status);
 });
 };	//$location.path='/';
+
 });

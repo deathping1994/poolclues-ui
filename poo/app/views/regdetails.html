@@ -2,8 +2,10 @@
 <!--<head>
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>-->
-
-<div class="col-sm-3" ng-init="regdetails()">
+<div class="container6">
+<div class="container5">
+<div class="container4">
+<div class="col1 col-sm-3" ng-init="regdetails()">
 <h4><u><b>DETAILS</b></u></h4><hr>
 	<b>Name:</b> <span ng-bind="registry_name"></span><hr>
 	<b>ID:</b> <span ng-bind="registry_id"></span><hr>
@@ -59,7 +61,7 @@
   </div>
 </div>
 
-<div class="col-sm-6">
+<div class="col2 col-sm-6">
 
 <form role="form" ng-submit="regpost(); reloadRoute()">
 
@@ -91,12 +93,14 @@
 </div>
 </div>
 
-
-	
-<div class="col-sm-3" ng-init="regdetails()">
+<div class="col3 col-sm-3" ng-init="regdetails()">
 <h4><u><b>Invitees</b></u></h4><hr>
 <div ng-model="invitees" data-ng-repeat="x in invitees">
 <span ng-bind="x"></span><br><hr>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
+</div>
+
+</div>
+</div>
 </div>

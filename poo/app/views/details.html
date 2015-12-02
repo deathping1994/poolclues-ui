@@ -3,7 +3,10 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>-->
 
-<div class="col-sm-3" ng-init="details()">
+<div class="container6">
+<div class="container5">
+<div class="container4">
+<div class="col1 col-sm-3 col-md-3" ng-init="details()">
 <h4><u><b>DETAILS</b></u></h4><hr>
 	<b>Name:</b> <span ng-bind="pool_name"></span><hr>
 	<b>ID:</b> <span ng-bind="pool_id"></span><hr>
@@ -60,7 +63,9 @@
   </div>
 </div>
 
-<div class="col-sm-6">
+
+<div class="col2 col-sm-6 col-md-6">
+
 
 <form role="form">
 
@@ -70,7 +75,7 @@
 		</div>
 		<!--<div class="input-group">-->
 		
-			<textarea cols="70" ng-model="msg"></textarea>
+			<textarea cols="50" ng-model="msg"></textarea>
 			<br>
 <input type="submit" class="btn btn-primary" ng-click="postmsg();reloadRoute()" value="POST">	<br>	
  		
@@ -118,7 +123,8 @@
 
 
 	
-<div class="col-sm-3" ng-init="details()">
+
+<div class="col3 col-sm-3 col-md-3" ng-init="details()">
 <h4><u><b>Contributors to the Pool</b></u></h4><hr>
 <div ng-model="contri" data-ng-repeat="x in contri">
 <b>Email id:</b> <span ng-bind="x.email_id"></span><br>
@@ -127,4 +133,7 @@
 	<b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
+</div>
+</div>
+</div>
 </div>

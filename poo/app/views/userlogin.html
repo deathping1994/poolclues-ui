@@ -1,8 +1,8 @@
-<div class="col-md-6">
+<div class="col-md-12">
 <div class="well">
 <div class="form-login-wrapper">
 	<form class="form-login">
-        <h2 class="form-login-heading">Please log in</h2>
+        <h2 class="form-login-heading">Log in or<a ng-href="#/usersignup"> Sign Up</a></h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" ng-model="text3" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
@@ -20,10 +20,6 @@
         <button class="btn btn-lg btn-primary btn-block"  ng-click="click1()" type="submit">Log in</button>
      </form>
 </div>
-</div>
-</div>
-
-<div class="col-md-6" ng-init="fblogin()">
 
 
 <!--
@@ -31,9 +27,12 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-
+<div class="text-center">
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState()">
 </fb:login-button>
+<div id="status">
+</div>
+</div>
 <!-- <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -55,7 +54,10 @@
     </div>
   </div> -->
 <!-- <button ng-click="fblogin()">Click me</button> -->
-<p ng-bind="response" class="text-danger"></p>
-<div id="status">
+<!-- <p ng-bind="response" class="text-danger"></p> -->
+
+<!-- <div id="my-signin2"></div> -->
+
+<!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="200" data-longtitle="true"></div> -->
 </div>
 </div>
