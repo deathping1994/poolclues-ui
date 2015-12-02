@@ -136,6 +136,10 @@ angular
         templateUrl: 'views/comment.html',
         controller: 'commentCtrl'
       })
+      .when('/regcomment', {
+        templateUrl: 'views/regcomment.html',
+        controller: 'regcommentCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

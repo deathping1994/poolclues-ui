@@ -29,7 +29,7 @@ $scope.send1=function(){
 
 	$scope.data={
 				"invites": $scope.invites,
-				"authtoken": window.localStorage['authtoken'],
+				"authtoken": window.localStorage['authtoken']
 				//"msg": $scope.msg
 			};
 
@@ -41,7 +41,7 @@ $scope.send1=function(){
 			//$scope.data=response.data;
 			//alert("contributors sent");
 
-			$location.path('/list');
+			$location.path('/regdetails');
 		},
 
 		function errorCallback(response){

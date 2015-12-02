@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>-->
 
-<div class="col-sm-3" ng-init="details()" style="background-color:#FAEBD7">
+<div class="col-sm-3" ng-init="details()">
 <h4><u><b>DETAILS</b></u></h4><hr>
 	<b>Name:</b> <span ng-bind="pool_name"></span><hr>
 	<b>ID:</b> <span ng-bind="pool_id"></span><hr>
@@ -28,7 +28,8 @@
 	<br><br><!--<br><br><br><br><br><br>-->
 	
 	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Pool</button><br><br>
-	<button class="btn btn-danger" ng-click="delete()">Delete the Pool</button>
+	<button class="btn btn-danger" ng-click="delete()">Delete the Pool</button><br><br>
+	<a ng-href="#/add">Add Member</a><br>
 
 	<div class="modal fade" id="modal" role="dialog">
     <div class="modal-dialog">
@@ -59,7 +60,7 @@
   </div>
 </div>
 
-<div class="col-sm-6" style="background-color:#F0F8FF">
+<div class="col-sm-6">
 
 <form role="form">
 
@@ -71,7 +72,7 @@
 		
 			<textarea cols="70" ng-model="msg"></textarea>
 			<br>
-<input type="submit" class="btn btn-primary" ng-click="postmsg();reloadRoute()" value="POST">		
+<input type="submit" class="btn btn-primary" ng-click="postmsg();reloadRoute()" value="POST">	<br>	
  		
 			<!--<span class="input-group-btn">
 			<input type="submit" class="btn btn-primary" value="POST">				
@@ -82,8 +83,9 @@
 
 <div ui-sortable ng-model="messages" ng-init="postc()">
  <p class="input-group" data-ng-repeat="x in messages track by $index" style="padding:5px 10px; cursor: move;">
-	<span style="background-color:lightblue" ng-bind="x.author"></span>:<span ng-bind=" x.content"></span><br>
-	<span style="background-color:yellow" ng-bind="x.comments.author">:</span><span ng-bind="x.comments.content"></span>
+	<span style="color:blue" ng-bind="x.author"></span><br>
+	<span ng-bind="x.content"></span><br>
+	<!--<span style="background-color:yellow" ng-bind="x.comments.author">:</span><span ng-bind="x.comments.content"></span>-->
 	<a ng-href="#/comment" ng-click="send(x)">Comment</a><br>
 	<!--<h3>Post a Comment</h3>-->
 	<!--<div class="input-group" data-ng-repeat="cmnt in cmnts">
@@ -116,7 +118,7 @@
 
 
 	
-<div class="col-sm-3" ng-init="details()" style="background-color:#FFE4C4">
+<div class="col-sm-3" ng-init="details()">
 <h4><u><b>Contributors to the Pool</b></u></h4><hr>
 <div ng-model="contri" data-ng-repeat="x in contri">
 <b>Email id:</b> <span ng-bind="x.email_id"></span><br>

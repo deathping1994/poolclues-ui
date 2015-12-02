@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('pooApp').controller('commentCtrl', function($scope, $location, $route, $http, localStorageService){ //put $http & alert
+angular.module('pooApp').controller('regcommentCtrl', function($scope, $location, $route, $http, localStorageService){ //put $http & alert
 $scope.cmnts=[];
 	$scope.commentdisplay=function(){
-		$scope.url=baseurl+window.localStorage['pool_id']+"/post/"+window.localStorage['post_id'];
+		$scope.url=baseurl+window.localStorage['registry_id']+"/post/"+window.localStorage['regpost_id'];
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 		console.log($scope.url);
 		$http.post($scope.url,$scope.data).then(function successCallback(response){
@@ -32,7 +32,7 @@ $scope.cmnts=[];
 			"content":$scope.cmnt
 		};
 		console.log($scope.url1);
-		$scope.url1=baseurl+window.localStorage['pool_id']+"/"+window.localStorage['post_id']+"/comment";
+		$scope.url1=baseurl+window.localStorage['registry_id']+"/"+window.localStorage['regpost_id']+"/comment";
 		$http.post($scope.url1,$scope.data1).then(function successCallback(response){
 			console.log(response);
 		},

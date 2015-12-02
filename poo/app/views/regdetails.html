@@ -27,7 +27,9 @@
 	<br><br><!--<br><br><br><br><br><br>-->
 	
 	<button class="btn btn-warning" data-toggle="modal" data-target="#modal">Edit the Registry</button><br><br>
-	<button class="btn btn-danger" ng-click="regdelete()">Delete the Registry</button>
+	<button class="btn btn-danger" ng-click="regdelete()">Delete the Registry</button><br><br>
+	<a ng-href="#/addregistry">Add Member</a><br>
+
 
 	<div class="modal fade" id="modal" role="dialog">
     <div class="modal-dialog">
@@ -59,7 +61,7 @@
 
 <div class="col-sm-6">
 
-<form role="form" ng-submit="regpost()">
+<form role="form" ng-submit="regpost(); reloadRoute()">
 
 	<div class="row">
 	<div class="jumbotron">
@@ -78,58 +80,23 @@
 	</div>
 	</form>
 
-<div ui-sortable ng-model="messages">
- <p class="input-group" ng-repeat="msg in messages" style="padding:5px 10px; cursor: move;">
-	<span style="background-color:lightblue" ng-bind="msg"></span>	
-	<span class="input-group-btn">
-	<button class="btn btn-danger" ng-click="rem1($index)" aria-label="Remove">X</button>
- </span>
+<div ui-sortable ng-model="messages" ng-init="postc()">
+ <p class="input-group" ng-repeat="x in messages track by $index" style="padding:5px 10px; cursor: move;">
+	<span style="color:blue" ng-bind="x.author"></span><br>
+	<span ng-bind="x.content"></span><br>
+	<!--<span style="background-color:yellow" ng-bind="x.comments.author">:</span><span ng-bind="x.comments.content"></span>-->
+	<a ng-href="#/regcomment" ng-click="send(x)">Comment</a><br>
 </p>
 
 </div>
-
- 	<div ui-sortable ng-model="comments">
-	<p class="input-group" ng-repeat="cmnt in comments" style="padding:5px 10px; cursor: move;">
-	<span style="background-color:yellow" ng-bind="cmnt"></span>
-	<span class="input-group-btn">
-	<button class="btn btn-danger" ng-click="rem2($index)" aria-label="Remove">X</button>
- </span>	
- </p>
- 	</div>
-
- 	<p>
-	<h3>Post a Comment</h3>
-	<form role="form" ng-submit="comment()">
-	<div class="row">
-		<div class="input-group">
-			<input type="text" ng-model="cmnt" class="form-control">
-			<span class="input-group-btn">
-			<input type="submit" class="btn btn-warning" value="Comment">				
-			</span>			
-		</div>
-	</div>
-	</form>
-
-	<!--<form role="form" ng-submit="comment()">
-	<div class="row">
-		<div class="input-group">
-		<input type="text" ng-model="cmnt" class="form-control">
-			<textarea ng-model="cmnt" rows="2" cols="70" class="form-control"></textarea>
-			<input type="submit" class="btn btn-primary" value="Comment">				
-					
-		</div>
-	</div>
-	</form>-->
-</p>
 </div>
 
 
 	
 <div class="col-sm-3" ng-init="regdetails()">
-<h4><u><b>Contributors to the Registry</b></u></h4><hr>
-<div ng-model="giftbucket" data-ng-repeat="x in giftbucket">
-<b>Id:</b> <span ng-bind="x.pid"></span><br>
-<b>Payment Status:</b> <span ng-bind="x.status"></span><hr>
+<h4><u><b>Invitees</b></u></h4><hr>
+<div ng-model="invitees" data-ng-repeat="x in invitees">
+<span ng-bind="x"></span><br><hr>
 </div>
 	<!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
 </div>

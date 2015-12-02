@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pooApp').controller('regdetailsCtrl', function($scope, $location, $http, localStorageService){ //put $http & alert
+angular.module('pooApp').controller('regdetailsCtrl', function($scope, $location, $route, $http, localStorageService){ //put $http & alert
 
 $scope.messages=[];
 $scope.comments=[];	
@@ -11,21 +11,33 @@ $scope.edit3=true;
 $scope.edit4=true;
 
 $scope.regpost=function(){
-		$scope.messages.push($scope.msg);
-		$scope.msg='';
-		
-	};
-
-$scope.regcomment=function(){
-		$scope.comments.push($scope.cmnt);
-		$scope.cmnt='';
+		//$scope.messages.push($scope.msg);
+		//$scope.msg='';
+		$scope.urlpost=baseurl+window.localStorage['registry_id']+"/post";
+		$scope.datapost={
+			"authtoken":window.localStorage['authtoken'],
+			"content":$scope.msg
+		};
+		$http.post($scope.urlpost,$scope.datapost).then(function successCallback(response){
+			console.log(response);
+			$scope.msg='';
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//alert($scope.status);
+});
 		
 	};
 		
 $scope.regshare=function(){
 	cc();
 };
-
+$scope.reloadRoute = function() {
+   $route.reload();
+};
 $scope.regdetails=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
@@ -42,7 +54,7 @@ $scope.regdetails=function(){
 			$scope.registry_id=response.data.registry_id;
 			$scope.registry_description=response.data.registry_description;
 			$scope.target_date=response.data.target_date;
-			$scope.giftbucket=response.data.giftbucket;
+			$scope.invitees=response.data.invitees;
 			//alert("You've successfully been logged out");
 			//$location.path('/');
 		},
@@ -52,6 +64,32 @@ $scope.regdetails=function(){
 			//alert($scope.status);
 });
 	//$location.path='/';
+};
+
+$scope.postc=function(){
+	$scope.url1=baseurl+window.localStorage['registry_id']+"/post/list";
+			$scope.data1={"authtoken":window.localStorage['authtoken']};
+
+	$http.post($scope.url1,$scope.data1).then(function successCallback(response){
+				$scope.messages=response.data.posts;
+			
+			console.log(response);
+						
+			//alert("You've successfully been logged out");
+			//$location.path('/');
+		},
+		function errorCallback(response){
+			console.log(response);
+			$scope.status=response.status;
+			//alert($scope.status);
+});		
+	
+};
+
+
+$scope.send=function(x){
+	window.localStorage['regpost_id'] = x.post_id;
+	console.log(window.localStorage['regpost_id']);
 };
 
 $scope.regdelete=function(){

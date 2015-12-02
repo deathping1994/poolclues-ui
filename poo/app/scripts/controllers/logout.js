@@ -13,6 +13,11 @@ $scope.logout=function(){
 			window.localStorage['authtoken']="";
 			//window.localStorage['event_id']="";
 			window.localStorage['email_id']="";
+			window.localStorage['pool_id']="";
+			window.localStorage['registry_id']="";
+			window.localStorage['post_id']="";
+			window.localStorage['regpost_id']="";
+
 			//$scope.print("You've been successfully logged off");
 			//alert("You've successfully been logged out");
 			$location.path('/');
