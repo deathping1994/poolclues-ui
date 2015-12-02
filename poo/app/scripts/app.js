@@ -185,7 +185,7 @@ var pooApp=angular
         controller: 'commentCtrl'
       })
       .otherwise({
-        redirectTo: 'views/userlogin.html'
+        redirectTo: '/userlogin'
       });
   });
 
