@@ -447,3 +447,8 @@ overflow: hidden;
         max-width: 200px;
         object-fit: cover;
   }
+
+ul.products li {
+    width: 200px;
+    display: inline-block;
+}

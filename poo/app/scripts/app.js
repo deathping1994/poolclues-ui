@@ -311,11 +311,14 @@ var fblogout=function(){
         // Person is now logged out
     });
 }
+
+var poolpost;
+var registrypost;
 var cc=function(){
   FB.ui({
   method: 'share',
-  href: 'https://developers.facebook.com/docs/',
-  caption: 'An example caption'
+  href: poolpost,
+  caption: 'Pool Created'
 }, function(response){});
 };
 

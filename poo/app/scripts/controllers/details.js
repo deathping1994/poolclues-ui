@@ -94,6 +94,7 @@ $scope.details=function(){
 		//$scope.data=window.localStorage['authtoken'];
 		//var $index=0;
 		$scope.url=baseurl+"pool/"+window.localStorage['pool_id'];
+		poolpost=$scope.url;
 		$scope.data={"authtoken":window.localStorage['authtoken']};
 		console.log("test");
 		//$scope.poollist=[];
